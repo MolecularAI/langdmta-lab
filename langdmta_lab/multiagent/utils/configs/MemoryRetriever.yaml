@@ -1,0 +1,18 @@
+prompt: |
+  Given the following conversation history and a new user query, retrieve relevant information using the following rules:
+  1. Return **all relevant messages verbatim** — exactly as they appear in the conversation history.
+    - Do **not** modify, summarize, rephrase, or merge any part of these messages.
+    - Do **not** attempt to answer the user’s question in any way or make up any part of an answer.
+    - The downstream worker has **no access to the chat history** — so include **everything that the downstream worker needs to know**.
+      - This includes any prior computations, references, file paths, SMILES, or any discussion that helps with task context.
+    - If a message does not contribute meaningfully to the current query, **leave it out**.
+  2. If the query refers to some reference compounds using names like **reference compound** or vague names such as "this compound" or "reference" and its **SMILES representation** exists in the conversation history:
+    - In addition to the relevant messages above, append the following synthetic message to the end of your output:
+
+      **`AI: The SMILES representation of the reference compound <compound name> is <SMILES>`**
+
+    - Use the SMILES string **exactly as it appears** in the conversation.
+    - Do **NOT miss out** any other relevant messages, especially the ones that contains any relevant file paths to the molecules.
+
+  3. If no messages are relevant, directly return an empty string.
+  4. Do not attempt to answer the question in any way.

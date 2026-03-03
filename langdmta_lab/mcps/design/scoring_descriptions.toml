@@ -1,0 +1,56 @@
+
+[general]
+MatchingSubstructure = """
+MatchingSubstructure checks if a substructure/SMARTS pattern
+is present in the molecule. **IMPORTANT**: Output is binary
+with values 1.0 and 0.5 (NOT 0.0), where: 1.0 = present, 0.5 = absent.
+**Filtering:** to select molecules that DO NOT contain the
+substructure, filter for value == 0.5.
+To select molecules that DO contain it, filter for value == 1.0.
+Values are never 0. ALWAYS provide this information regarding
+the values to the agent to ensure correct filtering. DO NOT
+attempt to filter on 0 values for this property."""
+
+GroupCount = """
+GroupCount counts the number of occurrences a SMARTS pattern
+is present in the molecule. If multiple SMARTS are provided,
+it counts the total number of occurrences across all patterns.
+It is not possible to count how many times multiple SMARTS patterns
+occur together in a single molecule."""
+
+
+[analyzer]
+MatchingSubstructure =  """
+MatchingSubstructure checks if a substructure/SMARTS pattern
+is present in the molecule. **IMPORTANT**: Output is binary
+with values 1.0 and 0.5 (NOT 0.0), where: 1.0 = present, 0.5 = absent.
+**Filtering:** to select molecules that DO NOT contain the
+substructure, filter for value == 0.5.
+To select molecules that DO contain it, filter for value == 1.0.
+Values are never 0."""
+
+GroupCount = """
+GroupCount output is non-binary and returns the integer count of how many times
+a SMARTS pattern occurs in a molecule.
+If multiple SMARTS patterns are provided, it returns the total count
+across all patterns. It does not count co-occurrences of patterns within
+a single molecule."""
+
+Tanimoto_Similarity = """
+This is not a scoring property, but an ouput from molecule generation tool.
+It measures the 2D similarity between two molecules, should be used as default
+similarity metric for filtering when the user mentioned
+specific similarity threshold."""
+
+
+[design]
+MatchingSubstructure = """
+checks if a substructure/SMARTS pattern
+is present in the molecule. 1 is present, 0.5 is absence."""
+
+GroupCount = """
+GroupCount counts the number of occurrences a SMARTS pattern
+in the given molecule(s). If multiple SMARTS are provided,
+it counts the total number of occurrences across all patterns.
+It is not possible to count how many times multiple SMARTS patterns
+occur together in a single molecule."""

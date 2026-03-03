@@ -1,0 +1,147 @@
+[Tool]
+[[Tool.Synonym2SMILES]]
+# mock available
+question = "What is the SMILES of Ibuprofen?"
+answer = ""
+sequences.complete = [['synonyms2smiles']]
+sequences.accepted = []
+
+[[Tool.Synonym2SMILES]]
+# mock available
+question = "What is the SMILES for Morpholine and Amenamevir?"
+answer = ""
+sequences.complete = [['synonyms2smiles']]
+sequences.accepted = []
+
+[[Tool.Synonym2SMILES]]
+# mock available
+question = "What is the SMARTS for morpholine?"
+answer = ""
+sequences.complete = [['synonyms2smiles']]
+sequences.accepted = []
+
+[[Tool.Molformer]]
+# mock available
+question = "Can you generate similar molecules to Cc1ccc(cc1Nc2nccc(n2)c3cccnc3)NC(=O)c4ccc(cc4)CN5CCN(CC5)C?"
+answer = ""
+sequences.complete = [['molformer'], ['molformer', 'Analyzer']]
+sequences.accepted = []
+
+[[Tool.Molformer]]
+# mock available
+question = "I would like to have some close analogues to Cc1ccc(cc1Nc2nccc(n2)c3cccnc3)NC(=O)c4ccc(cc4)CN5CCN(CC5)C?"
+answer = ""
+sequences.complete = [['molformer'], ['molformer', 'Analyzer']]
+sequences.accepted = []
+
+[[Tool.Scoring]]
+# mock available
+question = "How many hydrogen bond donors and acceptors does Cc1ccc(cc1Nc2nccc(n2)c3cccnc3)NC(=O)c4ccc(cc4)CN5CCN(CC5)C have?"
+answer = ""
+sequences.complete = [['reinvent_scoring']]
+sequences.accepted = []
+
+[[Tool.Scoring]]
+# mock available
+question = "I would like to know the MW and number of rotatable bond of molecules: CC(C)Cc1ccc(C(C)C(=O)O)cc1 and Cc1ccc(cc1Nc2nccc(n2)c3cccnc3)NC(=O)c4ccc(cc4)CN5CCN(CC5)C"
+answer = ""
+sequences.complete = [['reinvent_scoring'], ['reinvent_scoring', 'Analyzer']]
+sequences.accepted = []
+
+
+[Workflow]
+[[Workflow.Design_only]]
+# mock available
+question = "Can you generate molecules similar to Gleevec?"
+answer = ""
+sequences.complete = [['synonyms2smiles', 'molformer'], ['synonyms2smiles', 'molformer', 'Analyzer']]
+sequences.accepted = []
+
+[[Workflow.Design_only]]
+# mock available
+question = "Can you give me 100 molecules similar to amenamevir?"
+answer = ""
+sequences.complete = [['synonyms2smiles', 'molformer'], ['synonyms2smiles', 'molformer', 'Analyzer']]
+sequences.accepted = []
+
+[[Workflow.Design_property]]
+# mock available
+question = "Can you generate molecules similar to Gleevec and count the occurrence of F and Cl individually?"
+answer = ""
+sequences.complete = [['synonyms2smiles', 'molformer', 'reinvent_scoring', 'Analyzer']]
+sequences.accepted = [['synonyms2smiles', 'molformer', 'reinvent_scoring']]
+
+[[Workflow.Design_property]]
+# mock available
+question = "I would like to have some close analogues to Cc1ccc(cc1Nc2nccc(n2)c3cccnc3)NC(=O)c4ccc(cc4)CN5CCN(CC5)C with MW between 450 and 550, HBD maximum 2"
+answer = ""
+sequences.complete = [['molformer', 'reinvent_scoring', 'Analyzer']]
+sequences.accepted = [['molformer', 'reinvent_scoring']]
+
+[[Workflow.Design_property]]
+# mock available
+question = "Can you generate molecules similar to gleevec with lower HBA, higher MW, and number of rotatable bond between 5 and 7?"
+answer = ""
+sequences.complete = [['synonyms2smiles', 'molformer', 'reinvent_scoring', 'Analyzer'], ['synonyms2smiles', 'reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer']]
+sequences.accepted = [['synonyms2smiles', 'molformer', 'reinvent_scoring']]
+
+[[Tool.AiZynthFinder]]
+question = "How can I make each of these molecules: CC(=O)N(C)c1ccc(-c2cn3cc(Br)ccc3n2)cc1C, O=C(O)c1cccc(-n2ccnn2)c1?"
+answer = ""
+sequences.complete = [['aizynthfinder']]
+sequences.accepted = []
+
+[[Tool.PrecedentFinder]]
+question = "What are similar reactions to Cl.c1ccccc1>>Clc1ccccc1?"
+answer = ""
+sequences.complete = [['precedent_finder']]
+sequences.accepted = []
+
+[[Tool.SynthesisOnly]]
+# Mix of SMILES and chemical name; mock available
+question = "What is the synthesis of Amenamevir and Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1?"
+answer = ""
+sequences.complete = [['synonyms2smiles', 'aizynthfinder']]
+sequences.accepted = []
+
+[[Workflow.Synthesis_reaction]]
+# mock available
+question = "How can I make CC1=C(C=C(C=C1)NC2=NC=CC(=N2)N(C)C3=CC4=NN(C(=C4C=C3)C)C)S(=O)(=O)N and what are 3 similar reactions for all reaction steps involved in making this molecule?"
+answer = ""
+sequences.complete = [['aizynthfinder', 'precedent_finder']]
+sequences.accepted = []
+
+[[Workflow.Design_synthesis]]
+# mock available
+question = "Can you give me some molecules similar to CNCCC(C1=CC=CC=C1)OC2=CC=C(C=C2)C(F)(F)F and show me the synthesis routes for the top 5 similar ones?"
+answer = ""
+sequences.complete = [['molformer', 'aizynthfinder'], ['molformer', 'aizynthfinder', 'Analyzer'], ['molformer', 'Analyzer', 'aizynthfinder']]
+sequences.accepted = []
+
+[[Workflow.Scoring_Reinforcement_Learning]]
+# mock available
+question = "Can you generate molecules that are similar to Cc1ccc(cc1Nc2nccc(n2)c3cccnc3)NC(=O)c4ccc(cc4)CN5CCN(CC5)C with higher MW using reinforcement learning?"
+answer = ""
+sequences.complete = [['reinvent_scoring', 'reinforcement_learning', 'Analyzer']]
+sequences.accepted = []
+
+[[Workflow.Scoring_Reinforcement_Learning]]
+# mock available
+question = "Can you generate molecules that are similar to Amenamevir with lower MW using reinforcement learning for 20 epochs?"
+answer = ""
+sequences.complete = [['synonyms2smiles', 'reinvent_scoring', 'reinforcement_learning', 'Analyzer']]
+sequences.accepted = []
+
+[[Workflow.Scoring_Reinforcement_Learning]]
+# mock available
+question = "Can you generate molecules that are similar to CNCCC(C1=CC=CC=C1)OC2=CC=C(C=C2)C(F)(F)F and Gleevec with MW between 300 and 400 using reinforcement learning for 10 epochs?"
+answer = ""
+sequences.complete = [['synonyms2smiles', 'reinforcement_learning', 'Analyzer']]
+sequences.accepted = []
+
+[[Workflow.Scoring_Reinforcement_Learning]]
+# mock available
+question = "Can you generate molecules that are similar to Gleevec with lower HBA, higher MW, and number of rotatable bond between 5 and 7 using reinvent reinforcement learning?"
+answer = ""
+sequences.complete = [['synonyms2smiles', 'reinvent_scoring', 'reinforcement_learning', 'Analyzer']]
+sequences.accepted = []

@@ -1,0 +1,13 @@
+prompt_to_supervisor: |
+  **When to use this worker:**
+  - Use this Pandas CSV agent when the user query involves filtering based on criteria explicitly specified by the users, showing examples, identifying top n rows, retrieving information, or producing visualization from a csv file.
+  - If a task only involves generating similar molecules, always use this worker to just show the total number of generated molecules, and nothing else. Exception: if the user explictly provide a similarity threshold, then this threshold must be passed to the Analyzer agent.
+  - This worker does **not** perform chemical computations (e.g., substructure checks); such results must be computed by other workers first.
+  - Once the necessary data is available, return to this worker with the precomputed files to complete the analysis.
+
+  **How to write `task_description`:**
+  - When defining the filtering criteria, clearly state the specifc values or ranges mentioned by the user in the query or collected from previous worker. The latter is important when the user wants to filter based on properties like "higher MW" or "lower logD" than some reference compounds.
+  - Do not use molecule names or any identifiers in the task_description, ALWAYS uses its SMILES representation.
+  - If the user query is related to filtering on **2D-similarity**, assume the provided CSV already contains only similar molecules, unless explicitly stated otherwise.
+  - For substructure filtering, avoid using "filter out" to indicate exclusion.
+  Always provide the full csv file path (must always end with ".csv") through the field: `worker_input_file`.

@@ -1,0 +1,77 @@
+{
+ "synonyms2smiles": [
+     {
+       "Input": {
+        "synonyms": [
+            "Ibuprofen"
+        ]
+       },
+       "Output": {
+        "Ibuprofen": "CC(C)Cc1ccc(C(C)C(=O)O)cc1"
+       }
+     },
+     {
+       "Input": {
+        "synonyms": [
+            "Gleevec"
+        ]
+       },
+       "Output": {
+        "Gleevec": "Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1"
+       }
+     },
+      {
+        "Input": {
+         "synonyms": [
+             "Amenamevir"
+         ]
+        },
+        "Output": {
+         "Amenamevir": "Cc1cccc(C)c1N(CC(=O)Nc1ccc(-c2ncon2)cc1)C(=O)C1CCS(=O)(=O)CC1"
+        }
+      },
+      {
+        "Input": {
+         "synonyms": [
+             "Amenamevir",
+             "Gleevec"
+         ]
+        },
+        "Output": {
+         "Amenamevir": "Cc1cccc(C)c1N(CC(=O)Nc1ccc(-c2ncon2)cc1)C(=O)C1CCS(=O)(=O)CC1",
+         "Gleevec": "Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1"
+        }
+      },
+      {
+        "Input": {
+         "synonyms": [
+             "Morpholine"
+         ]
+        },
+        "Output": {
+         "Morpholine": "C1COCCN1"
+        }
+      },
+      {
+        "Input": {
+         "synonyms": [
+             "Amenamevir", "Morpholine"
+         ]
+        },
+        "Output": {
+         "Amenamevir": "Cc1cccc(C)c1N(CC(=O)Nc1ccc(-c2ncon2)cc1)C(=O)C1CCS(=O)(=O)CC1",
+         "Morpholine": "C1COCCN1"
+        }
+      },
+      {
+       "Input": {
+        "synonyms": [
+            "Tylenol"
+        ]
+       },
+       "Output": {
+        "Tylenol": "CC(=O)Nc1ccc(O)cc1"
+       }
+     }
+ ]
+}

@@ -1,0 +1,11 @@
+prompt_to_supervisor: |
+  **When to use this worker:**
+  - Synthesis Route Prediction - Given the SMILES of a molecule, produce a predicted synthetic route.
+  - Similar Reaction Prediction - Given a reaction SMILES, identify and suggest similar reactions.
+
+  **Do not use this worker if:**
+  - The question didn't explicty ask for synthesis related questions.
+  - Any molecule names are present in the query. Molecule names have to be first converted to SMILES by another worker.
+
+  - The input molecules are stored in a CSV file, another worker should be used to extract the SMILES of the requested molecules first. Agent cannot read and retrieve examples from CSV files, only use this worker when you have the exact SMILES or Reaction SMILES.
+  - Do **not** format CSV file paths in Markdown. Every CSV file path must be complete and must end with `.csv`.

@@ -1,0 +1,15 @@
+prompt_to_supervisor: |
+    **When to use this worker:**
+    - Validate user-provided molecules are already in their SMILES format.
+    - Convert identifiers from the following list into SMILES or SMARTS representations before proceeding to another worker:
+        - molecule names (e.g., Metformin)
+        - functional groups
+        - substructures
+    - Ensure that all identifiers from the list above mentioned in the query are always included in the task description — especially when the user specifies inclusion or exclusion of functional groups or substructures.
+    - **Always** use this worker for identifier-to-SMILES/SMARTS conversion. **Never** use other worker for this purpose. **Never** perform these conversions or validations yourself.
+    - If the user's question contains any molecule names or SMILES, **do not** proceed to other workers until all have been successfully validated and converted to SMILES by this worker.
+
+    **Do not use this worker to:**
+    - Validate SMILES returned by other agents - treat them as already valid.
+    - This worker does NOT do filtering based on properties or substructures.
+

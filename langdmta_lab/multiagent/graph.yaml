@@ -1,0 +1,30 @@
+nodes:
+- name: supervisor
+  model_name: gpt-4o-openai
+- name: Design
+  model_name: gpt-4o-openai
+- name: Utility
+  model_name: gpt-4o-openai
+- name: Synthesis
+  model_name: gpt-4o-openai
+- name: Analyzer
+  model_name: gpt-4o-openai
+
+edges:
+- from: __start__
+  to: supervisor
+
+- from: supervisor
+  conditional: true
+  routing:
+    import: langdmta_lab.multiagent.helpers
+    function: route_from_supervisor
+
+- from: Design
+  to: supervisor
+- from: Utility
+  to: supervisor
+- from: Synthesis
+  to: supervisor
+- from: Analyzer
+  to: supervisor

@@ -1,0 +1,355 @@
+{
+  "molformer": [
+    {
+      "Input": {
+        "smiles_list": [
+          "Cc1ccc(cc1Nc2nccc(n2)c3cccnc3)NC(=O)c4ccc(cc4)CN5CCN(CC5)C"
+        ],
+        "number_of_smiles": 50
+      },
+      "Output": {
+        "output_path": "molformer-sampling-1.csv"
+      }
+    },
+    {
+      "Input": {
+        "smiles_list": [
+          "Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1"
+        ],
+        "number_of_smiles": 50
+      },
+      "Output": {
+        "output_path": "molformer-sampling-2.csv"
+      }
+    },
+    {
+      "Input": {
+        "smiles_list": [
+          "Cc1cccc(C)c1N(CC(=O)Nc1ccc(-c2ncon2)cc1)C(=O)C1CCS(=O)(=O)CC1"
+        ],
+        "number_of_smiles": 100
+      },
+      "Output": {
+        "output_path": "molformer-sampling-3.csv"
+      }
+    },
+    {
+      "Input": {
+        "smiles_list": [
+          "CNCCC(C1=CC=CC=C1)OC2=CC=C(C=C2)C(F)(F)F"
+        ],
+        "number_of_smiles": 50
+      },
+      "Output": {
+        "output_path": "molformer-sampling-4.csv"
+      }
+    }
+  ],
+  "reinvent_scoring": [
+    {
+      "Input": {
+        "scoring_properties": {
+          "HBondDonors": {},
+          "HBondAcceptors": {}
+        },
+        "ref_smiles": [
+          "Cc1ccc(cc1Nc2nccc(n2)c3cccnc3)NC(=O)c4ccc(cc4)CN5CCN(CC5)C"
+        ],
+        "smiles_file": "",
+        "smiles_col": "SMILES"
+      },
+      "Output": {
+        "output_path": "reinvent_scoring_output_1.csv",
+        "results": {
+          "Cc1ccc(cc1Nc2nccc(n2)c3cccnc3)NC(=O)c4ccc(cc4)CN5CCN(CC5)C": {
+            "Number of HB donors": 2,
+            "Number of HB acceptors": 7
+          }
+        }
+      }
+    },
+    {
+      "Input": {
+        "scoring_properties": {
+          "MolecularWeight": {},
+          "NumRotBond": {}
+        },
+        "ref_smiles": [
+          "CC(C)Cc1ccc(C(C)C(=O)O)cc1",
+          "Cc1ccc(cc1Nc2nccc(n2)c3cccnc3)NC(=O)c4ccc(cc4)CN5CCN(CC5)C"
+        ],
+        "smiles_file": "",
+        "smiles_col": "SMILES"
+      },
+      "Output": {
+        "output_path": "reinvent_scoring_output_2.csv",
+        "results": {
+          "CC(C)Cc1ccc(C(C)C(=O)O)cc1": {
+            "Molecular weight": 206.285,
+            "Number of rotatable bonds": 4
+          },
+          "Cc1ccc(cc1Nc2nccc(n2)c3cccnc3)NC(=O)c4ccc(cc4)CN5CCN(CC5)C": {
+            "Molecular weight": 493.615,
+            "Number of rotatable bonds": 7
+          }
+        }
+      }
+    },
+    {
+      "Input": {
+        "scoring_properties": {
+          "GroupCount": {
+            "smiles/smarts": [
+              [
+                "F"
+              ],
+              [
+                "Cl"
+              ]
+            ]
+          }
+        },
+        "ref_smiles": [],
+        "smiles_file": "molformer-sampling-2.csv",
+        "smiles_col": "SMILES"
+      },
+      "Output": {
+        "output_path": "reinvent_scoring_output_3.csv",
+        "results": {}
+      }
+    },
+    {
+      "Input": {
+        "scoring_properties": {
+          "MolecularWeight": {},
+          "HBondDonors": {}
+        },
+        "ref_smiles": [
+          "Cc1ccc(cc1Nc2nccc(n2)c3cccnc3)NC(=O)c4ccc(cc4)CN5CCN(CC5)C"
+        ],
+        "smiles_file": "molformer-sampling-1.csv",
+        "smiles_col": "SMILES"
+      },
+      "Output": {
+        "output_path": "reinvent_scoring_output_4.csv",
+        "results": {
+          "Cc1ccc(cc1Nc2nccc(n2)c3cccnc3)NC(=O)c4ccc(cc4)CN5CCN(CC5)C": {
+            "Molecular weight": 493.615,
+            "Number of HB donors": 2
+          }
+        }
+      }
+    },
+    {
+      "Input": {
+        "scoring_properties": {
+          "MolecularWeight": {},
+          "HBondAcceptors": {},
+          "NumRotBond": {}
+        },
+        "ref_smiles": [
+          "Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1"
+        ],
+        "smiles_file": "molformer-sampling-2.csv",
+        "smiles_col": "SMILES"
+      },
+      "Output": {
+        "output_path": "reinvent_scoring_output_5.csv",
+        "results": {
+          "Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1": {
+            "Molecular weight": 493.6150000000002,
+            "Number of HB acceptors": 7,
+            "Number of rotatable bonds": 7
+          }
+        }
+      }
+    },
+    {
+      "Input": {
+        "scoring_properties": {
+          "MolecularWeight": {},
+          "HBondAcceptors": {},
+          "NumRotBond": {}
+        },
+        "ref_smiles": [
+          "Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1"
+        ],
+        "smiles_file": "",
+        "smiles_col": "SMILES"
+      },
+      "Output": {
+        "output_path": "",
+        "results": {
+          "Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1": {
+            "Molecular weight": 493.6150000000002,
+            "Number of HB acceptors": 7,
+            "Number of rotatable bonds": 7
+          }
+        }
+      }
+    },
+    {
+      "Input": {
+        "scoring_properties": {
+          "MolecularWeight": {},
+          "HBondAcceptors": {},
+          "NumRotBond": {}
+        },
+        "ref_smiles": [],
+        "smiles_file": "molformer-sampling-2.csv",
+        "smiles_col": "SMILES"
+      },
+      "Output": {
+        "output_path": "reinvent_scoring_output_5.csv",
+        "results": {}
+      }
+    },
+    {
+      "Input": {
+        "scoring_properties": {
+          "MolecularWeight": {}
+        },
+        "ref_smiles": [
+          "Cc1ccc(cc1Nc2nccc(n2)c3cccnc3)NC(=O)c4ccc(cc4)CN5CCN(CC5)C"
+        ],
+        "smiles_file": "",
+        "smiles_col": "SMILES"
+      },
+      "Output": {
+        "output_path": "reinvent_scoring_output_2.csv",
+        "results": {
+          "Cc1ccc(cc1Nc2nccc(n2)c3cccnc3)NC(=O)c4ccc(cc4)CN5CCN(CC5)C": {
+            "Molecular weight": 493.615
+          }
+        }
+      }
+    },
+    {
+      "Input": {
+        "scoring_properties": {
+          "MolecularWeight": {}
+        },
+        "ref_smiles": [
+          "Cc1cccc(C)c1N(CC(=O)Nc1ccc(-c2ncon2)cc1)C(=O)C1CCS(=O)(=O)CC1"
+        ],
+        "smiles_file": "",
+        "smiles_col": "SMILES"
+      },
+      "Output": {
+        "output_path": "reinvent_scoring_output_6.csv",
+        "results": {
+          "Cc1cccc(C)c1N(CC(=O)Nc1ccc(-c2ncon2)cc1)C(=O)C1CCS(=O)(=O)CC1": {
+            "Molecular weight": 482.562
+          }
+        }
+      }
+    },
+    {
+      "Input": {
+        "scoring_properties": {
+          "MolecularWeight": {}
+        },
+        "ref_smiles": [
+          "Cc1cccc(C)c1N(CC(=O)Nc1ccc(-c2ncon2)cc1)C(=O)C1CCS(=O)(=O)CC1",
+          "Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1"
+        ],
+        "smiles_file": "",
+        "smiles_col": "SMILES"
+      },
+      "Output": {
+        "output_path": "reinvent_scoring_output_7.csv",
+        "results": {
+          "Cc1cccc(C)c1N(CC(=O)Nc1ccc(-c2ncon2)cc1)C(=O)C1CCS(=O)(=O)CC1": {
+            "Molecular weight": 482.562
+          },
+          "Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1": {
+            "Molecular weight": 493.615
+          }
+        }
+      }
+    }
+  ],
+  "reinforcement_learning": [
+    {
+      "Input": {
+        "input_molecules": [
+          "Cc1ccc(cc1Nc2nccc(n2)c3cccnc3)NC(=O)c4ccc(cc4)CN5CCN(CC5)C"
+        ],
+        "criteria": {
+          "MolecularWeight": {
+            "low": 493.615,
+            "high": 99999.0
+          }
+        },
+        "model": "molformer",
+        "epochs": 50
+      },
+      "Output": {
+        "output_path": "reinforcement_learning_output-1.csv"
+      }
+    },
+    {
+      "Input": {
+        "input_molecules": [
+          "Cc1cccc(C)c1N(CC(=O)Nc1ccc(-c2ncon2)cc1)C(=O)C1CCS(=O)(=O)CC1"
+        ],
+        "criteria": {
+          "MolecularWeight": {
+            "low": -99999.0,
+            "high": 482.562
+          }
+        },
+        "model": "molformer",
+        "epochs": 20
+      },
+      "Output": {
+        "output_path": "reinforcement_learning_output-2.csv"
+      }
+    },
+    {
+      "Input": {
+        "input_molecules": [
+          "CNCCC(C1=CC=CC=C1)OC2=CC=C(C=C2)C(F)(F)F",
+          "Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1"
+        ],
+        "criteria": {
+          "MolecularWeight": {
+            "low": 300,
+            "high": 400
+          }
+        },
+        "model": "molformer",
+        "epochs": 10
+      },
+      "Output": {
+        "output_path": "reinforcement_learning_output-3.csv"
+      }
+    },
+    {
+      "Input": {
+        "input_molecules": [
+          "Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1"
+        ],
+        "criteria": {
+          "MolecularWeight": {
+            "low": 493.615, 
+            "high": 99999.0
+          }, 
+          "HBondAcceptors": {
+            "low": -99999.0, 
+            "high": 7
+          }, 
+          "NumRotBond": {
+            "low": 5, 
+            "high": 7
+          }
+        },
+        "model": "reinvent",
+        "epochs": 50
+      },
+      "Output": {
+        "output_path": "reinforcement_learning_output-4.csv"
+      }
+    }
+  ]
+}

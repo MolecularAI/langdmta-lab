@@ -1,0 +1,146 @@
+run_type = "staged_learning"
+device = "cuda:0"
+
+[parameters]
+summary_csv_prefix = "staged_learning"
+use_checkpoint = false
+purge_memories = false
+
+batch_size = 64
+unique_sequences = true
+randomize_smiles = true
+tb_isim = false
+
+[learning_strategy]
+type = "dap"
+sigma = 128
+rate = 0.0001
+
+[diversity_filter]
+type = "PenalizeSameSmiles"
+bucket_size = 25
+minscore = 0.4
+minsimilarity = 0.4
+penalty_multiplier = 0.5
+
+[[stage]]
+chkpt_file = 'test1.chkpt'
+termination = "simple"
+max_score = 0.6
+min_steps = 25
+max_steps = 100
+
+[stage.scoring]
+type = "geometric_mean"
+
+[[stage.scoring.component]]
+[stage.scoring.component.MolecularWeight]
+[[stage.scoring.component.MolecularWeight.endpoint]]
+name = "Molecular weight"
+weight = 1
+transform.type = "double_sigmoid"
+transform.high = 500.0
+transform.low = 200.0
+transform.coef_div = 500.0
+transform.coef_si = 20.0
+transform.coef_se = 20.0
+
+[[stage.scoring.component]]
+[stage.scoring.component.SlogP]
+[[stage.scoring.component.SlogP.endpoint]]
+name = "SlogP"
+weight = 1
+transform.type = "reverse_sigmoid"
+transform.high = 3
+transform.low = 1
+transform.k = 0.5
+
+[[stage.scoring.component]]
+[stage.scoring.component.HBondDonors]
+[[stage.scoring.component.HBondDonors.endpoint]]
+name = "Number of HB donors (<5)"
+weight = 1
+transform.type = "reverse_sigmoid"
+transform.high = 7
+transform.low = 3
+transform.k = 0.5
+
+[[stage.scoring.component]]
+[stage.scoring.component.HBondAcceptors]
+[[stage.scoring.component.HBondAcceptors.endpoint]]
+name = "Number of HB acceptors (<10)"
+weight = 1
+transform.type = "reverse_sigmoid"
+transform.high = 14
+transform.low = 6
+transform.k = 0.25
+
+
+[[stage.scoring.component]]
+[stage.scoring.component.NumRotBond]
+[[stage.scoring.component.NumRotBond.endpoint]]
+name = "Number of rotatable bonds (<10)"
+weight = 1
+transform.type = "reverse_sigmoid"
+transform.high = 24
+transform.low = 6
+transform.k = 0.25
+
+[[stage.scoring.component]]
+[stage.scoring.component.NumAromaticRings]
+[[stage.scoring.component.NumAromaticRings.endpoint]]
+name = "Number of aromatic rings (<4)"
+weight = 1
+transform.type = "reverse_sigmoid"
+transform.high = 4
+transform.low = 3
+transform.k =  0.25
+
+[[stage.scoring.component]]
+[stage.scoring.component.NumAtomStereoCenters]
+[[stage.scoring.component.NumAtomStereoCenters.endpoint]]
+name = "Number of stereo centers (<3)"
+weight = 1
+transform.type = "reverse_sigmoid"
+transform.high = 4
+transform.low = 2
+transform.k =  0.25
+
+[[stage.scoring.component]]
+[stage.scoring.component.custom_alerts]
+[[stage.scoring.component.custom_alerts.endpoint]]
+name = "custom alerts"
+weight = 1
+params.smarts = [
+    "[*;r8]",
+    "[*;r9]",
+    "[*;r10]",
+    "[*;r11]",
+    "[*;r12]",
+    "[*;r13]",
+    "[*;r14]",
+    "[*;r15]",
+    "[*;r16]",
+    "[*;r17]",
+    "[#8][#8]",
+    "[#6;+]",
+    "[#16][#16]",
+    "[#7;!n][#7;!n]"
+]
+
+# This is always updated by the scoring tool
+[[stage.scoring.component]]
+[stage.scoring.component.GroupCount]
+[[stage.scoring.component.GroupCount.endpoint]]
+name = "Group (substructure) count"
+weight = 1
+params.smarts = "[F,Cl]"
+
+# This is always updated by the scoring tool
+[[stage.scoring.component]]
+[stage.scoring.component.MatchingSubstructure]
+[[stage.scoring.component.MatchingSubstructure.endpoint]]
+name = "Matching SMARTs substructure"
+weight = 1
+params.smarts = "CO"
+params.use_chirality = false

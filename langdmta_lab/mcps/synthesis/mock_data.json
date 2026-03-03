@@ -1,0 +1,431 @@
+{
+    "aizynthfinder": [
+        {
+            "Input": {
+                "product_smiles": [
+                    "CC(=O)OC1=C(C=C(C=C1)NC(=O)CCC(=O)O)C(=O)O"
+                ]
+            },
+            "Output": {
+                    "CC(=O)OC1=C(C=C(C=C1)NC(=O)CCC(=O)O)C(=O)O": {
+                        "reactions": [
+                            "CC(=O)OC(C)=O.O=C(O)CCC(=O)Nc1ccc(O)c(C(=O)O)c1>>CC(=O)Oc1ccc(NC(=O)CCC(=O)O)cc1C(=O)O",
+                            "O=C1CCC(=O)O1.Nc1ccc(O)c(C(=O)O)c1>>O=C(O)CCC(=O)Nc1ccc(O)c(C(=O)O)c1"
+                        ],
+                        "stock": [
+                            "CC(=O)OC(C)=O",
+                            "O=C1CCC(=O)O1",
+                            "Nc1ccc(O)c(C(=O)O)c1"
+                        ]
+                    }
+            }
+        },
+        {
+            "Input": {
+                "product_smiles": [
+                    "O=C(O)c1cccc(-n2ccnn2)c1"
+                ]
+            },
+            "Output": {
+                    "O=C(O)c1cccc(-n2ccnn2)c1": {
+                        "reactions": [
+                            "COC(=O)c1cccc(-n2ccnn2)c1>>O=C(O)c1cccc(-n2ccnn2)c1"
+                        ],
+                        "stock": [
+                            "COC(=O)c1cccc(-n2ccnn2)c1"
+                        ]
+                    }
+            }
+        },
+        {
+            "Input": {
+                "product_smiles": [
+                    "CC(=O)N(C)c1ccc(-c2cn3cc(Br)ccc3n2)cc1C"
+                ]
+            },
+            "Output": {
+                    "CC(=O)N(C)c1ccc(-c2cn3cc(Br)ccc3n2)cc1C": {
+                        "reactions": [
+                            "Nc1ccc(Br)cn1.CC(=O)N(C)c1ccc(C(=O)CBr)cc1C>>CC(=O)N(C)c1ccc(-c2cn3cc(Br)ccc3n2)cc1C",
+                            "CC(=O)N(C)c1ccccc1C.O=C(Br)CBr>>CC(=O)N(C)c1ccc(C(=O)CBr)cc1C"
+                        ],
+                        "stock": [
+                            "Nc1ccc(Br)cn1",
+                            "O=C(Br)CBr",
+                            "CC(=O)N(C)c1ccccc1C"
+                        ]
+                    }
+            }
+        },
+        {
+            "Input": {
+                "product_smiles": [
+                    "CC1=C(C=C(C=C1)NC2=NC=CC(=N2)N(C)C3=CC4=NN(C(=C4C=C3)C)C)S(=O)(=O)N"
+                ]
+            },
+            "Output": {
+                    "CC1=C(C=C(C=C1)NC2=NC=CC(=N2)N(C)C3=CC4=NN(C(=C4C=C3)C)C)S(=O)(=O)N": {
+                        "reactions": [
+                            "Cc1ccc(N)cc1S(N)(=O)=O.Cc1c2ccc(N(C)c3ccnc(Cl)n3)cc2nn1C>>Cc1ccc(Nc2nccc(N(C)c3ccc4c(C)n(C)nc4c3)n2)cc1S(N)(=O)=O",
+                            "Clc1ccnc(Cl)n1.CNc1ccc2c(C)n(C)nc2c1>>Cc1c2ccc(N(C)c3ccnc(Cl)n3)cc2nn1C"
+                        ],
+                        "stock": [
+                            "Cc1ccc(N)cc1S(N)(=O)=O",
+                            "CNc1ccc2c(C)n(C)nc2c1",
+                            "Clc1ccnc(Cl)n1"
+                        ]
+                    }
+            }
+        },
+        {
+            "Input": {
+                "product_smiles": [
+                    "CNCCC(C1=CC=CC=C1)OC2=CC=C(C=C2)C(F)(F)F"
+                ]
+            },
+            "Output": {
+                    "CNCCC(C1=CC=CC=C1)OC2=CC=C(C=C2)C(F)(F)F": {
+                        "reactions": [
+                            "Fc1ccc(C(F)(F)F)cc1.CNCCC(O)c1ccccc1>>CNCCC(Oc1ccc(C(F)(F)F)cc1)c1ccccc1",
+                            "CNCCC(=O)c1ccccc1>>CNCCC(O)c1ccccc1"
+                        ],
+                        "stock": [
+                            "Fc1ccc(C(F)(F)F)cc1",
+                            "CNCCC(=O)c1ccccc1"
+                        ]
+                    }
+            }
+        },
+        {
+            "Input": {
+                "product_smiles": [
+                    "Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1"
+                ]
+            },
+            "Output": {
+                    "Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1": {
+                        "reactions": [
+                            "Clc1nccc(-c2cccnc2)n1.Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1N>>Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1",
+                            "Cc1ccc(N)cc1N.COC(=O)c1ccc(CN2CCN(C)CC2)cc1>>Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1N"
+                        ],
+                        "stock": [
+                            "Clc1nccc(-c2cccnc2)n1",
+                            "COC(=O)c1ccc(CN2CCN(C)CC2)cc1",
+                            "Cc1ccc(N)cc1N"
+                        ]
+                    }
+            }
+        },
+        {
+            "Input": {
+                "product_smiles": [
+                    "Cc1cccc(C)c1N(CC(=O)Nc1ccc(-c2ncon2)cc1)C(=O)C1CCS(=O)(=O)CC1"
+                ]
+            },
+            "Output": {
+                    "Cc1cccc(C)c1N(CC(=O)Nc1ccc(-c2ncon2)cc1)C(=O)C1CCS(=O)(=O)CC1": {
+                        "reactions": [
+                            "Nc1ccc(-c2ncon2)cc1.CCOC(=O)CN(C(=O)C1CCS(=O)(=O)CC1)c1c(C)cccc1C>>Cc1cccc(C)c1N(CC(=O)Nc1ccc(-c2ncon2)cc1)C(=O)C1CCS(=O)(=O)CC1",
+                            "O=C(Cl)C1CCS(=O)(=O)CC1.CCOC(=O)CNc1c(C)cccc1C>>CCOC(=O)CN(C(=O)C1CCS(=O)(=O)CC1)c1c(C)cccc1C"
+                        ],
+                        "stock": [
+                            "Nc1ccc(-c2ncon2)cc1",
+                            "O=C(Cl)C1CCS(=O)(=O)CC1",
+                            "CCOC(=O)CNc1c(C)cccc1C"
+                        ]
+                    }
+            }
+        },
+        {
+            "Input": {
+                "product_smiles": [
+                    "CN(C)C(=S)N(C)CCC(Oc1ccc(C(F)(F)F)cc1)c1ccccc1"
+                ]
+            },
+            "Output": {
+                    "CN(C)C(=S)N(C)CCC(Oc1ccc(C(F)(F)F)cc1)c1ccccc1": {
+                        "reactions": [
+                            "CNC(=S)N(C)C.FC(F)(F)c1ccc(OC(CCCl)c2ccccc2)cc1>>CN(C)C(=S)N(C)CCC(Oc1ccc(C(F)(F)F)cc1)c1ccccc1",
+                            "Fc1ccc(C(F)(F)F)cc1.OC(CCCl)c1ccccc1>>FC(F)(F)c1ccc(OC(CCCl)c2ccccc2)cc1",
+                            "O=C(CCCl)c1ccccc1>>OC(CCCl)c1ccccc1"
+                        ],
+                        "stock": [
+                            "CNC(=S)N(C)C",
+                            "Fc1ccc(C(F)(F)F)cc1",
+                            "O=C(CCCl)c1ccccc1"
+                        ]
+                    }
+            }
+        },
+        {
+            "Input": {
+                "product_smiles": [
+                    "CN(C)CCC(Oc1ccc(C(F)(F)F)cc1)c1ccccc1",
+                    "CNCC[C@@H](Oc1ccc(C)cc1)c1ccccc1",
+                    "CN(CCC(Oc1ccc(C(F)(F)F)cc1)c1ccccc1)C(C)(C)C",
+                    "CNCC[C@@H](Oc1cc(F)cc(C(F)(F)F)c1)c1ccccc1",
+                    "CN(C)C(=S)N(C)CCC(Oc1ccc(C(F)(F)F)cc1)c1ccccc1"
+                ]
+            },
+            "Output": {
+                    "CN(C)CCC(Oc1ccc(C(F)(F)F)cc1)c1ccccc1": {
+                        "reactions": [
+                            "Fc1ccc(C(F)(F)F)cc1.CN(C)CCC(O)c1ccccc1>>CN(C)CCC(Oc1ccc(C(F)(F)F)cc1)c1ccccc1",
+                            "CN(C)CCC(=O)c1ccccc1>>CN(C)CCC(O)c1ccccc1"
+                        ],
+                        "stock": [
+                            "Fc1ccc(C(F)(F)F)cc1",
+                            "CN(C)CCC(=O)c1ccccc1"
+                        ]
+                    },
+                    "CNCC[C@@H](Oc1ccc(C)cc1)c1ccccc1": {
+                        "reactions": [
+                            "Cc1ccc(F)cc1.CNCC[C@@H](O)c1ccccc1>>CNCC[C@@H](Oc1ccc(C)cc1)c1ccccc1"
+                        ],
+                        "stock": [
+                            "CNCC[C@@H](O)c1ccccc1",
+                            "Cc1ccc(F)cc1"
+                        ]
+                    },
+                    "CN(CCC(Oc1ccc(C(F)(F)F)cc1)c1ccccc1)C(C)(C)C": {
+                        "reactions": [
+                            "Fc1ccc(C(F)(F)F)cc1.CN(CCC(O)c1ccccc1)C(C)(C)C>>CN(CCC(Oc1ccc(C(F)(F)F)cc1)c1ccccc1)C(C)(C)C",
+                            "CNC(C)(C)C.OC(CCBr)c1ccccc1>>CN(CCC(O)c1ccccc1)C(C)(C)C",
+                            "O=C(CCBr)c1ccccc1>>OC(CCBr)c1ccccc1"
+                        ],
+                        "stock": [
+                            "Fc1ccc(C(F)(F)F)cc1",
+                            "CNC(C)(C)C",
+                            "O=C(CCBr)c1ccccc1"
+                        ]
+                    },
+                    "CNCC[C@@H](Oc1cc(F)cc(C(F)(F)F)c1)c1ccccc1": {
+                        "reactions": [
+                            "CNCC[C@@H](O)c1ccccc1.Fc1cc(F)cc(C(F)(F)F)c1>>CNCC[C@@H](Oc1cc(F)cc(C(F)(F)F)c1)c1ccccc1"
+                        ],
+                        "stock": [
+                            "CNCC[C@@H](O)c1ccccc1",
+                            "Fc1cc(F)cc(C(F)(F)F)c1"
+                        ]
+                    },
+                    "CN(C)C(=S)N(C)CCC(Oc1ccc(C(F)(F)F)cc1)c1ccccc1": {
+                        "reactions": [
+                            "CNC(=S)N(C)C.FC(F)(F)c1ccc(OC(CCCl)c2ccccc2)cc1>>CN(C)C(=S)N(C)CCC(Oc1ccc(C(F)(F)F)cc1)c1ccccc1",
+                            "Fc1ccc(C(F)(F)F)cc1.OC(CCCl)c1ccccc1>>FC(F)(F)c1ccc(OC(CCCl)c2ccccc2)cc1",
+                            "O=C(CCCl)c1ccccc1>>OC(CCCl)c1ccccc1"
+                        ],
+                        "stock": [
+                            "CNC(=S)N(C)C",
+                            "Fc1ccc(C(F)(F)F)cc1",
+                            "O=C(CCCl)c1ccccc1"
+                        ]
+                    }
+            }
+        },
+        {
+            "Input": {
+                "product_smiles": [
+                    "Cc1cccc(C)c1N(CC(=O)Nc1ccc(-c2ncon2)cc1)C(=O)C1CCS(=O)(=O)CC1",
+                    "Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1"
+                ]
+            },
+            "Output": {
+                    "Cc1cccc(C)c1N(CC(=O)Nc1ccc(-c2ncon2)cc1)C(=O)C1CCS(=O)(=O)CC1": {
+                        "reactions": [
+                            "Nc1ccc(-c2ncon2)cc1.CCOC(=O)CN(C(=O)C1CCS(=O)(=O)CC1)c1c(C)cccc1C>>Cc1cccc(C)c1N(CC(=O)Nc1ccc(-c2ncon2)cc1)C(=O)C1CCS(=O)(=O)CC1",
+                            "O=C(Cl)C1CCS(=O)(=O)CC1.CCOC(=O)CNc1c(C)cccc1C>>CCOC(=O)CN(C(=O)C1CCS(=O)(=O)CC1)c1c(C)cccc1C"
+                        ],
+                        "stock": [
+                            "Nc1ccc(-c2ncon2)cc1",
+                            "O=C(Cl)C1CCS(=O)(=O)CC1",
+                            "CCOC(=O)CNc1c(C)cccc1C"
+                        ]
+                    },
+                    "Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1": {
+                        "reactions": [
+                            "Clc1nccc(-c2cccnc2)n1.Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1N>>Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1",
+                            "Cc1ccc(N)cc1N.COC(=O)c1ccc(CN2CCN(C)CC2)cc1>>Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1N"
+                        ],
+                        "stock": [
+                            "Clc1nccc(-c2cccnc2)n1",
+                            "COC(=O)c1ccc(CN2CCN(C)CC2)cc1",
+                            "Cc1ccc(N)cc1N"
+                        ]
+                    }
+            }
+        },
+        {
+            "Input": {
+                "product_smiles": [
+                    "CNCCC(C1=CC=CC=C1)OC2=CC=C(C=C2)C(F)(F)F",
+                    "CNCCC(C1=CC=CC=C1)OC2=CC=C(C=C2)C(F)(F)Cl",
+                    "CNCCC(C1=CC=CC=C1)NC2=CC=C(C=C2)C(F)(F)F",
+                    "CNCCC(C1=CC=CC=C1)OC2=C(CC)C=C(C=C2)C(F)(F)F",
+                    "CNCCC(C1=CC=CC=C1)OC2(CC)C=C(C=C2)C(F)(F)F"
+                ]
+            },
+            "Output": {
+                    "CNCCC(C1=CC=CC=C1)OC2=CC=C(C=C2)C(F)(F)F": {
+                        "reactions": [
+                            "Fc1ccc(C(F)(F)F)cc1.CNCCC(O)c1ccccc1>>CNCCC(Oc1ccc(C(F)(F)F)cc1)c1ccccc1",
+                            "CNCCC(=O)c1ccccc1>>CNCCC(O)c1ccccc1"
+                        ],
+                        "stock": [
+                            "Fc1ccc(C(F)(F)F)cc1",
+                            "CNCCC(=O)c1ccccc1"
+                        ]
+                    },
+                    "CNCCC(C1=CC=CC=C1)OC2=CC=C(C=C2)C(F)(F)Cl": {
+                        "reactions": [
+                            "CN(CCC(Oc1ccc(C(F)(F)Cl)cc1)c1ccccc1)C(=O)OC(C)(C)C>>CNCCC(Oc1ccc(C(F)(F)Cl)cc1)c1ccccc1",
+                            "CC(C)(C)OC(=O)Cl.CN(C)CCC(Oc1ccc(C(F)(F)Cl)cc1)c1ccccc1>>CN(CCC(Oc1ccc(C(F)(F)Cl)cc1)c1ccccc1)C(=O)OC(C)(C)C",
+                            "CC(C)(C)O.O=C(Cl)Cl>>CC(C)(C)OC(=O)Cl",
+                            "CN(C)CCC(O)c1ccccc1.Fc1ccc(C(F)(F)Cl)cc1>>CN(C)CCC(Oc1ccc(C(F)(F)Cl)cc1)c1ccccc1",
+                            "CN(C)CCC(=O)c1ccccc1>>CN(C)CCC(O)c1ccccc1"
+                        ],
+                        "stock": [
+                            "CN(C)CCC(=O)c1ccccc1",
+                            "O=C(Cl)Cl",
+                            "CC(C)(C)O"
+                        ]
+                    },
+                    "CNCCC(C1=CC=CC=C1)NC2=CC=C(C=C2)C(F)(F)F": {
+                        "reactions": [
+                            "Nc1ccc(C(F)(F)F)cc1.CNCCC(=O)c1ccccc1>>CNCCC(Nc1ccc(C(F)(F)F)cc1)c1ccccc1"
+                        ],
+                        "stock": [
+                            "CNCCC(=O)c1ccccc1",
+                            "Nc1ccc(C(F)(F)F)cc1"
+                        ]
+                    },
+                    "CNCCC(C1=CC=CC=C1)OC2=C(CC)C=C(C=C2)C(F)(F)F": {
+                        "reactions": [
+                            "CNCCC(O)c1ccccc1.CCc1cc(C(F)(F)F)ccc1F>>CCc1cc(C(F)(F)F)ccc1OC(CCNC)c1ccccc1",
+                            "CNCCC(=O)c1ccccc1>>CNCCC(O)c1ccccc1",
+                            "C=Cc1cc(C(F)(F)F)ccc1F>>CCc1cc(C(F)(F)F)ccc1F"
+                        ],
+                        "stock": [
+                            "CNCCC(=O)c1ccccc1",
+                            "C=Cc1cc(C(F)(F)F)ccc1F"
+                        ]
+                    },
+                    "CNCCC(C1=CC=CC=C1)OC2(CC)C=C(C=C2)C(F)(F)F": {
+                        "reactions": [
+                            "CN.CCC1(OC(CCCl)c2ccccc2)C=CC(C(F)(F)F)=C1>>CCC1(OC(CCNC)c2ccccc2)C=CC(C(F)(F)F)=C1",
+                            "CN=C=O>>CN",
+                            "O=S(Cl)Cl.CCC1(OC(CCO)c2ccccc2)C=CC(C(F)(F)F)=C1>>CCC1(OC(CCCl)c2ccccc2)C=CC(C(F)(F)F)=C1",
+                            "CCC1(OC(CCOC(C)=O)c2ccccc2)C=CC(C(F)(F)F)=C1>>CCC1(OC(CCO)c2ccccc2)C=CC(C(F)(F)F)=C1",
+                            "CC(=O)O.CCC1(OC(CCBr)c2ccccc2)C=CC(C(F)(F)F)=C1>>CCC1(OC(CCOC(C)=O)c2ccccc2)C=CC(C(F)(F)F)=C1"
+                        ],
+                        "stock": [
+                            "O=S(Cl)Cl",
+                            "CN=C=O",
+                            "CC(=O)O"
+                        ]
+                    }
+            }
+        },
+        {
+            "Input": {
+                "product_smiles": [
+                    "CC(=O)N(C)c1ccc(-c2cn3cc(Br)ccc3n2)cc1C",
+                    "O=C(O)c1cccc(-n2ccnn2)c1"
+                ]
+            },
+            "Output": {
+                    "CC(=O)N(C)c1ccc(-c2cn3cc(Br)ccc3n2)cc1C": {
+                        "reactions": [
+                            "Nc1ccc(Br)cn1.CC(=O)N(C)c1ccc(C(=O)CBr)cc1C>>CC(=O)N(C)c1ccc(-c2cn3cc(Br)ccc3n2)cc1C",
+                            "CC(=O)N(C)c1ccccc1C.O=C(Br)CBr>>CC(=O)N(C)c1ccc(C(=O)CBr)cc1C"
+                        ],
+                        "stock": [
+                            "Nc1ccc(Br)cn1",
+                            "O=C(Br)CBr",
+                            "CC(=O)N(C)c1ccccc1C"
+                        ]
+                    },
+                    "O=C(O)c1cccc(-n2ccnn2)c1": {
+                        "reactions": [
+                            "COC(=O)c1cccc(-n2ccnn2)c1>>O=C(O)c1cccc(-n2ccnn2)c1"
+                        ],
+                        "stock": [
+                            "COC(=O)c1cccc(-n2ccnn2)c1"
+                        ]
+                    }
+            }
+        }
+    ],
+    "precedent_finder": [
+        {
+            "Input": {
+                "reaction_smiles": [
+                    "Cl.c1ccccc1>>Clc1ccccc1"
+                ],
+                "top_n": 5
+            },
+            "Output": {
+                    "Cl.c1ccccc1>>Clc1ccccc1": [
+                        {
+                            "ReactionSmiles": "[NH2:1][C:2]1[NH:3][C:4]2[CH:10]=[CH:9][CH:8]=[CH:7][C:5]=2[N:6]=1.OO.[ClH:13]>>[NH2:1][C:2]1[NH:3][C:4]2[CH:10]=[C:9]([Cl:13])[CH:8]=[CH:7][C:5]=2[N:6]=1",
+                            "goodness": 0.4790333437698035
+                        },
+                        {
+                            "ReactionSmiles": "[CH:1]1[C:6]([N+:7]([O-:9])=[O:8])=[CH:5][CH:4]=[C:3]([OH:10])[CH:2]=1.[Cl:11]([O-])(=O)=O.[K+]>Cl>[Cl:11][C:4]1[CH:5]=[C:6]([N+:7]([O-:9])=[O:8])[CH:1]=[CH:2][C:3]=1[OH:10] |f:1.2|",
+                            "goodness": 0.4768205778699055
+                        },
+                        {
+                            "ReactionSmiles": "[NH2:1][C:2]1[C:11]([CH3:12])=[CH:10][CH:9]=[CH:8][C:3]=1[C:4]([NH:6][CH3:7])=[O:5].[ClH:13].OO.S([O-])([O-])=O.[Na+].[Na+].[OH-].[Na+]>O.CN(C)C=O>[NH2:1][C:2]1[C:11]([CH3:12])=[CH:10][C:9]([Cl:13])=[CH:8][C:3]=1[C:4]([NH:6][CH3:7])=[O:5] |f:3.4.5,6.7|",
+                            "goodness": 0.4647138398709451
+                        },
+                        {
+                            "ReactionSmiles": "[NH2:1][C:2]1[CH:7]=[CH:6][C:5]([C:8](=[O:10])[CH3:9])=[CH:4][CH:3]=1.N1C=CC=CC=1.[Cl-:17].[Cl-].IC1C=CC=CC=1>O1CCCC1>[NH2:1][C:2]1[CH:7]=[CH:6][C:5]([C:8](=[O:10])[CH3:9])=[CH:4][C:3]=1[Cl:17] |f:2.3.4|",
+                            "goodness": 0.4479163970242353
+                        },
+                        {
+                            "ReactionSmiles": "[CH3:1][C:2]([C:6]1[CH:11]=[CH:10][CH:9]=[CH:8][C:7]=1[OH:12])([CH3:5])[CH2:3][CH3:4].[Br-:13].[Br-].[Br-].[NH+]1C=CC=CC=1.[NH+]1C=CC=CC=1.[NH+]1C=CC=CC=1.Cl>C(Cl)Cl>[Br:13][C:10]1[CH:9]=[CH:8][C:7]([OH:12])=[C:6]([C:2]([CH3:1])([CH3:5])[CH2:3][CH3:4])[CH:11]=1 |f:1.2.3.4.5.6|",
+                            "goodness": 0.4389425628679412
+                        }
+                    ]
+            }
+        },
+        {
+            "Input": {
+                "reaction_smiles": [
+                    "Cc1ccc(N)cc1S(N)(=O)=O.Cc1c2ccc(N(C)c3ccnc(Cl)n3)cc2nn1C>>Cc1ccc(Nc2nccc(N(C)c3ccc4c(C)n(C)nc4c3)n2)cc1S(N)(=O)=O",
+                    "Clc1ccnc(Cl)n1.CNc1ccc2c(C)n(C)nc2c1>>Cc1c2ccc(N(C)c3ccnc(Cl)n3)cc2nn1C"
+                ],
+                "top_n": 3
+            },
+            "Output": {
+                "Cc1ccc(N)cc1S(N)(=O)=O.Cc1c2ccc(N(C)c3ccnc(Cl)n3)cc2nn1C>>Cc1ccc(Nc2nccc(N(C)c3ccc4c(C)n(C)nc4c3)n2)cc1S(N)(=O)=O": [
+                    {
+                        "ReactionSmiles": "[NH2:1][C:2]1[CH:3]=[C:4]([S:8]([NH2:11])(=[O:10])=[O:9])[CH:5]=[CH:6][CH:7]=1.Cl[C:13]1[N:18]=[C:17]([NH:19][C:20]2[CH:25]=[CH:24][CH:23]=[CH:22][C:21]=2[N:26]2[CH2:31][CH2:30][O:29][CH2:28][CH2:27]2)[CH:16]=[CH:15][N:14]=1.Cl>O1CCOCC1>[S:8]([C:4]1[CH:3]=[C:2]([CH:7]=[CH:6][CH:5]=1)[NH:1][C:13]1[N:18]=[C:17]([NH:19][C:20]2[CH:25]=[CH:24][CH:23]=[CH:22][C:21]=2[N:26]2[CH2:27][CH2:28][O:29][CH2:30][CH2:31]2)[CH:16]=[CH:15][N:14]=1)(=[O:9])(=[O:10])[NH2:11]",
+                        "goodness": 0.667474558217803
+                    },
+                    {
+                        "ReactionSmiles": "Cl[C:2]1[N:7]=[C:6]([N:8]([CH3:26])[CH:9]2[CH2:25][CH2:24][C:12]3([CH2:16][N:15]([C:17]([O:19][C:20]([CH3:23])([CH3:22])[CH3:21])=[O:18])[CH2:14][CH2:13]3)[CH2:11][CH2:10]2)[CH:5]=[CH:4][N:3]=1.Cl.[CH3:28][N:29]1[C:37]([CH3:38])=[C:36]2[C:31]([CH:32]=[C:33]([NH2:39])[CH:34]=[CH:35]2)=[N:30]1.CCN(C(C)C)C(C)C>CCCCO>[CH3:28][N:29]1[C:37]([CH3:38])=[C:36]2[C:31]([CH:32]=[C:33]([NH:39][C:2]3[N:7]=[C:6]([N:8]([CH3:26])[CH:9]4[CH2:10][CH2:11][C:12]5([CH2:16][N:15]([C:17]([O:19][C:20]([CH3:23])([CH3:22])[CH3:21])=[O:18])[CH2:14][CH2:13]5)[CH2:24][CH2:25]4)[CH:5]=[CH:4][N:3]=3)[CH:34]=[CH:35]2)=[N:30]1 |f:1.2|",
+                        "goodness": 0.657191974843162
+                    },
+                    {
+                        "ReactionSmiles": "[N:1]1([C:7]2[CH:8]=[C:9]([CH:11]=[C:12]([O:14][CH2:15][C:16]3[CH:21]=[CH:20][CH:19]=[CH:18][CH:17]=3)[CH:13]=2)[NH2:10])[CH2:6][CH2:5][O:4][CH2:3][CH2:2]1.Cl[C:23]1[N:28]=[C:27]([N:29]([CH3:39])[C:30]2[CH:31]=[C:32]([CH2:37][OH:38])[CH:33]=[CH:34][C:35]=2[CH3:36])[CH:26]=[CH:25][N:24]=1>>[CH3:36][C:35]1[CH:34]=[CH:33][C:32]([CH2:37][OH:38])=[CH:31][C:30]=1[N:29]([CH3:39])[C:27]1[CH:26]=[CH:25][N:24]=[C:23]([NH:10][C:9]2[CH:11]=[C:12]([O:14][CH2:15][C:16]3[CH:17]=[CH:18][CH:19]=[CH:20][CH:21]=3)[CH:13]=[C:7]([N:1]3[CH2:6][CH2:5][O:4][CH2:3][CH2:2]3)[CH:8]=2)[N:28]=1",
+                        "goodness": 0.654701437718237
+                    }
+                ],
+                "Clc1ccnc(Cl)n1.CNc1ccc2c(C)n(C)nc2c1>>Cc1c2ccc(N(C)c3ccnc(Cl)n3)cc2nn1C": [
+                    {
+                        "ReactionSmiles": "[Cl:1][C:2]1[N:7]=[C:6](Cl)[CH:5]=[CH:4][N:3]=1.[CH3:9][O:10][C:11]1[CH:18]=[CH:17][C:14]([NH:15][CH3:16])=[CH:13][CH:12]=1.Cl.C([O-])([O-])=O.[Na+].[Na+]>C(O)(C)C.O.ClCCl>[Cl:1][C:2]1[N:7]=[C:6]([N:15]([C:14]2[CH:17]=[CH:18][C:11]([O:10][CH3:9])=[CH:12][CH:13]=2)[CH3:16])[CH:5]=[CH:4][N:3]=1 |f:3.4.5|",
+                        "goodness": 0.6255807039535413
+                    },
+                    {
+                        "ReactionSmiles": "[Cl:1][C:2]1[N:7]=[C:6](Cl)[CH:5]=[CH:4][N:3]=1.[CH3:9][O:10][C:11]1[CH:12]=[C:13]2[C:18](=[CH:19][CH:20]=1)[NH:17][CH2:16][CH2:15][CH2:14]2.C(N(C(C)C)CC)(C)C>C(O)CCC>[Cl:1][C:2]1[N:7]=[C:6]([N:17]2[C:18]3[C:13](=[CH:12][C:11]([O:10][CH3:9])=[CH:20][CH:19]=3)[CH2:14][CH2:15][CH2:16]2)[CH:5]=[CH:4][N:3]=1",
+                        "goodness": 0.5383734542874427
+                    },
+                    {
+                        "ReactionSmiles": "[F:1][C:2]([F:15])([F:14])[C:3]([NH:5][C:6]1[CH:11]=[CH:10][CH:9]=[C:8]([NH:12][CH3:13])[CH:7]=1)=[O:4].Cl[C:17]1[CH:22]=[CH:21][C:20]([N+:23]([O-:25])=[O:24])=[CH:19][N:18]=1.C(=O)([O-])O.[Na+]>CN(C)C=O>[F:1][C:2]([F:14])([F:15])[C:3]([NH:5][C:6]1[CH:11]=[CH:10][CH:9]=[C:8]([N:12]([CH3:13])[C:17]2[CH:22]=[CH:21][C:20]([N+:23]([O-:25])=[O:24])=[CH:19][N:18]=2)[CH:7]=1)=[O:4] |f:2.3|",
+                        "goodness": 0.5164800171249482
+                    }
+                ]
+            }
+        }
+    ]
+}

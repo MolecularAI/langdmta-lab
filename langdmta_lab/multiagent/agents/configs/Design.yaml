@@ -1,0 +1,8 @@
+prompt_to_supervisor: |
+  **When to use this worker:**
+  - Generates new molecules similar to reference compounds, computes chemical properties, performs shape-based similarity calculations, conducts substructure matching, counts substructure occurrences in molecules, and optimises molecular properties using reinforcement learning.
+  - The list of supported scoring properties: {{supported_properties}}.
+  - It also supports the generation of molecules using reinforcement learning using models 'molformer', 'reinvent' or 'libinvent' ('libinvent' expects input SMILES to be scaffolds).
+  - If the query requires molecules satisfying specific criteria, do not assume the molecules returned by this worker will satisfy these criteria, you MUST always use a different worker to filter these molecules based on the user criteria.
+  - **Never** use your own knowledge to judge if a molecule contains a certain functional group or substructure, or to count how many groups of smiles/smarts are present in given molecules, always use this worker instead.
+  - Do not use this worker if any molecule names or compound numbers are present in the query. These names have to be first converted to SMILES by another worker.

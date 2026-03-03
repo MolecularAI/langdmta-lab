@@ -1,0 +1,52 @@
+[project]
+name = "langdmta-lab"
+version = "0.1.0"
+description = "Drug discovery agent"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "langchain>=0.3.27,<0.4.0",
+    "langchain-openai>=0.3.0,<0.4.0",
+    "langchain-core>=0.3.74,<0.4.0",
+    "langgraph>=0.3.24",
+    "langchain-experimental==0.3.4",
+    "jupyter>=1.1.1",
+    "mcp>=1.23.1",
+    "pubchempy>=1.0.5",
+    "rdkit>=2023.9.1,<2024.0.0",
+    "langchain-mcp-adapters>=0.1.14,<0.2.0",
+    "dotenv>=0.9.9",
+    "pandas>=2.3.3",
+    "reaction-utils>=1.9.3",
+    "langfuse==2.59.2",
+    "deepdiff>=8.6.1",
+    "seaborn>=0.13.2",
+]
+
+[dependency-groups]
+dev = [
+  "pre-commit>=4.1.0",
+  "black>=25.1.0",
+  "isort>=6.0.0",
+  "flake8>=7.1.1",
+  "Flake8-pyproject>=1.2.3",
+  "pytest>=8.3.5",
+  "mypy>=1.18.1",
+]
+
+[tool.flake8]
+max-line-length = 95
+per-file-ignores = """
+    */__init__.py: F401, F403
+"""
+exclude = """
+    .build
+"""
+
+[tool.mypy]
+files = ["langdmta_lab"]
+ignore_missing_imports = true
+disable_error_code = ["import-untyped"]
+
+[tool.setuptools.packages.find]
+include = ["langdmta_lab"]

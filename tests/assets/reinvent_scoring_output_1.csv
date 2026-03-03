@@ -1,0 +1,2 @@
+SMILES,Comment,RDKit_SMILES (REINVENT),Score,Number of HB donors (<5),Number of HB acceptors (<10),Number of HB donors (<5) (raw),Number of HB acceptors (<10) (raw)
+Cc1ccc(cc1Nc2nccc(n2)c3cccnc3)NC(=O)c4ccc(cc4)CN5CCN(CC5)C,,Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1,0.9467402100563049,0.9998222,0.8964765,2.0,7.0

@@ -1,0 +1,2 @@
+SMILES,Comment,RDKit_SMILES (REINVENT),Score,Molecular weight,Molecular weight (raw)
+Cc1cccc(C)c1N(CC(=O)Nc1ccc(-c2ncon2)cc1)C(=O)C1CCS(=O)(=O)CC1,,Cc1cccc(C)c1N(CC(=O)Nc1ccc(-c2ncon2)cc1)C(=O)C1CCS(=O)(=O)CC1,0.8328689336776733,0.83286893,482.5620000000003

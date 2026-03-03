@@ -1,0 +1,122 @@
+run_type = "scoring"
+#json_out_config = "scoring_all_test_config.json"
+
+[parameters]
+smiles_file = "sampling.csv"
+output_csv = "scoring_all_test.csv"
+smiles_column = "SMILES"
+
+[scoring]
+type = "geometric_mean"
+
+[[scoring.component]]
+[scoring.component.MolecularWeight]
+[[scoring.component.MolecularWeight.endpoint]]
+name = "Molecular weight"
+weight = 1
+transform.type = "double_sigmoid"
+transform.high = 500.0
+transform.low = 200.0
+transform.coef_div = 500.0
+transform.coef_si = 20.0
+transform.coef_se = 20.0
+
+[[scoring.component]]
+[scoring.component.SlogP]
+[[scoring.component.SlogP.endpoint]]
+name = "SlogP"
+weight = 1
+transform.type = "reverse_sigmoid"
+transform.high = 3
+transform.low = 1
+transform.k = 0.5
+
+[[scoring.component]]
+[scoring.component.HBondDonors]
+[[scoring.component.HBondDonors.endpoint]]
+name = "Number of HB donors (<5)"
+weight = 1
+transform.type = "reverse_sigmoid"
+transform.high = 7
+transform.low = 3
+transform.k = 0.5
+
+[[scoring.component]]
+[scoring.component.HBondAcceptors]
+[[scoring.component.HBondAcceptors.endpoint]]
+name = "Number of HB acceptors (<10)"
+weight = 1
+transform.type = "reverse_sigmoid"
+transform.high = 14
+transform.low = 6
+transform.k = 0.25
+
+
+[[scoring.component]]
+[scoring.component.NumRotBond]
+[[scoring.component.NumRotBond.endpoint]]
+name = "Number of rotatable bonds (<10)"
+weight = 1
+transform.type = "reverse_sigmoid"
+transform.high = 24
+transform.low = 6
+transform.k = 0.25
+
+[[scoring.component]]
+[scoring.component.NumAromaticRings]
+[[scoring.component.NumAromaticRings.endpoint]]
+name = "Number of aromatic rings (<4)"
+weight = 1
+transform.type = "reverse_sigmoid"
+transform.high = 4
+transform.low = 3
+transform.k =  0.25
+
+[[scoring.component]]
+[scoring.component.NumAtomStereoCenters]
+[[scoring.component.NumAtomStereoCenters.endpoint]]
+name = "Number of stereo centers (<3)"
+weight = 1
+transform.type = "reverse_sigmoid"
+transform.high = 4
+transform.low = 2
+transform.k =  0.25
+
+[[scoring.component]]
+[scoring.component.custom_alerts]
+[[scoring.component.custom_alerts.endpoint]]
+name = "custom alerts"
+weight = 1
+params.smarts = [
+    "[*;r8]",
+    "[*;r9]",
+    "[*;r10]",
+    "[*;r11]",
+    "[*;r12]",
+    "[*;r13]",
+    "[*;r14]",
+    "[*;r15]",
+    "[*;r16]",
+    "[*;r17]",
+    "[#8][#8]",
+    "[#6;+]",
+    "[#16][#16]",
+    "[#7;!n][#7;!n]"
+]
+
+# This is always updated by the scoring tool
+[[scoring.component]]
+[scoring.component.GroupCount]
+[[scoring.component.GroupCount.endpoint]]
+name = "Group (substructure) count"
+weight = 1
+params.smarts = "[F,Cl]"
+
+# This is always updated by the scoring tool
+[[scoring.component]]
+[scoring.component.MatchingSubstructure]
+[[scoring.component.MatchingSubstructure.endpoint]]
+name = "Matching SMARTs substructure"
+weight = 1
+params.smarts = "CO"
+params.use_chirality = false
