@@ -5,14 +5,18 @@ import re
 import tomllib
 from typing import Any, Dict, Optional
 
+import nest_asyncio
 from dotenv import load_dotenv
 from langchain_core.callbacks import FileCallbackHandler
-from langfuse.callback import CallbackHandler
+from langfuse.langchain import CallbackHandler
+from langfuse import Langfuse, get_client, propagate_attributes
 
 from langdmta_lab.base.base_graph import BaseGraphExecutor
 from langdmta_lab.config import LANGDMTA_GRAPH_DIR, TEST_ASSETS_DIR, TEST_QUESTION_DIR
 from langdmta_lab.mcps.helpers import start_mcps, stop_mcps
 from langdmta_lab.multiagent.constants import NODE_PACKAGES
+
+nest_asyncio.apply()
 
 
 class SafeFileCallbackHandler(FileCallbackHandler):
@@ -74,6 +78,12 @@ def parse_command_line() -> argparse.Namespace:
         default="Workflow",
         help="Category for which to use mock tools (default: Workflow)",
     )
+    parser.add_argument(
+        "--test-questions-path",
+        type=str,
+        default=os.path.join(TEST_QUESTION_DIR, "test_questions.toml"),
+        help="Path to test questions TOML file (default: tests/assets/test_questions.toml)",
+    )
 
     return parser.parse_args()
 
@@ -84,11 +94,7 @@ def read_test_data(test_data_file: str) -> dict:
     return test_data
 
 
-async def main():
-
-    args = parse_command_line()
-    log_file = args.log_file
-    # Clear handlers to ensure new logging setup works
+def setup_logging(log_file: str) -> None:
     for handler in logging.root.handlers[:]:
         logging.root.removeHandler(handler)
     logging.basicConfig(
@@ -96,76 +102,184 @@ async def main():
         level=logging.INFO,
         format="%(asctime)s - %(levelname)s - %(message)s",
     )
-    file_handler = SafeFileCallbackHandler(log_file)
+
+
+def set_mock_environment(category: str, mock_category: str) -> None:
+    if mock_category.lower() == "all" or category == mock_category:
+        os.environ["USE_MOCK"] = "true"
+    else:
+        os.environ["USE_MOCK"] = "false"
+
+
+def get_traces_for_category(category_data: dict, selected_traces: list[str] | None):
+    if selected_traces:
+        return [trace for trace in selected_traces if trace in category_data]
+    return category_data.keys()
+
+
+def create_agent(file_handler: SafeFileCallbackHandler) -> BaseGraphExecutor:
+    langfuse_handler = CallbackHandler()
+    return BaseGraphExecutor(
+            node_packages=NODE_PACKAGES,
+            graph_config=os.path.join(LANGDMTA_GRAPH_DIR, "graph.yaml"),
+            callback_handlers=[file_handler, langfuse_handler],
+        )
+
+
+def resolve_question_paths(question: str, test_pairs: dict) -> str:
+    if "input_file_in_test_assets" not in test_pairs:
+        return question
+
+    filenames = re.findall(r"\b[\w-]+\.(?:csv|sq|sdf|zip|in)\b", question)
+    for file in filenames:
+        question = question.replace(file, os.path.join(TEST_ASSETS_DIR, file))
+    return question
+
+
+def log_trace_url(langfuse: Langfuse) -> None:
+    try:
+        trace_id = langfuse.get_current_trace_id()
+        trace_url = langfuse.get_trace_url(trace_id=trace_id)
+        logging.info(f"Langfuse Trace URL: {trace_url}")
+    except Exception:
+        pass
+
+
+async def run_single_question(
+    agent: BaseGraphExecutor,
+    langfuse: Langfuse,
+    question: str,
+    category: str,
+    name: str,
+    trial_num: int,
+    session_id: str,
+    user_id: str,
+) -> None:
+    logging.info(
+        f"========== Trial {trial_num}: Running question from "
+        f"{category} {name}: {question}"
+    )
+    with langfuse.start_as_current_observation(
+        as_type="span",
+        name=name,
+        input={
+            "question": question,
+            "category": category,
+            "trace": name,
+            "trial": trial_num,
+        },
+    ) as root_span:
+        with propagate_attributes(
+            user_id=user_id,
+            session_id=session_id,
+            tags=[category, "test"],
+            trace_name=name,
+            metadata={"test_script": "True", "trial": str(trial_num)},
+        ):
+            try:
+                output = await agent.run(question)
+                trace_url = langfuse.get_trace_url()
+
+                if isinstance(output, tuple):
+                    response, worker_output_files = output
+                    logging.info(f"Worker output files: {worker_output_files}")
+                else:
+                    response = output
+
+                root_span.update_trace(output={"final_answer": response})
+
+                logging.info(f"Final answer: {response}")
+                logging.info(f"Langfuse Trace URL: {trace_url}")
+
+            except Exception as e:
+                logging.error(e)
+                log_trace_url(langfuse)
+
+
+async def run_trace_tests(
+    langfuse: Langfuse,
+    file_handler: SafeFileCallbackHandler,
+    category: str,
+    category_data: dict,
+    traces,
+    trial_num: int,
+    session_id: str,
+    user_id: str,
+) -> None:
+    for name in traces:
+        agent = create_agent(file_handler)
+
+        for test_pairs in category_data[name]:
+            question = resolve_question_paths(test_pairs["question"], test_pairs)
+
+            await run_single_question(
+                agent=agent,
+                langfuse=langfuse,
+                question=question,
+                category=category,
+                name=name,
+                trial_num=trial_num,
+                session_id=session_id,
+                user_id=user_id,
+            )
+
+
+async def run_trial(
+    trial_num: int,
+    args: argparse.Namespace,
+    test_data: dict,
+    langfuse: Langfuse,
+    file_handler: SafeFileCallbackHandler,
+    user_id: str,
+) -> None:
+    session_id = f"{args.session_id}_trial_{trial_num}"
+
+    for category, category_data in test_data.items():
+        set_mock_environment(category, args.mock_category)
+
+        mcp_processes = start_mcps()
+        if not mcp_processes:
+            logging.error("MCP servers failed to start.")
+            continue
+
+        traces = get_traces_for_category(category_data, args.traces)
+
+        await run_trace_tests(
+            langfuse=langfuse,
+            file_handler=file_handler,
+            category=category,
+            category_data=category_data,
+            traces=traces,
+            trial_num=trial_num,
+            session_id=session_id,
+            user_id=user_id,
+        )
+
+        stop_mcps(mcp_processes)
+
+async def main():
+
+    args = parse_command_line()
 
     load_dotenv()
-    test_data_path = os.path.join(TEST_QUESTION_DIR, "test_questions.toml")
+    langfuse = get_client()
+    user_id = os.environ["LANGFUSE_USER_ID"]
+
+    test_data_path = args.test_questions_path
     test_data = read_test_data(test_data_path)
 
-    for i in range(args.num_trials):
-        for category in test_data.keys():
-            if (args.mock_category.lower() == "all") or (category == args.mock_category):
-                os.environ["USE_MOCK"] = "true"
-            else:
-                os.environ["USE_MOCK"] = "false"
-            mcp_processes = start_mcps()
-            if not mcp_processes:
-                logging.error("MCP servers failed to start.")
-                continue
+    with SafeFileCallbackHandler(args.log_file) as file_handler:
+        for i in range(args.num_trials):
+            await run_trial(
+                trial_num=i + 1,
+                args=args,
+                test_data=test_data,
+                langfuse=langfuse,
+                file_handler=file_handler,
+                user_id=user_id,
+            )
 
-            if args.traces:
-                traces = [
-                    trace for trace in args.traces if trace in test_data[category].keys()
-                ]
-            else:
-                traces = test_data[category].keys()
-
-            for name in traces:
-                langfuse_handler = CallbackHandler(
-                    session_id=f"{args.session_id}_trial_{i+1}",  # Identifier for this session
-                    user_id=os.environ[
-                        "LANGFUSE_USER_ID"
-                    ],  # Identifier for the user or operator
-                    trace_name=name,  # Custom name for this trace
-                    tags=[category, "test"],  # Custom tag for this trace
-                )
-                agent = BaseGraphExecutor(
-                    node_packages=NODE_PACKAGES,
-                    graph_config=os.path.join(LANGDMTA_GRAPH_DIR, "graph.yaml"),
-                    callback_handlers=[file_handler, langfuse_handler],
-                )
-
-                for test_pairs in test_data[category][name]:
-                    question, _ = test_pairs["question"], test_pairs["answer"]
-                    if "input_file_in_test_assets" in test_pairs.keys():
-                        filenames = re.findall(r"\b[\w-]+\.(?:csv|sq|sdf|zip|in)\b", question)
-                        for file in filenames:
-                            question = question.replace(
-                                file, os.path.join(TEST_ASSETS_DIR, file)
-                            )
-                    logging.info(
-                        f"========== Trial {i+1}: Running question from "
-                        f"{category} {name}: {question}"
-                    )
-                    try:
-                        output = await agent.run(question)
-                        if isinstance(output, tuple):
-                            response, worker_output_files = output
-                            logging.info(f"Worker output files: {worker_output_files}")
-                        else:
-                            response = output
-                        logging.info(f"Final answer: {response}")
-                        logging.info(
-                            f"LangFuse Trace URL: {langfuse_handler.langfuse.get_trace_url()}"
-                        )
-                    except Exception as e:
-                        logging.error(e)
-                        logging.info(
-                            f"LangFuse Trace URL: {langfuse_handler.langfuse.get_trace_url()}"
-                        )
-                        continue
-
-            stop_mcps(mcp_processes)
+    langfuse.flush()
 
 
 # Run from command line for example: python tests/test_questions.py

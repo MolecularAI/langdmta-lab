@@ -1,0 +1,560 @@
+[[Workflow.DesignProperty]]
+question = "Can you generate molecules similar to CNCCC(C1=CC=CC=C1)OC2=CC=C(C=C2)C(F)(F)F and specify their molecular weight and number of rotatable bonds for each molecule? Sort the list according to similarity to the reference."
+answer = ""
+question_variation = 0
+note = "Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated compounds sorted according to the similarity including values for some chemical properties requested in the input."
+sequences.complete = [['molformer', 'reinvent_scoring', 'Analyzer'], ['reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer']]
+sequences.accepted = [['molformer', 'reinvent_scoring'], ['reinvent_scoring', 'molformer', 'reinvent_scoring']]
+
+[[Workflow.DesignProperty]]
+question = "Please generate some analogs for the molecule C1CC1N2C=C(C(=O)C3=CC(=C(C=C32)N4CCNCC4)F)C(=O)O. For each one, calculate the molecular weight and the number of rotatable bonds, and sort the results by their similarity to the reference compound."
+answer = ""
+question_variation = 2
+note = "Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated compounds sorted according to the similarity including values for some chemical properties requested in the input."
+sequences.complete = [['molformer', 'reinvent_scoring', 'Analyzer'], ['reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer']]
+sequences.accepted = [['molformer', 'reinvent_scoring'], ['reinvent_scoring', 'molformer', 'reinvent_scoring']]
+
+[[Workflow.DesignProperty]]
+question = "hey can u gen some molecules similar to CC1=C(C(=CC=C1)C)N(CC(=O)NC2=CC=C(C=C2)C3=NOC=N3)C(=O)C4CCS(=O)(=O)CC4? need the mw and num rotatable bonds for each. pls sort by similarity to the ref."
+answer = ""
+question_variation = 4
+note = "Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated compounds sorted according to the similarity including values for some chemical properties requested in the input."
+sequences.complete = [['molformer', 'reinvent_scoring', 'Analyzer'], ['reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer']]
+sequences.accepted = [['molformer', 'reinvent_scoring'], ['reinvent_scoring', 'molformer', 'reinvent_scoring']]
+
+[[Workflow.DesignProperty]]
+question = "Please generate several close analogues of Naproxen, ensuring they adhere to these criteria: higher HBA."
+answer = ""
+question_variation = 2
+note = "Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated compounds and the values of the properties requested in the input and a similarity to the input compound."
+sequences.complete = [['synonyms2smiles', 'molformer', 'reinvent_scoring', 'Analyzer'], ['synonyms2smiles', 'reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer']]
+sequences.accepted = [['synonyms2smiles', 'molformer', 'reinvent_scoring'], ['synonyms2smiles', 'reinvent_scoring', 'molformer', 'reinvent_scoring']]
+
+[[Workflow.DesignProperty]]
+question = "Can you run a generation for some Aspirin analogues? The main thing is they need to fit lower molecular weight."
+answer = ""
+question_variation = 3
+note = "Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated compounds and the values of the properties requested in the input and a similarity to the input compound."
+sequences.complete = [['synonyms2smiles', 'molformer', 'reinvent_scoring', 'Analyzer'], ['synonyms2smiles', 'reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer']]
+sequences.accepted = [['synonyms2smiles', 'molformer', 'reinvent_scoring'], ['synonyms2smiles', 'reinvent_scoring', 'molformer', 'reinvent_scoring']]
+
+[[Workflow.DesignProperty]]
+question = "hey gen me some new molecules based on Gleevec, make sure they have higher SlogP, thx"
+answer = ""
+question_variation = 4
+note = "Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated compounds and the values of the properties requested in the input and a similarity to the input compound."
+sequences.complete = [['synonyms2smiles', 'molformer', 'reinvent_scoring', 'Analyzer'], ['synonyms2smiles', 'reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer']]
+sequences.accepted = [['synonyms2smiles', 'molformer', 'reinvent_scoring'], ['synonyms2smiles', 'reinvent_scoring', 'molformer', 'reinvent_scoring']]
+
+[[Workflow.DesignProperty]]
+question = "I would like to have some close analogues to CN1C=C(C2=CC=CC=C21)C3=NC(=NC=C3)NC4=C(C=C(C(=C4)NC(=O)C=C)N(C)CCN(C)C)OC with higher HBD"
+answer = ""
+question_variation = 0
+note = "Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated compounds and the values of the properties requested in the input and a similarity to the input compound."
+sequences.complete = [['molformer', 'reinvent_scoring', 'Analyzer'], ['reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer']]
+sequences.accepted = [['molformer', 'reinvent_scoring'], ['reinvent_scoring', 'molformer', 'reinvent_scoring']]
+
+[[Workflow.DesignProperty]]
+question = "I need you to generate some close analogues for Cc1ccc(cc1Nc2nccc(n2)c3cccnc3)NC(=O)c4ccc(cc4)CN5CCN(CC5)C. Please make sure they meet these criteria: lower HBA."
+answer = ""
+question_variation = 2
+note = "Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated compounds and the values of the properties requested in the input and a similarity to the input compound."
+sequences.complete = [['molformer', 'reinvent_scoring', 'Analyzer'], ['reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer']]
+sequences.accepted = [['molformer', 'reinvent_scoring'], ['reinvent_scoring', 'molformer', 'reinvent_scoring']]
+
+[[Workflow.DesignOnly]]
+question = "Would you please generate a set of molecular analogs based on the structure of Gleevec?"
+answer = ""
+question_variation = 1
+note = "Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated SMILES, including a similarity to the input compound."
+sequences.complete = [['synonyms2smiles', 'molformer', 'Analyzer']]
+sequences.accepted = [['synonyms2smiles', 'molformer']]
+
+[[Workflow.DesignOnly]]
+question = "Could you generate some molecules that are structurally similar to Fluoxetine?"
+answer = ""
+question_variation = 2
+note = "Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated SMILES, including a similarity to the input compound."
+sequences.complete = [['synonyms2smiles', 'molformer', 'Analyzer']]
+sequences.accepted = [['synonyms2smiles', 'molformer']]
+
+[[Workflow.DesignOnly]]
+question = "can u gen some similar mols to Ibuprofen pls?"
+answer = ""
+question_variation = 4
+note = "Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated SMILES, including a similarity to the input compound."
+sequences.complete = [['synonyms2smiles', 'molformer', 'Analyzer']]
+sequences.accepted = [['synonyms2smiles', 'molformer']]
+
+[[Workflow.DesignSynthesis]]
+question = "Can you give me some molecules similar to Fluoxetine and show me the synthesis routes for the top 5 similar ones?"
+answer = ""
+question_variation = 0
+note = "Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated SMILES including their similarity to the input compound. Output also need to include reactions SMARTS describing how to synthesize the top 5 similar compounds."
+sequences.complete = [['synonyms2smiles', 'molformer', 'Analyzer', 'aizynthfinder']]
+sequences.accepted = [['synonyms2smiles', 'molformer', 'aizynthfinder']]
+
+[[Workflow.DesignSynthesis]]
+question = "Could you please generate a list of molecules analogous to Gleevec and provide the synthetic routes for the 5 most similar structures?"
+answer = ""
+question_variation = 1
+note = "Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated SMILES including their similarity to the input compound. Output also need to include reactions SMARTS describing how to synthesize the top 5 similar compounds."
+sequences.complete = [['synonyms2smiles', 'molformer', 'Analyzer', 'aizynthfinder']]
+sequences.accepted = [['synonyms2smiles', 'molformer', 'aizynthfinder']]
+
+[[Workflow.DesignSynthesis]]
+question = "I need to identify some molecules that are structurally similar to Naproxen. Can you also show me the synthesis routes for the top 5 matches?"
+answer = ""
+question_variation = 2
+note = "Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated SMILES including their similarity to the input compound. Output also need to include reactions SMARTS describing how to synthesize the top 5 similar compounds."
+sequences.complete = [['synonyms2smiles', 'molformer', 'Analyzer', 'aizynthfinder']]
+sequences.accepted = [['synonyms2smiles', 'molformer', 'aizynthfinder']]
+
+[[Workflow.DesignSynthesis]]
+question = "can u get me some moleculs similar to Ibuprofen? i also need the synth preps for the top 5. thx"
+answer = ""
+question_variation = 4
+note = "Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated SMILES including their similarity to the input compound. Output also need to include reactions SMARTS describing how to synthesize the top 5 similar compounds."
+sequences.complete = [['synonyms2smiles', 'molformer', 'Analyzer', 'aizynthfinder']]
+sequences.accepted = [['synonyms2smiles', 'molformer', 'aizynthfinder']]
+
+[[Workflow.DesignSynthesis]]
+question = "Can you give me some molecules similar to CC1=C(C=C(C=C1)NC2=NC=CC(=N2)N(C)C3=CC4=NN(C(=C4C=C3)C)C)S(=O)(=O)NCC(C)Cc1ccc(C(C)C(=O)O)cc1 and show me the synthesis routes for the top 5 similar ones?"
+answer = ""
+question_variation = 0
+note = "Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated SMILES including their similarity to the input compound. Output also need to include reactions SMARTS describing how to synthesize the top 5 similar compounds."
+sequences.complete = [['molformer', 'Analyzer', 'aizynthfinder']]
+sequences.accepted = [['molformer', 'aizynthfinder']]
+
+[[Workflow.DesignSynthesis]]
+question = "I require a list of chemical analogs for the structure represented by CC1=C(C=C(C=C1)NC2=NC=CC(=N2)N(C)C3=CC4=NN(C(=C4C=C3)C)C)S(=O)(=O)NCC(C)Cc1ccc(C(C)C(=O)O)cc1. For the five most structurally similar compounds, please also provide their respective synthetic pathways."
+answer = ""
+question_variation = 1
+note = "Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated SMILES including their similarity to the input compound. Output also need to include reactions SMARTS describing how to synthesize the top 5 similar compounds."
+sequences.complete = [['molformer', 'Analyzer', 'aizynthfinder']]
+sequences.accepted = [['molformer', 'aizynthfinder']]
+
+[[Workflow.DesignSynthesis]]
+question = "Could you please generate some molecules similar to CC(=O)OC1=CC=CC=C1C(=O)O? I would also like to see the synthesis routes for the top 5 candidates."
+answer = ""
+question_variation = 2
+note = "Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated SMILES including their similarity to the input compound. Output also need to include reactions SMARTS describing how to synthesize the top 5 similar compounds."
+sequences.complete = [['molformer', 'Analyzer', 'aizynthfinder']]
+sequences.accepted = [['molformer', 'aizynthfinder']]
+
+[[Workflow.DesignSynthesis]]
+question = "run a similarity search on O=C(O)c1cccc(-n2ccnn2)c1 & show me the syntheis for the top 5 hits. thx."
+answer = ""
+question_variation = 4
+note = "Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated SMILES including their similarity to the input compound. Output also need to include reactions SMARTS describing how to synthesize the top 5 similar compounds."
+sequences.complete = [['molformer', 'Analyzer', 'aizynthfinder']]
+sequences.accepted = [['molformer', 'aizynthfinder']]
+
+[[Workflow.DesignPropertySynthesis]]
+question = "Can you give me some molecules similar to Tagrisso but with fewer rotatable bonds and show me the synthesis routes for the top 5 similar ones?"
+answer = ""
+question_variation = 0
+note = "Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated SMILES including their values for the constrained properties mentioned in the input. Output also need to include reactions SMARTS describing how to synthesize the top 5 similar compounds."
+sequences.complete = [['synonyms2smiles', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder'], ['synonyms2smiles', 'reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder']]
+sequences.accepted = [['synonyms2smiles', 'molformer', 'reinvent_scoring', 'aizynthfinder'], ['synonyms2smiles', 'reinvent_scoring', 'molformer', 'reinvent_scoring', 'aizynthfinder']]
+
+[[Workflow.DesignPropertySynthesis]]
+question = "I need to generate some molecules that are similar to Gleevec but with the following property constraints: lower HBA. Please also map out the synthesis routes for the top 5 hits."
+answer = ""
+question_variation = 2
+note = "Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated SMILES including their values for the constrained properties mentioned in the input AND reactions SMARTS describing how to synthesize the top 5 similar compounds."
+sequences.complete = [['synonyms2smiles', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder'], ['synonyms2smiles', 'reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder']]
+sequences.accepted = [['synonyms2smiles', 'molformer', 'reinvent_scoring', 'aizynthfinder'], ['synonyms2smiles', 'reinvent_scoring', 'molformer', 'reinvent_scoring', 'aizynthfinder']]
+
+[[Workflow.DesignPropertySynthesis]]
+question = "Hey, can you generate some analogs of Aspirin for me? Make sure they have higher molecular weight. For the top 5, I'll also need you to show me the full synthesis."
+answer = ""
+question_variation = 3
+note = "Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated SMILES including their values for the constrained properties mentioned in the input AND reactions SMARTS describing how to synthesize the top 5 similar compounds."
+sequences.complete = [['synonyms2smiles', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder'], ['synonyms2smiles', 'reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder']]
+sequences.accepted = [['synonyms2smiles', 'molformer', 'reinvent_scoring', 'aizynthfinder'], ['synonyms2smiles', 'reinvent_scoring', 'molformer', 'reinvent_scoring', 'aizynthfinder']]
+
+[[Workflow.DesignPropertySynthesis]]
+question = "can u gen some molecules like Amenamevir that have more aromatic rings?? also need the synth routes for the top 5. thx"
+answer = ""
+question_variation = 4
+note = "Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated SMILES including their values for the constrained properties mentioned in the input AND reactions SMARTS describing how to synthesize the top 5 similar compounds."
+sequences.complete = [['synonyms2smiles', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder'], ['synonyms2smiles', 'reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder']]
+sequences.accepted = [['synonyms2smiles', 'molformer', 'reinvent_scoring', 'aizynthfinder'], ['synonyms2smiles', 'reinvent_scoring', 'molformer', 'reinvent_scoring', 'aizynthfinder']]
+
+[[Workflow.DesignPropertySynthesis]]
+question = "Can you give me some molecules similar to Fluoxetine but with higher HBD. Also, show me the synthesis route for the most similar one and what are some similar reactions to it."
+answer = ""
+question_variation = 0
+note = "Question is within the scope of the agentic system. Output should include a path to a CSV file and ideally a table with the generated SMILES including their values for the constrained properties mentioned in the input. Output should also include reactions SMARTS describing how to synthesize the compounds and reactions SMARTS showing similar reactions."
+sequences.complete = [['synonyms2smiles', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder', 'precedent_finder'], ['synonyms2smiles', 'reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder', 'precedent_finder']]
+sequences.accepted = [['synonyms2smiles', 'molformer', 'reinvent_scoring', 'aizynthfinder', 'precedent_finder'], ['synonyms2smiles', 'reinvent_scoring', 'molformer', 'reinvent_scoring', 'aizynthfinder', 'precedent_finder']]
+
+[[Workflow.DesignPropertySynthesis]]
+question = "Could you please generate a set of analogues for Aspirin that adhere to the following property constraints: more rotatable bonds? Furthermore, for the structurally most similar compound, I require its synthetic pathway and a list of analogous chemical transformations."
+answer = ""
+question_variation = 1
+note = "Question is within the scope of the agentic system. Output should include a path to a CSV file and ideally a table with the generated SMILES including their values for the constrained properties mentioned in the input. Output should also include reactions SMARTS describing how to synthesize the compounds and reactions SMARTS showing similar reactions."
+sequences.complete = [['synonyms2smiles', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder', 'precedent_finder'], ['synonyms2smiles', 'reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder', 'precedent_finder']]
+sequences.accepted = [['synonyms2smiles', 'molformer', 'reinvent_scoring', 'aizynthfinder', 'precedent_finder'], ['synonyms2smiles', 'reinvent_scoring', 'molformer', 'reinvent_scoring', 'aizynthfinder', 'precedent_finder']]
+
+[[Workflow.DesignPropertySynthesis]]
+question = "Can you give me some molecules similar to C1CC1N2C=C(C(=O)C3=CC(=C(C=C32)N4CCNCC4)F)C(=O)O but with more aromatic rings and show me the synthesis routes for the top 5 similar ones?"
+answer = ""
+question_variation = 0
+note = "Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated SMILES including their values for the property mentioned in the input. Output should also include reaction SMARTS describing how to synthesize the top 5 similar compounds."
+sequences.complete = [['molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder'], ['reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder']]
+sequences.accepted = [['molformer', 'reinvent_scoring', 'aizynthfinder'], ['reinvent_scoring', 'molformer', 'reinvent_scoring', 'aizynthfinder']]
+
+[[Workflow.DesignPropertySynthesis]]
+question = "Could you please generate a set of analogs for the molecule represented by Cc1ccc(cc1Nc2nccc(n2)c3cccnc3)NC(=O)c4ccc(cc4)CN5CCN(CC5)C, ensuring they satisfy the following property constraints: lower SlogP? Following that, I require the proposed synthesis routes for the top 5 most similar structures."
+answer = ""
+question_variation = 1
+note = "Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated SMILES including their values for the property mentioned in the input. Output should also include reaction SMARTS describing how to synthesize the top 5 similar compounds."
+sequences.complete = [['molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder'], ['reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder']]
+sequences.accepted = [['molformer', 'reinvent_scoring', 'aizynthfinder'], ['reinvent_scoring', 'molformer', 'reinvent_scoring', 'aizynthfinder']]
+
+[[Workflow.DesignPropertySynthesis]]
+question = "Can you generate a few new molecules for me? Start with CC(=O)OC1=CC=CC=C1C(=O)O as a template, but they need to have higher SlogP. Then, for the best 5, show me the synth plans."
+answer = ""
+question_variation = 3
+note = "Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated SMILES including their values for the property mentioned in the input. Output should also include reaction SMARTS describing how to synthesize the top 5 similar compounds."
+sequences.complete = [['molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder'], ['reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder']]
+sequences.accepted = [['molformer', 'reinvent_scoring', 'aizynthfinder'], ['reinvent_scoring', 'molformer', 'reinvent_scoring', 'aizynthfinder']]
+
+[[Workflow.DesignPropertySynthesis]]
+question = "hey, can u generate some new mols for me based on CC1=C(C(=CC=C1)C)N(CC(=O)NC2=CC=C(C=C2)C3=NOC=N3)C(=O)C4CCS(=O)(=O)CC4? need them to have fewer aromatic rings. also show me the sythesis routes for the top 5 similar ones, thx."
+answer = ""
+question_variation = 4
+note = "Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated SMILES including their values for the property mentioned in the input. Output should also include reaction SMARTS describing how to synthesize the top 5 similar compounds."
+sequences.complete = [['molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder'], ['reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder']]
+sequences.accepted = [['molformer', 'reinvent_scoring', 'aizynthfinder'], ['reinvent_scoring', 'molformer', 'reinvent_scoring', 'aizynthfinder']]
+
+[[Workflow.DesignPropertySynthesis]]
+question = "Can you give me some molecules similar to CC(=O)OC1=CC=CC=C1C(=O)O but with higher HBD. Also, show me the synthesis route for the most similar one and what are some similar reactions to it."
+answer = ""
+question_variation = 0
+note = "Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated SMILES including the value for the property mentioned in the input. Output should also include reactions SMARTS describing how to synthesize the compounds and reactions SMARTS showing similar reactions."
+sequences.complete = [['molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder', 'precedent_finder'], ['reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder', 'precedent_finder']]
+sequences.accepted = [['molformer', 'reinvent_scoring', 'aizynthfinder', 'precedent_finder'], ['reinvent_scoring', 'molformer', 'reinvent_scoring', 'aizynthfinder', 'precedent_finder']]
+
+[[Workflow.DesignPropertySynthesis]]
+question = "I need you to find some molecules that are structurally similar to CN1C=C(C2=CC=CC=C21)C3=NC(=NC=C3)NC4=C(C=C(C(=C4)NC(=O)C=C)N(C)CCN(C)C)OC, but they must have lower molecular weight. For the closest match, please provide the synthesis route and also some examples of similar reactions."
+answer = ""
+question_variation = 2
+note = "Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated SMILES including the value for the property mentioned in the input. Output should also include reactions SMARTS describing how to synthesize the compounds and reactions SMARTS showing similar reactions."
+sequences.complete = [['molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder', 'precedent_finder'], ['reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder', 'precedent_finder']]
+sequences.accepted = [['molformer', 'reinvent_scoring', 'aizynthfinder', 'precedent_finder'], ['reinvent_scoring', 'molformer', 'reinvent_scoring', 'aizynthfinder', 'precedent_finder']]
+
+[[Workflow.DesignPropertySynthesis]]
+question = "get me some moleculs like CC1=C(C=C(C=C1)NC(=O)C2=CC=C(C=C2)CN3CCN(CC3)C)NC4=NC=CC(=N4)C5=CN=CC=C5 but with higher HBD. for the best match, show me the synth route & what other rxns are like it."
+answer = ""
+question_variation = 4
+note = "Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated SMILES including the value for the property mentioned in the input. Output should also include reactions SMARTS describing how to synthesize the compounds and reactions SMARTS showing similar reactions."
+sequences.complete = [['molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder', 'precedent_finder'], ['reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder', 'precedent_finder']]
+sequences.accepted = [['molformer', 'reinvent_scoring', 'aizynthfinder', 'precedent_finder'], ['reinvent_scoring', 'molformer', 'reinvent_scoring', 'aizynthfinder', 'precedent_finder']]
+
+[[Workflow.SynthesisOnly]]
+question = "How can I synthesize: Ciprofloxacin and what are some similar reactions to each reaction step involved in making this molecule?"
+answer = ""
+question_variation = 0
+note = "Question is within the scope of the agentic system. Output should contain a SMILES for the input compound, chemical reaction SMARTS describing how to synthesize the molecule and Chemical Reaction SMARTS for reactions that are similar to the synthesis reactions."
+sequences.complete = [['synonyms2smiles', 'aizynthfinder', 'precedent_finder']]
+sequences.accepted = []
+
+[[Workflow.SynthesisOnly]]
+question = "Could you please propose a synthetic pathway for Naproxen? For each transformation within the proposed route, I would also require examples of analogous reactions."
+answer = ""
+question_variation = 1
+note = "Question is within the scope of the agentic system. Output should contain a SMILES for the input compound, chemical reaction SMARTS describing how to synthesize the molecule and Chemical Reaction SMARTS for reactions that are similar to the synthesis reactions."
+sequences.complete = [['synonyms2smiles', 'aizynthfinder', 'precedent_finder']]
+sequences.accepted = []
+
+[[Workflow.SynthesisOnly]]
+question = "I need a viable synthetic route to Amenamevir. In addition, please provide some similar reactions for each step of the synthesis."
+answer = ""
+question_variation = 2
+note = "Question is within the scope of the agentic system. Output should contain a SMILES for the input compound, chemical reaction SMARTS describing how to synthesize the molecule and Chemical Reaction SMARTS for reactions that are similar to the synthesis reactions."
+sequences.complete = [['synonyms2smiles', 'aizynthfinder', 'precedent_finder']]
+sequences.accepted = []
+
+[[Workflow.SynthesisOnly]]
+question = "Can you figure out a synthesis for Tagrisso for me? And for each reaction step, can you also find some other reactions that do the same kind of thing?"
+answer = ""
+question_variation = 3
+note = "Question is within the scope of the agentic system. Output should contain a SMILES for the input compound, chemical reaction SMARTS describing how to synthesize the molecule and Chemical Reaction SMARTS for reactions that are similar to the synthesis reactions."
+sequences.complete = [['synonyms2smiles', 'aizynthfinder', 'precedent_finder']]
+sequences.accepted = []
+
+[[Workflow.SynthesisOnly]]
+question = "hey, how do i make Fluoxetine? for each step in the synth, gimme some simlar rxns too."
+answer = ""
+question_variation = 4
+note = "Question is within the scope of the agentic system. Output should contain a SMILES for the input compound, chemical reaction SMARTS describing how to synthesize the molecule and Chemical Reaction SMARTS for reactions that are similar to the synthesis reactions."
+sequences.complete = [['synonyms2smiles', 'aizynthfinder', 'precedent_finder']]
+sequences.accepted = []
+
+[[Workflow.SynthesisOnly]]
+question = "I need to find a reliable synthesis for Ibuprofen. Could you pull up some established routes?"
+answer = ""
+question_variation = 2
+note = "Question is within the scope of the agentic system. Output should contain a SMILES for the input compound and chemical reaction SMARTS describing how to synthesize the molecule."
+sequences.complete = [['synonyms2smiles', 'aizynthfinder']]
+sequences.accepted = []
+
+[[Workflow.SynthesisOnly]]
+question = "Hey, what's a good way to make Amenamevir? I'm looking for a decent starting point."
+answer = ""
+question_variation = 3
+note = "Question is within the scope of the agentic system. Output should contain a SMILES for the input compound and chemical reaction SMARTS describing how to synthesize the molecule."
+sequences.complete = [['synonyms2smiles', 'aizynthfinder']]
+sequences.accepted = []
+
+[[Workflow.SynthesisOnly]]
+question = "how do i synth Tagrisso? need a protocol asap."
+answer = ""
+question_variation = 4
+note = "Question is within the scope of the agentic system. Output should contain a SMILES for the input compound and chemical reaction SMARTS describing how to synthesize the molecule."
+sequences.complete = [['synonyms2smiles', 'aizynthfinder']]
+sequences.accepted = []
+
+[[Tool.Molformer]]
+question = "Could you please generate a set of molecules that are structurally similar to CC1=C(C=C(C=C1)NC(=O)C2=CC=C(C=C2)CN3CCN(CC3)C)NC4=NC=CC(=N4)C5=CN=CC=C5?"
+answer = ""
+question_variation = 1
+note = "Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated SMILES."
+sequences.complete = [['molformer'], ['molformer', 'Analyzer']]
+sequences.accepted = []
+
+[[Tool.Molformer]]
+question = "Hey, I need to generate some molecules similar to CN1C=C(C2=CC=CC=C21)C3=NC(=NC=C3)NC4=C(C=C(C(=C4)NC(=O)C=C)N(C)CCN(C)C)OC. Can you get on that for me?"
+answer = ""
+question_variation = 3
+note = "Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated SMILES."
+sequences.complete = [['molformer'], ['molformer', 'Analyzer']]
+sequences.accepted = []
+
+[[Tool.Molformer]]
+question = "can u gen some similar mols to C1COCCN1 pls"
+answer = ""
+question_variation = 4
+note = "Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated SMILES."
+sequences.complete = [['molformer'], ['molformer', 'Analyzer']]
+sequences.accepted = []
+
+[[Tool.AiZynthFinder]]
+question = "How can I synthesize this molecule: C1CC1N2C=C(C(=O)C3=CC(=C(C=C32)N4CCNCC4)F)C(=O)O?"
+answer = ""
+question_variation = 0
+note = "Question is within the scope of the agentic system. Output should contain chemical reaction SMARTS describing how to synthesize the molecule."
+sequences.complete = [['aizynthfinder']]
+sequences.accepted = []
+
+[[Tool.AiZynthFinder]]
+question = "Please devise a plausible synthetic pathway for the molecule represented by this SMILES string: CC1=C(C=C(C=C1)NC(=O)C2=CC=C(C=C2)CN3CCN(CC3)C)NC4=NC=CC(=N4)C5=CN=CC=C5."
+answer = ""
+question_variation = 1
+note = "Question is within the scope of the agentic system. Output should contain chemical reaction SMARTS describing how to synthesize the molecule."
+sequences.complete = [['aizynthfinder']]
+sequences.accepted = []
+
+[[Tool.AiZynthFinder]]
+question = "Could you outline an efficient synthesis for this compound: Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1?"
+answer = ""
+question_variation = 2
+note = "Question is within the scope of the agentic system. Output should contain chemical reaction SMARTS describing how to synthesize the molecule."
+sequences.complete = [['aizynthfinder']]
+sequences.accepted = []
+
+[[Tool.AiZynthFinder]]
+question = "Hey, I need to figure out how to make this molecule: C[C@@H](C1=CC2=C(C=C1)C=C(C=C2)OC)C(=O)O. Any ideas for a good route?"
+answer = ""
+question_variation = 3
+note = "Question is within the scope of the agentic system. Output should contain chemical reaction SMARTS describing how to synthesize the molecule."
+sequences.complete = [['aizynthfinder']]
+sequences.accepted = []
+
+[[Tool.AiZynthFinder]]
+question = "how do i make this CC1=C(C(=CC=C1)C)N(CC(=O)NC2=CC=C(C=C2)C3=NOC=N3)C(=O)C4CCS(=O)(=O)CC4?? need a synth plan thx"
+answer = ""
+question_variation = 4
+note = "Question is within the scope of the agentic system. Output should contain chemical reaction SMARTS describing how to synthesize the molecule."
+sequences.complete = [['aizynthfinder']]
+sequences.accepted = []
+
+[[Tool.Scoring]]
+question = "How many F and N does CN1C=C(C2=CC=CC=C21)C3=NC(=NC=C3)NC4=C(C=C(C(=C4)NC(=O)C=C)N(C)CCN(C)C)OC have?"
+answer = ""
+question_variation = 0
+note = "Question is within the scope of the agentic system. Output should contain a count for the number of F and N atoms in the input SMILES."
+sequences.complete = [['reinvent_scoring']]
+sequences.accepted = []
+
+[[Tool.Scoring]]
+question = "Could you please enumerate the quantity of fluorine and nitrogen atoms for the compound represented by CC1=C(C=C(C=C1)NC(=O)C2=CC=C(C=C2)CN3CCN(CC3)C)NC4=NC=CC(=N4)C5=CN=CC=C5?"
+answer = ""
+question_variation = 1
+note = "Question is within the scope of the agentic system. Output should contain a count for the number of F and N atoms in the input SMILES."
+sequences.complete = [['reinvent_scoring']]
+sequences.accepted = []
+
+[[Tool.Scoring]]
+question = "For the molecule with the SMILES string CNCCC(C1=CC=CC=C1)OC2=CC=C(C=C2)C(F)(F)F, what are the respective counts for fluorine and nitrogen atoms?"
+answer = ""
+question_variation = 2
+note = "Question is within the scope of the agentic system. Output should contain a count for the number of F and N atoms in the input SMILES."
+sequences.complete = [['reinvent_scoring']]
+sequences.accepted = []
+
+[[Tool.Scoring]]
+question = "Can you get me the F and N counts for this molecule, C1CC1N2C=C(C(=O)C3=CC(=C(C=C32)N4CCNCC4)F)C(=O)O?"
+answer = ""
+question_variation = 3
+note = "Question is within the scope of the agentic system. Output should contain a count for the number of F and N atoms in the input SMILES."
+sequences.complete = [['reinvent_scoring']]
+sequences.accepted = []
+
+[[Tool.Scoring]]
+question = "How many hydrogen bond donors and acceptors does CC1=C(C(=CC=C1)C)N(CC(=O)NC2=CC=C(C=C2)C3=NOC=N3)C(=O)C4CCS(=O)(=O)CC4 have?"
+answer = ""
+question_variation = 0
+note = "Question is within the scope of the agentic system. Output should contain a count for the number of HBD and HBA for the input SMILES."
+sequences.complete = [['reinvent_scoring']]
+sequences.accepted = []
+
+[[Tool.Scoring]]
+question = "Could you please determine the number of hydrogen bond donors and acceptors for the molecule represented by the SMILES string CNCCC(C1=CC=CC=C1)OC2=CC=C(C=C2)C(F)(F)F?"
+answer = ""
+question_variation = 1
+note = "Question is within the scope of the agentic system. Output should contain a count for the number of HBD and HBA for the input SMILES."
+sequences.complete = [['reinvent_scoring']]
+sequences.accepted = []
+
+[[Tool.Scoring]]
+question = "I need the hydrogen bond donor and acceptor counts for this compound: CN1C=C(C2=CC=CC=C21)C3=NC(=NC=C3)NC4=C(C=C(C(=C4)NC(=O)C=C)N(C)CCN(C)C)OC."
+answer = ""
+question_variation = 2
+note = "Question is within the scope of the agentic system. Output should contain a count for the number of HBD and HBA for the input SMILES."
+sequences.complete = [['reinvent_scoring']]
+sequences.accepted = []
+
+[[Tool.Scoring]]
+question = "What is the molecular weight and number of rotatable bonds of molecule: CC(C)CC1=CC=C(C=C1)C(C)C(=O)O?"
+answer = ""
+question_variation = 0
+note = "Question is within the scope of the agentic system. Output should contain a molecular weight and a count for the number of rotatable bonds for the input SMILES."
+sequences.complete = [['reinvent_scoring']]
+sequences.accepted = []
+
+[[Tool.Scoring]]
+question = "For the molecule with the SMILES CC(C)CC1=CC=C(C=C1)C(C)C(=O)O, please determine its molecular weight and the number of rotatable bonds."
+answer = ""
+question_variation = 2
+note = "Question is within the scope of the agentic system. Output should contain a molecular weight and a count for the number of rotatable bonds for the input SMILES."
+sequences.complete = [['reinvent_scoring']]
+sequences.accepted = []
+
+[[Tool.Scoring]]
+question = "Hey, can you get me the MW and number of rotatable bonds for O=C(O)c1cccc(-n2ccnn2)c1?"
+answer = ""
+question_variation = 3
+note = "Question is within the scope of the agentic system. Output should contain a molecular weight and a count for the number of rotatable bonds for the input SMILES."
+sequences.complete = [['reinvent_scoring']]
+sequences.accepted = []
+
+[[Tool.PrecedentFinder]]
+question = "Could you please provide a list of chemical reactions that are mechanistically analogous to the O=C(CCBr)c1ccccc1>>OC(CCBr)c1ccccc1?"
+answer = ""
+question_variation = 1
+note = "Question is within the scope of the agentic system. Output should contain chemical reaction SMARTS that are similar to the input reaction."
+sequences.complete = [['precedent_finder']]
+sequences.accepted = []
+
+[[Tool.PrecedentFinder]]
+question = "I'm looking for some reactions that are similar to the CC(=O)N(C)c1ccccc1C.O=C(Br)CBr>>CC(=O)N(C)c1ccc(C(=O)CBr)cc1C, can you pull up a few examples?"
+answer = ""
+question_variation = 2
+note = "Question is within the scope of the agentic system. Output should contain chemical reaction SMARTS that are similar to the input reaction."
+sequences.complete = [['precedent_finder']]
+sequences.accepted = []
+
+[[Tool.PrecedentFinder]]
+question = "Hey, can you find me some other rxns that are like the CC(=O)N(C)c1ccccc1C.O=C(Br)CBr>>CC(=O)N(C)c1ccc(C(=O)CBr)cc1C?"
+answer = ""
+question_variation = 3
+note = "Question is within the scope of the agentic system. Output should contain chemical reaction SMARTS that are similar to the input reaction."
+sequences.complete = [['precedent_finder']]
+sequences.accepted = []
+
+[[Tool.PrecedentFinder]]
+question = "wats a similar reaction to CNC(C)(C)C.OC(CCBr)c1ccccc1>>CN(CCC(O)c1ccccc1)C(C)(C)C??"
+answer = ""
+question_variation = 4
+note = "Question is within the scope of the agentic system. Output should contain chemical reaction SMARTS that are similar to the input reaction."
+sequences.complete = [['precedent_finder']]
+sequences.accepted = []
+
+[[Tool.Synonym2SMILES]]
+question = "What is the SMARTS of Fluoxetine?"
+answer = ""
+question_variation = 0
+note = "Question is within the scope of the agentic system. Output should contain a SMARTS string for the given molecule."
+sequences.complete = [['synonyms2smiles']]
+sequences.accepted = []
+
+[[Tool.Synonym2SMILES]]
+question = "Could you please provide the SMARTS representation for Fluoxetine?"
+answer = ""
+question_variation = 1
+note = "Question is within the scope of the agentic system. Output should contain a SMARTS string for the given molecule."
+sequences.complete = [['synonyms2smiles']]
+sequences.accepted = []
+
+[[Tool.Synonym2SMILES]]
+question = "I need to find the SMARTS string for Naproxen, can you assist with that?"
+answer = ""
+question_variation = 2
+note = "Question is within the scope of the agentic system. Output should contain a SMARTS string for the given molecule."
+sequences.complete = [['synonyms2smiles']]
+sequences.accepted = []
+
+[[Tool.Synonym2SMILES]]
+question = "whats the smarts for Amenamevir??"
+answer = ""
+question_variation = 4
+note = "Question is within the scope of the agentic system. Output should contain a SMARTS string for the given molecule."
+sequences.complete = [['synonyms2smiles']]
+sequences.accepted = []
+
+[[Tool.Synonym2SMILES]]
+question = "What is the SMILES of Tagrisso?"
+answer = ""
+question_variation = 0
+note = "Question is within the scope of the agentic system. Output should contain a SMILES string."
+sequences.complete = [['synonyms2smiles']]
+sequences.accepted = []
+
+[[Tool.Synonym2SMILES]]
+question = "I need to find the SMILES string for Morpholine, can you help with that?"
+answer = ""
+question_variation = 2
+note = "Question is within the scope of the agentic system. Output should contain a SMILES string."
+sequences.complete = [['synonyms2smiles']]
+sequences.accepted = []
+
+[[Tool.Synonym2SMILES]]
+question = "Hey, can you pull up the SMILES for Ibuprofen for me?"
+answer = ""
+question_variation = 3
+note = "Question is within the scope of the agentic system. Output should contain a SMILES string."
+sequences.complete = [['synonyms2smiles']]
+sequences.accepted = []
+
+[[Tool.Synonym2SMILES]]
+question = "wats the smiles for Morpholine?"
+answer = ""
+question_variation = 4
+note = "Question is within the scope of the agentic system. Output should contain a SMILES string."
+sequences.complete = [['synonyms2smiles']]
+sequences.accepted = []
+

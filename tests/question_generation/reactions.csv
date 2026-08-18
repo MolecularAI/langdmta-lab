@@ -1,0 +1,11 @@
+reaction
+Cl.c1ccccc1>>Clc1ccccc1
+CN(C)CCC(=O)c1ccccc1>>CN(C)CCC(O)c1ccccc1
+CNCCC(=O)c1ccccc1>>CNCCC(O)c1ccccc1
+O=C(CCBr)c1ccccc1>>OC(CCBr)c1ccccc1
+CNC(C)(C)C.OC(CCBr)c1ccccc1>>CN(CCC(O)c1ccccc1)C(C)(C)C
+CC(C)(C)O.O=C(Cl)Cl>>CC(C)(C)OC(=O)Cl
+C=Cc1cc(C(F)(F)F)ccc1F>>CCc1cc(C(F)(F)F)ccc1F
+COC(=O)c1cccc(-n2ccnn2)c1>>O=C(O)c1cccc(-n2ccnn2)c1
+CC(=O)N(C)c1ccccc1C.O=C(Br)CBr>>CC(=O)N(C)c1ccc(C(=O)CBr)cc1C
+Clc1ccnc(Cl)n1.CNc1ccc2c(C)n(C)nc2c1>>Cc1c2ccc(N(C)c3ccnc(Cl)n3)cc2nn1C
