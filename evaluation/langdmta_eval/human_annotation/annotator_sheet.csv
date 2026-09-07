@@ -1,0 +1,951 @@
+annotation_id,question,agent_output,evaluation_context,tool_calls,expected_tool_calls,accepted_tool_calls,human_correctness,human_relevancy,human_completeness,human_structural_clarity,human_ethical_awareness,human_scope_adherence,human_justification,category,test_name,session,trace_id,duplicate_of,llm_correctness,llm_relevancy,llm_completeness,llm_structural_clarity,llm_ethical_awareness,llm_scope_adherence,llm_avg_score,score_bucket,metric_variance
+1,"Could you please generate a set of close structural analogues for the molecule represented by CC1=C(C=C(C=C1)NC(=O)C2=CC=C(C=C2)CN3CCN(CC3)C)NC4=NC=CC(=N4)C5=CN=CC=C5, ensuring they adhere to the following property constraints: fewer aromatic rings?","Analyzer:
+A total of 12 molecules with fewer aromatic rings (<4) were found. The top 5 molecules from the filtered dataframe are shown below:
+
+|   | SMILES                                                    | SMILES_state | Input_SMILES                                             | Tanimoto   | NLL   | RDKit_SMILES (REINVENT)                                 | Score     | Number of aromatic rings (<4)   | Number of aromatic rings (<4) (raw)   |
+|---|-----------------------------------------------------------|--------------|----------------------------------------------------------|------------|--------|---------------------------------------------------------|-----------|----------------------------------|----------------------------------------|
+| 0 | Cc1ccc(NC(=O)NCCCN(C)C)cc1Nc1nccc(-c2cccnc2)n1             | 1.0          | Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1 | 0.515625   | 3.06   | Cc1ccc(NC(=O)NCCCN(C)C)cc1Nc1nccc(-c2cccnc2)n1          | 0.94676   | 0.94676                          | 3.0                                    |
+| 2 | Cc1ccc(NC(=O)NCCCN2CCOCC2)cc1Nc1nccc(-c2cccnc2)n1          | 1.0          | Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1 | 0.553030   | 3.49   | Cc1ccc(NC(=O)NCCCN2CCOCC2)cc1Nc1nccc(-c2cccnc2)n1       | 0.94676   | 0.94676                          | 3.0                                    |
+| 6 | Cc1ccc(NC(=O)N2CCN(C)CC2)cc1Nc1nccc(-c2cccnc2)n1           | 1.0          | Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1 | 0.695652   | 3.84   | Cc1ccc(NC(=O)N2CCN(C)CC2)cc1Nc1nccc(-c2cccnc2)n1        | 0.94676   | 0.94676                          | 3.0                                    |
+| 13| Cc1ccc(NC(=O)NCCN2CCCC2)cc1Nc1nccc(-c2cccnc2)n1            | 1.0          | Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1 | 0.579365   | 4.27   | Cc1ccc(NC(=O)NCCN2CCCC2)cc1Nc1nccc(-c2cccnc2)n1         | 0.94676   | 0.94676                          | 3.0                                    |
+| 17| Cc1ccc(NC(=O)NCCCO)cc1Nc1nccc(-c2cccnc2)n1                 | 1.0          | Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1 | 0.524194   | 4.36   | Cc1ccc(NC(=O)NCCCO)cc1Nc1nccc(-c2cccnc2)n1              | 0.94676   | 0.94676                          | 3.0                                    |
+
+The SMILES representations of the filtered molecules are:
+['Cc1ccc(NC(=O)NCCCN(C)C)cc1Nc1nccc(-c2cccnc2)n1', 'Cc1ccc(NC(=O)NCCCN2CCOCC2)cc1Nc1nccc(-c2cccnc2)n1', 'Cc1ccc(NC(=O)N2CCN(C)CC2)cc1Nc1nccc(-c2cccnc2)n1', 'Cc1ccc(NC(=O)NCCN2CCCC2)cc1Nc1nccc(-c2cccnc2)n1', 'Cc1ccc(NC(=O)NCCCO)cc1Nc1nccc(-c2cccnc2)n1', 'Cc1ccc(NC(=O)NCCCN2CCCC2)cc1Nc1nccc(-c2cccnc2)n1', 'Cc1ccc(NC(=O)N2CCCCC2)cc1Nc1nccc(-c2cccnc2)n1', 'Cc1ccc(NC(=O)N(C)CCCO)cc1Nc1nccc(-c2cccnc2)n1', 'Cc1ccc(NC(=O)NCCN2CCOCC2)cc1Nc1nccc(-c2cccnc2)n1', 'Cc1ccc(NC(=O)NCCCN2CCN(C)CC2)cc1Nc1nccc(-c2cccnc2)n1', 'Cc1ccc(NC(=O)N2CCN(C)CC2)cc1Nc1nc(-c2cccnc2)c[nH]1', 'Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)c(F)c2)cc1C(=O)Nc1cccnc1']
+
+The filtered dataframe has been saved to: /tmp/tmpxqbr4wiz/filtered_output.csv",Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated compounds and the values of the properties requested in the input and a similarity to the input compound.,"['molformer', 'reinvent_scoring', 'Analyzer']","[['molformer', 'reinvent_scoring', 'Analyzer'], ['reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer']]","[['molformer', 'reinvent_scoring'], ['reinvent_scoring', 'molformer', 'reinvent_scoring']]",,,,,,,,Workflow,DesignProperty,test-questions-260429_trial_1,019dd989-fbb7-7013-8372-1f27de8af8ba,,,1.0,1.0,1.0,-1.0,0.5,0.875,high,0.046875
+2,"Hey, can you pull up some analogues of Ciprofloxacin? Make sure they fit higher molecular weight. For the closest match, I'll need the synth route and some similar rxns.","Synthesis:
+### Synthesis Route and Similar Reactions for Ciprofloxacin's Closest Analogue (by Molecular Weight):
+The closest analogue chosen is:
+- **SMILES**: `O=C(O)c1cn(C2CC2)c2cc(N3CCN(Cc4ccc5c(c4)OCO5)CC3)c(F)cc2c1=O`
+- **Molecular Weight**: 465.481
+
+#### Predicted Synthesis Route:
+The predicted complete synthesis chain involves:
+1. **First Step**:  
+   - **Reaction**: `CCOC(=O)c1cn(C2CC2)c2cc(N3CCN(Cc4ccc5c(c4)OCO5)CC3)c(F)cc2c1=O >> O=C(O)c1cn(C2CC2)c2cc(N3CCN(Cc4ccc5c(c4)OCO5)CC3)c(F)cc2c1=O`  
+
+2. **Substep 1 Reactants**:  
+   - `CCOC(=O)c1cn(C2CC2)c2cc(F)c(F)cc2c1=O`  
+   - `c1cc2c(cc1CN1CCNCC1)OCO2`  
+
+3. **Stock Materials Available**:
+   - [Raw Materials]:  
+     - `c1cc2c(cc1CN1CCNCC1)OCO2`
+     - `NC1CC1`
+     - `CCOC(=O)C=CN(C)C`
+    
+... and finally ***EDA (St) names.-END RouteQUERY READY.identify***",Question is within the scope of the agentic system. Output should include a path to a CSV file and ideally a table with the generated SMILES including their values for the constrained properties mentioned in the input. Output should also include reactions SMARTS describing how to synthesize the compounds and reactions SMARTS showing similar reactions.,"['synonyms2smiles', 'reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder', 'precedent_finder']","[['synonyms2smiles', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder', 'precedent_finder'], ['synonyms2smiles', 'reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder', 'precedent_finder']]","[['synonyms2smiles', 'molformer', 'reinvent_scoring', 'aizynthfinder', 'precedent_finder'], ['synonyms2smiles', 'reinvent_scoring', 'molformer', 'reinvent_scoring', 'aizynthfinder', 'precedent_finder']]",,,,,,,,Workflow,DesignPropertySynthesis,test-questions-260429_trial_1,019dd9af-1554-7e83-baac-14136c2f182d,,,1.0,0.0,0.5,-1.0,0.5,0.5,middle,0.125
+3,"for CC1=C(C=C(C=C1)NC(=O)C2=CC=C(C=C2)CN3CCN(CC3)C)NC4=NC=CC(=N4)C5=CN=CC=C5, wats the hbond donor/acceptor count? thx","Design:
+The molecule with SMILES `CC1=C(C=C(C=C1)NC(=O)C2=CC=C(C=C2)CN3CCN(CC3)C)NC4=NC=CC(=N4)C5=CN=CC=C5` has:
+
+- Hydrogen Bond Donors (HBondDonors): 2
+- Hydrogen Bond Acceptors (HBondAcceptors): 7
+
+For further details, an output CSV file has been generated and can be downloaded at the following path: /tmp/tmpt8h0ansm/reinvent_scoring_output.csv",Question is within the scope of the agentic system. Output should contain a count for the number of HBD and HBA for the input SMILES.,['reinvent_scoring'],[['reinvent_scoring']],[],,,,,,,,Tool,Scoring,test-questions-260429_trial_1,019dd9f2-16c2-71a1-81dc-d2aea6789523,,,0.5,1.0,1.0,-1.0,1.0,0.875,high,0.046875
+4,I would like to have some close analogues to Naproxen with higher molecular weight,"Analyzer:
+A total of 38 molecules exceed the molecular weight of Naproxen (230.263). Below are the top 5 molecules from the processed dataframe:
+
+|   | SMILES                                              | Molecular weight (raw) |
+|---|----------------------------------------------------|-------------------------|
+| 1 | CCC(C(=O)O)c1ccc2cc(OC)ccc2c1                     | 244.290                 |
+| 2 | COc1ccc2cc(C(C)(C)C(=O)O)ccc2c1                   | 244.290                 |
+| 3 | CC[C@@H](C(=O)O)c1ccc2cc(OC)ccc2c1                | 244.290                 |
+| 4 | CC[C@H](C(=O)O)c1ccc2cc(OC)ccc2c1                 | 244.290                 |
+| 6 | COc1ccc2cc(C(C)C(=O)NS(=O)(=O)c3ccc(C)cc3)ccc2c1  | 383.469                 |
+
+All relevant SMILES have been included, and the processed dataframe has been saved to `/tmp/tmp54wbo925/filtered_output.csv`.",Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated compounds and the values of the properties requested in the input and a similarity to the input compound.,"['synonyms2smiles', 'reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer']","[['synonyms2smiles', 'molformer', 'reinvent_scoring', 'Analyzer'], ['synonyms2smiles', 'reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer']]","[['synonyms2smiles', 'molformer', 'reinvent_scoring'], ['synonyms2smiles', 'reinvent_scoring', 'molformer', 'reinvent_scoring']]",,,,,,,,Workflow,DesignProperty,test-questions-260429_trial_1,019dd985-0946-7982-b452-5fd676c86499,,,1.0,0.5,1.0,-1.0,0.5,0.75,middle,0.0625
+5,"Hey, can you generate a few analogs of Ibuprofen for me?","Analyzer:
+The total number of generated molecules in the file is 49. Below are the first 5 molecules represented as SMILES, along with other relevant columns:
+
+| SMILES                               | SMILES_state | Input_SMILES                | Tanimoto   | NLL  |
+|--------------------------------------|--------------|-----------------------------|------------|------|
+| CC(C(=O)O)c1ccc(CC(C)(C)C)cc1        | 1            | CC(C)Cc1ccc(C(C)C(=O)O)cc1  | 0.640000   | 1.99 |
+| CC(C(=O)O)c1ccc(Br)cc1               | 1            | CC(C)Cc1ccc(C(C)C(=O)O)cc1  | 0.565217   | 2.57 |
+| CC(C(=O)O)c1ccc(Cl)cc1               | 1            | CC(C)Cc1ccc(C(C)C(=O)O)cc1  | 0.565217   | 2.98 |
+| CC(C(=O)O)c1ccc(C(C)(C)C)cc1         | 1            | CC(C)Cc1ccc(C(C)C(=O)O)cc1  | 0.549020   | 3.03 |
+| CC(C(=O)O)c1ccc(CCC(C)(C)C)cc1       | 1            | CC(C)Cc1ccc(C(C)C(=O)O)cc1  | 0.603774   | 3.59 |","Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated SMILES, including a similarity to the input compound.","['synonyms2smiles', 'molformer', 'Analyzer']","[['synonyms2smiles', 'molformer', 'Analyzer']]","[['synonyms2smiles', 'molformer']]",,,,,,,,Workflow,DesignOnly,test-questions-260429_trial_1,019dd98f-3dda-7692-81d6-df1e7e7ee025,,,1.0,0.5,1.0,-1.0,0.5,0.75,middle,0.0625
+6,What are similar reactions to CNCCC(=O)c1ccccc1>>CNCCC(O)c1ccccc1?,"Synthesis:
+Here are the top 5 similar reactions to the given reaction `CNCCC(=O)c1ccccc1>>CNCCC(O)c1ccccc1`, along with their similarity scores (""goodness""):
+
+1. **Reaction SMILES:**
+   ```
+   [CH3:1][N:2]([CH3:13])[CH2:3][CH2:4][C:5]([C:7]1[CH:12]=[CH:11][CH:10]=[CH:9][CH:8]=1)=[O:6].[H][H]>CC(O)C>[C:7]1([C@H:5]([OH:6])[CH2:4][CH2:3][N:2]([CH3:13])[CH3:1])[CH:12]=[CH:11][CH:10]=[CH:9][CH:8]=1
+   ```
+   - **Score:** 0.8424
+
+2. **Reaction SMILES:**
+   ```
+   [BH4-].[Na+].[CH3:3][N:4]([CH3:15])[CH2:5][CH2:6][C:7]([C:9]1[CH:14]=[CH:13][CH:12]=[CH:11][CH:10]=1)=[O:8].O>CC(O)C.CO>[CH3:15][N:4]([CH3:3])[CH2:5][CH2:6][CH:7]([C:9]1[CH:14]=[CH:13][CH:12]=[CH:11][CH:10]=1)[OH:8] |f:0.1|
+   ```
+   - **Score:** 0.8014
+
+3. **Reaction SMILES (similar to the second one):**
+   ```
+   [BH4-].[Na+].[CH3:3][N:4]([CH3:15])[CH2:5][CH2:6][C:7]([C:9]1[CH:14]=[CH:13][CH:12]=[CH:11][CH:10]=1)=[O:8].O>CC(O)C.CO>[CH3:15][N:4]([CH3:3])[CH2:5][CH2:6][CH:7]([C:9]1[CH:14]=[CH:13][CH:12]=[CH:11][CH:10]=1)[OH:8] |f:0.1|
+   ```
+   - **Score:** 0.8014
+
+4. **Reaction SMILES:**
+   ```
+   [Cl:1][C:2]1[CH:7]=[CH:6][C:5]([C:8](=[O:14])[CH2:9][CH2:10][N:11]([CH3:13])[CH3:12])=[CH:4][CH:3]=1.[H-].[H-].[H-].[H-].[Li+].[Al+3].C([O-])(O)=O.[Na+]>C1COCC1>[Cl:1][C:2]1[CH:3]=[CH:4][C:5]([CH:8]([OH:14])[CH2:9][CH2:10][N:11]([CH3:13])[CH3:12])=[CH:6][CH:7]=1 |f:1.2.3.4.5.6,7.8|
+   ```
+   - **Score:** 0.7592
+
+5. **Reaction SMILES:**
+   ```
+   C(N(CC)CC)C.C(O)=O.[C:11]([CH2:13][C:14]([C:16]1[CH:21]=[CH:20][CH:19]=[CH:18][CH:17]=1)=[O:15])#[N:12].C([O-])(O)=O.[Na+]>[Ru].C(OCC)(=O)C>[OH:15][C@@H:14]([C:16]1[CH:21]=[CH:20][CH:19]=[CH:18][CH:17]=1)[CH2:13][C:11]#[N:12] |f:3.4|
+   ```
+   - **Score:** 0.7037
+
+Let me know if you need more details about any specific reaction or further assistance!",Question is within the scope of the agentic system. Output should contain chemical reaction SMARTS that are similar to the input reaction.,['precedent_finder'],[['precedent_finder']],[],,,,,,,,Tool,PrecedentFinder,test-questions-260429_trial_1,019dd9f3-4189-7292-89f1-3942ed54f3e8,,,0.5,0.5,1.0,-1.0,0.5,0.625,middle,0.046875
+7,"Could you please generate a set of analogues for Tagrisso that exhibit lower HBA? For the top 5 most similar structures, please provide their corresponding synthesis routes.","Synthesis:
+Here are the synthetic routes for the top 5 analogues of Tagrisso with reduced hydrogen-bond acceptors:
+
+---
+
+### **1. SMILES**: `COc1cc(NC(=O)N(C)C)c(Cl)cc1Nc1nccc(-c2cn(C)c3ccccc23)n1`
+- **Synthetic Steps**:
+  1. `CN(C)C(=O)Cl + COc1cc(N)c(Cl)cc1Nc1nccc(-c2cn(C)c3ccccc23)n1 → COc1cc(NC(=O)N(C)C)c(Cl)cc1Nc1nccc(-c2cn(C)c3ccccc23)n1`
+  2. `COc1cc(N)c(Cl)cc1N + Cn1cc(-c2ccnc(Cl)n2)c2ccccc21 → COc1cc(N)c(Cl)cc1Nc1nccc(-c2cn(C)c3ccccc23)n1`
+  3. `COc1cc([N+](=O)[O-])c(Cl)cc1N → COc1cc(N)c(Cl)cc1N`
+- **Stock Chemicals**:
+  - `CN(C)C(=O)Cl`
+  - `Cn1cc(-c2ccnc(Cl)n2)c2ccccc21`
+  - `COc1cc([N+](=O)[O-])c(Cl)cc1N`
+
+---
+
+### **2. SMILES**: `CCCCn1cc(-c2ccnc(Nc3cc(NC(C)=O)c(N(C)C)cc3OC)n2)c2ccccc21`
+- **Synthetic Steps**:
+  1. `CC(=O)OC(C)=O + CCCCn1cc(-c2ccnc(Nc3cc([N+](=O)[O-])c(N(C)C)cc3OC)n2)c2ccccc21 → CCCCn1cc(-c2ccnc(Nc3cc(NC(C)=O)c(N(C)C)cc3OC)n2)c2ccccc21`
+  2. `CNC + CCCCn1cc(-c2ccnc(Nc3cc([N+](=O)[O-])c(F)cc3OC)n2)c2ccccc21 → CCCCn1cc(-c2ccnc(Nc3cc([N+](=O)[O-])c(N(C)C)cc3OC)n2)c2ccccc21`
+  3. `CNC=O → CNC`
+- **Stock Chemicals**:
+  - `CC(=O)OC(C)=O`
+  - `COc1cc(F)c([N+](=O)[O-])cc1N`
+  - `CCCCn1ccc2ccccc21`
+  - `Clc1ccnc(Cl)n1`
+  - `CNC=O`
+
+---
+
+### **3. SMILES**: `COc1cc(N(C)CCN(C)C)c(OC)cc1Nc1nccc(-c2c[nH]c3ccccc23)n1`
+- **Synthetic Steps**:
+  1. `Nc1nccc(-c2c[nH]c3ccccc23)n1 + COc1cc(N(C)CCN(C)C)c(OC)cc1Br → COc1cc(N(C)CCN(C)C)c(OC)cc1Nc1nccc(-c2c[nH]c3ccccc23)n1`
+  2. `O=C1CCC(=O)N1Br + COc1ccc(OC)c(N(C)CCN(C)C)c1 → COc1cc(N(C)CCN(C)C)c(OC)cc1Br`
+  3. `COc1ccc(OC)c(N(C)CC(=O)N(C)C)c1 → COc1ccc(OC)c(N(C)CCN(C)C)c1`
+- **Stock Chemicals**:
+  - `Nc1nccc(-c2c[nH]c3ccccc23)n1`
+  - `O=C1CCC(=O)N1Br`
+  - `COc1ccc(OC)c(N(C)CC(=O)O)c1`
+  - `CNC=O`
+
+---
+
+### **4. SMILES**: `CCC(=O)Nc1cc(Nc2nccc(-c3cn(C)c4cc(Cl)ccc34)n2)c(OC)cc1N(C)C`
+- **Synthetic Steps**:
+  1. `Cn1ccc2ccc(Cl)cc21 + CCC(=O)Nc1cc(Nc2nccc(Cl)n2)c(OC)cc1N(C)C → CCC(=O)Nc1cc(Nc2nccc(-c3cn(C)c4cc(Cl)ccc34)n2)c(OC)cc1N(C)C`
+  2. `CCC(=O)Cl + COc1cc(N(C)C)c(N)cc1Nc1nccc(Cl)n1 → CCC(=O)Nc1cc(Nc2nccc(Cl)n2)c(OC)cc1N(C)C`
+- **Stock Chemicals**:
+  - `Cn1ccc2ccc(Cl)cc21`
+  - `CCC(=O)Cl`
+  - `COc1cc(F)c([N+](=O)[O-])cc1N`
+  - `Clc1ccnc(Cl)n1`
+  - `CNC=O`
+
+---
+
+### **5. SMILES**: `CN(C)CCN(C)c1cccc(Nc2nccc(-c3cn(C)c4ccccc34)n2)c1`
+- **Synthetic Steps**:
+  1. `CN(C)CCCl + CNc1cccc(Nc2nccc(-c3cn(C)c4ccccc34)n2)c1 → CN(C)CCN(C)c1cccc(Nc2nccc(-c3cn(C)c4ccccc34)n2)c1`
+  2. `CNc1cccc(N)c1 + Cn1cc(-c2ccnc(Cl)n2)c2ccccc21 → CNc1cccc(Nc2nccc(-c3cn(C)c4ccccc34)n2)c1`
+- **Stock Chemicals**:
+  - `CN(C)CCCl`
+  - `CNc1cccc(N)c1`
+  - `Cn1cc(-c2ccnc(Cl)n2)c2ccccc21`
+
+---
+
+These routes offer practical insights into synthesizing the analogs of Tagrisso with reduced hydrogen bond acceptors. Let me know if you'd like to explore more details or require additional assistance!",Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated SMILES including their values for the constrained properties mentioned in the input AND reactions SMARTS describing how to synthesize the top 5 similar compounds.,"['synonyms2smiles', 'reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder']","[['synonyms2smiles', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder'], ['synonyms2smiles', 'reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder']]","[['synonyms2smiles', 'molformer', 'reinvent_scoring', 'aizynthfinder'], ['synonyms2smiles', 'reinvent_scoring', 'molformer', 'reinvent_scoring', 'aizynthfinder']]",,,,,,,,Workflow,DesignPropertySynthesis,test-questions-260429_trial_1,019dd9a3-6420-7791-a1d3-07bf7d3e143c,,,1.0,0.5,1.0,-1.0,0.5,0.75,middle,0.0625
+8,How can I synthesize: Ciprofloxacin?,"Synthesis:
+To synthesize Ciprofloxacin (SMILES: `O=C(O)c1cn(C2CC2)c2cc(N3CCNCC3)c(F)cc2c1=O`), the following reactions and steps are suggested:
+
+### Reaction Pathways:
+1. **Step**: 
+   - *Reaction*: `C1CNCCN1.O=C(O)c1cn(C2CC2)c2cc(F)c(F)cc2c1=O >> O=C(O)c1cn(C2CC2)c2cc(N3CCNCC3)c(F)cc2c1=O`
+   - Description: In this reaction, the starting material (compound with fluorinated quinolone ring) undergoes substitution involving a piperazine group (C1CNCCN1) to yield Ciprofloxacin.
+
+2. **Step**:
+   - *Reaction*: `CCOC(=O)c1cn(C2CC2)c2cc(F)c(F)cc2c1=O >> O=C(O)c1cn(C2CC2)c2cc(F)c(F)cc2c1=O`
+   - Description: Here, an ester protecting group (`CCOC(=O)`) is hydrolyzed to produce the acidic intermediate that is further utilized in the synthetic route.
+
+3. **Step**:
+   - *Reaction*: `NC1CC1.CCOC(=O)C(=CN(C)C)C(=O)c1cc(F)c(F)cc1F >> CCOC(=O)c1cn(C2CC2)c2cc(F)c(F)cc2c1=O`
+   - Description: This reaction introduces the cyclopropyl group from `NC1CC1`, constructing a key component for Ciprofloxacin.
+
+4. **Step**:
+   - *Reaction*: `CCOC(=O)C=CN(C)C.O=C(Cl)c1cc(F)c(F)cc1F >> CCOC(=O)C(=CN(C)C)C(=O)c1cc(F)c(F)cc1F`
+   - Description: This step builds the quinolone core structure.
+
+---
+
+### Stock Chemicals:
+These substances are identified as available starting materials for the synthesis:
+- `C1CNCCN1` (Piperazine),
+- `NC1CC1` (Cyclopropylamine),
+- `CCOC(=O)C=CN(C)C` (Ethyl acetoacetate-derived intermediate),
+- `O=C(Cl)c1cc(F)c(F)cc1F` (Chlorofluorinated aromatic precursor).
+
+Please note that each step might require further optimization for reaction conditions, purification, and yields, depending on available laboratory infrastructure.",Question is within the scope of the agentic system. Output should contain a SMILES for the input compound and chemical reaction SMARTS describing how to synthesize the molecule.,"['synonyms2smiles', 'aizynthfinder']","[['synonyms2smiles', 'aizynthfinder']]",[],,,,,,,,Workflow,SynthesisOnly,test-questions-260429_trial_1,019dd9d3-f7ca-72f1-bb4c-aa236968db58,,,1.0,1.0,1.0,-1.0,0.5,0.875,high,0.046875
+9,Could you please provide the SMILES representation for Ciprofloxacin?,"Utility:
+The SMILES representation of Ciprofloxacin is: O=C(O)c1cn(C2CC2)c2cc(N3CCNCC3)c(F)cc2c1=O",Question is within the scope of the agentic system. Output should contain a SMILES string.,['synonyms2smiles'],[['synonyms2smiles']],[],,,,,,,,Tool,Synonym2SMILES,test-questions-260429_trial_1,019dd9f7-3b80-79c2-a590-cf3b55faed73,,,1.0,1.0,1.0,-1.0,0.5,0.875,high,0.046875
+10,"Hey, can you quickly check Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1 and tell me how many H-bond donors and acceptors it has?","Design:
+The molecule ""Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1"" contains:
+
+- H-bond donors: 2
+- H-bond acceptors: 7
+
+An output CSV file containing these results is also generated and can be downloaded from the following path: /tmp/tmp5viepq8e/reinvent_scoring_output.csv",Question is within the scope of the agentic system. Output should contain a count for the number of HBD and HBA for the input SMILES.,['reinvent_scoring'],[['reinvent_scoring']],[],,,,,,,,Tool,Scoring,test-questions-260429_trial_1,019dd9f1-e73a-7370-9240-f791c4b005bd,,,0.5,1.0,1.0,-1.0,0.5,0.75,middle,0.0625
+11,hey how many Fs and Ns in C[C@@H](C1=CC2=C(C=C1)C=C(C=C2)OC)C(=O)O??,"Utility:
+The molecule is a valid SMILES representation. However, elemental formula components like ""F"" (fluorine) and ""N"" (nitrogen) are not present in this SMILES.",Question is within the scope of the agentic system. Output should contain a count for the number of F and N atoms in the input SMILES.,[],[['reinvent_scoring']],[],,,,,,,,Tool,Scoring,test-questions-260429_trial_1,019dd9f1-3a62-7311-947f-78e54fe03c3b,,,0.5,0.5,1.0,-1.0,0.5,0.625,middle,0.046875
+12,"Can you generate some analogs for me based on this molecule, CC(C)CC1=CC=C(C=C1)C(C)C(=O)O?","Analyzer:
+The CSV file does not contain any analogs of the molecule CC(C)CC1=CC=C(C=C1)C(C)C(=O)O, as there are no matching entries in the 'Input_SMILES' column.",Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated SMILES.,"['molformer', 'Analyzer', 'reinvent_scoring', 'Analyzer']","[['molformer'], ['molformer', 'Analyzer']]",[],,,,,,,,Tool,Molformer,test-questions-260429_trial_1,019dd9d8-25e6-7843-9323-cb4f630518c3,,,0.0,0.0,1.0,-1.0,1.0,0.5,middle,0.25
+13,Can you generate similar molecules to: Tagrisso?,"Analyzer:
+The dataset contains a total of 50 generated molecules similar to Tagrisso. Most of the molecules have Tanimoto similarity scores between 0.518 and 0.58.","Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated SMILES, including a similarity to the input compound.","['synonyms2smiles', 'molformer', 'Analyzer']","[['synonyms2smiles', 'molformer', 'Analyzer']]","[['synonyms2smiles', 'molformer']]",,,,,,,,Workflow,DesignOnly,test-questions-260429_trial_1,019dd98d-ae97-75c0-ad8c-008be2f4cbaf,,,1.0,0.0,1.0,-1.0,0.5,0.625,middle,0.171875
+14,"Could you please generate a set of molecules structurally similar to C1COCCN1? For each resulting analog, I require its molecular weight and the number of rotatable bonds, with the final list sorted in descending order of similarity to the reference.","Analyzer:
+The molecules were successfully filtered and sorted based on their Tanimoto similarity to ""C1COCCN1"" in descending order. The resulting DataFrame contains 5 top entries with the following information:
+
+| SMILES            | Tanimoto  | Molecular weight (raw) | Number of rotatable bonds (<10) (raw) |
+|-------------------|-----------|-------------------------|---------------------------------------|
+| CC1CCOCCN1        | 0.413793  | 115.176                | 0.0                                   |
+| C[C@@H]1CCOCCN1   | 0.413793  | 115.176                | 0.0                                   |
+| C[C@H]1CCOCCN1    | 0.413793  | 115.176                | 0.0                                   |
+| C1CNCCN1          | 0.333333  | 86.138                 | 0.0                                   |
+| CC1COCCN1         | 0.310345  | 101.149                | 0.0                                   |
+
+SMILES for these molecules: CC1CCOCCN1, C[C@@H]1CCOCCN1, C[C@H]1CCOCCN1, C1CNCCN1, CC1COCCN1.
+
+The processed DataFrame has been saved to `/tmp/tmpeamvv078/filtered_output.csv`.",Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated compounds sorted according to the similarity including values for some chemical properties requested in the input.,"['molformer', 'reinvent_scoring', 'Analyzer']","[['molformer', 'reinvent_scoring', 'Analyzer'], ['reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer']]","[['molformer', 'reinvent_scoring'], ['reinvent_scoring', 'molformer', 'reinvent_scoring']]",,,,,,,,Workflow,DesignProperty,test-questions-260429_trial_1,019dd982-2b36-7000-9514-aa7a46ec1dc0,,,1.0,1.0,1.0,-1.0,0.5,0.875,high,0.046875
+15,"Could you please generate a set of molecules analogous to CC(=O)OC1=CC=CC=C1C(=O)O that adhere to the following: fewer rotatable bonds? For the top candidate in terms of similarity, I would also require its synthesis pathway and a list of comparable chemical reactions.","Synthesis:
+### Top Candidate: **O=C(O)c1ccccc1O**
+
+#### 1. Synthesis Pathway
+The compound **""O=C(O)c1ccccc1O""** can be synthesized from **""COc1ccccc1C(=O)O""** using the following reaction:
+- Reaction: **COc1ccccc1C(=O)O >> O=C(O)c1ccccc1O**
+- Required Starting Material: **COc1ccccc1C(=O)O** (available in stock).
+
+#### 2. Similar Reactions
+Here are the five most similar reactions to the synthesis reaction provided:
+
+1. **Reaction SMILES:**
+   ```plaintext
+   COC1C=CC2C(=CC=CC=2)C=1.[OH-]C([C]1[CH]=[CH][CH]=[CH][C]=1[O]C)=[O]
+   >>
+   [OH][C]1[CH]=[CH][CH]=[CH][C]=1[C]([OH])=[O]
+   ```
+   **Goodness Score:** 0.9351
+
+2. **Reaction SMILES:**
+   ```plaintext
+   C([O][C](=[O])[C]1[C]([CH3])=[CH]=[CH]=[CH][C]=1[O]C)C.[OH-].[Na+].COC1C=CC=C(C)C=1C(O)=O.B(Br)(Br)Br
+   >>
+   [OH][C]1[CH]=[CH][CH]=[C]([CH3])[C]=1[C]([OH])=[O]
+   ```
+   **Goodness Score:** 0.7179
+
+3. **Reaction SMILES:**
+   ```plaintext
+   C[O][C]1[CH]=[CH]=[CH]=[C]([CH3])[C]=1[C]([OH])=[O].B(Br)(Br)Br
+   >>
+   [OH][C]1[CH]=[CH][CH]=[C]([CH3])[C]=1[C]([OH])=[O]
+   ```
+   **Goodness Score:** 0.7179
+
+4. **Reaction SMILES:**
+   ```plaintext
+   [CH]([C]1[CH]=[CH][C]([C]([O][CH3])=[O])=[C]([O]C)[CH]=1)=[O].[Al+3].[Cl-].[Cl-].[Cl-].O
+   >>
+   [CH]([C]1[CH]=[CH][C]([C]([O][CH3])=[O])=[C]([OH])[CH]=1)=[O]
+   ```
+   **Goodness Score:** 0.7012
+
+5. **Reaction SMILES:**
+   ```plaintext
+   C(C1C=CC(C(OC)=O)=C(O)C=1)=O.[F][C]1[CH]=[C]([CH]=[O])[CH]=[C]([O]C)[C]=1[C]([O][CH3])=[O].[Al+3].[Cl-].[Cl-].[Cl-]
+   >>
+   [F][C]1[CH]=[C]([CH]=[O])[CH]=[C]([OH])[C]=1[C]([O][CH3])=[O]
+   ```
+   **Goodness Score:** 0.6083
+
+---
+
+If you need more details or specific steps for exploration, let me know!",Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated SMILES including the value for the property mentioned in the input. Output should also include reactions SMARTS describing how to synthesize the compounds and reactions SMARTS showing similar reactions.,"['reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder', 'precedent_finder']","[['molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder', 'precedent_finder'], ['reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder', 'precedent_finder']]","[['molformer', 'reinvent_scoring', 'aizynthfinder', 'precedent_finder'], ['reinvent_scoring', 'molformer', 'reinvent_scoring', 'aizynthfinder', 'precedent_finder']]",,,,,,,,Workflow,DesignPropertySynthesis,test-questions-260429_trial_1,019dd9c1-3395-78c3-806d-d057e7cb2574,,,1.0,0.0,1.0,-1.0,0.0,0.5,middle,0.25
+16,"Please generate some molecules that are structurally similar to CN1C=C(C2=CC=CC=C21)C3=NC(=NC=C3)NC4=C(C=C(C(=C4)NC(=O)C=C)N(C)CCN(C)C)OC while also meeting these criteria: lower HBA. For the 5 most similar ones, I'll also need you to lay out the synthesis routes.","Synthesis:
+Here are the synthesis details for the two most similar molecules (with lower hydrogen bond acceptors) to the reference compound:
+
+### Molecule 1:
+**SMILES:** `CCC(=O)Nc1cc(Nc2nccc(-c3cn(C)c4ccccc34)n2)ccc1C`  
+**Synthesis Route:**
+1. The reaction combines two reactants:
+   - `CCC(=O)Nc1cc(N)ccc1C`
+   - `Cn1cc(-c2ccnc(Cl)n2)c2ccccc21`
+   
+   **Reaction:** `CCC(=O)Nc1cc(N)ccc1C.Cn1cc(-c2ccnc(Cl)n2)c2ccccc21 >> CCC(=O)Nc1cc(Nc2nccc(-c3cn(C)c4ccccc34)n2)ccc1C`
+   
+2. **Stock Reactants Available** for this route:
+   - `CCC(=O)Nc1cc(N)ccc1C`
+   - `Cn1cc(-c2ccnc(Cl)n2)c2ccccc21`
+
+---
+
+### Molecule 2:
+**SMILES:** `COc1cc(NC(=O)c2ccccc2C)cc(OC)c1-c1cn(C)c2ccccc12`  
+**Synthesis Routes:**
+1. Combining these reactants:
+   - `Cn1cc(B2OC(C)(C)C(C)(C)O2)c2ccccc21`
+   - `COc1cc(NC(=O)c2ccccc2C)cc(OC)c1Br`
+   
+   **Reaction:** `Cn1cc(B2OC(C)(C)C(C)(C)O2)c2ccccc21.COc1cc(NC(=O)c2ccccc2C)cc(OC)c1Br >> COc1cc(NC(=O)c2ccccc2C)cc(OC)c1-c1cn(C)c2ccccc12`
+
+2. Additional steps to make the reactants for the first reaction:
+   - `CC(C)OB1OC(C)(C)C(C)(C)O1 + Cn1cc(Br)c2ccccc21 >> Cn1cc(B2OC(C)(C)C(C)(C)O2)c2ccccc21`
+   - `Cc1ccccc1C(=O)Cl + COc1cc(N)cc(OC)c1Br >> COc1cc(NC(=O)c2ccccc2C)cc(OC)c1Br`
+
+   **Stock Reactants Available** for these reactions:
+   - `CC(C)OB1OC(C)(C)C(C)(C)O1`
+   - `Cn1cc(Br)c2ccccc21`
+   - `Cc1ccccc1C(=O)Cl`
+   - `COc1cc(N)cc(OC)c1Br`
+
+---
+
+If additional details or deeper synthesis insights are required, feel free to ask!",Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated SMILES including their values for the property mentioned in the input. Output should also include reaction SMARTS describing how to synthesize the top 5 similar compounds.,"['molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder']","[['molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder'], ['reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder']]","[['molformer', 'reinvent_scoring', 'aizynthfinder'], ['reinvent_scoring', 'molformer', 'reinvent_scoring', 'aizynthfinder']]",,,,,,,,Workflow,DesignPropertySynthesis,test-questions-260429_trial_1,019dd9bb-206f-7721-a3fe-9cc871cb5a45,,,1.0,0.5,1.0,-1.0,0.5,0.75,middle,0.0625
+17,"Hey, find me some molecules that are like Tagrisso and show me how to make the top 5 most similar ones.","Synthesis:
+Here are the synthetic routes for the top 5 molecules similar to Tagrisso, along with explanations of the routes and the required reactants (""stock"") for each molecule:
+
+---
+
+### 1. Molecule SMILES: `COc1cc(NC(=O)N(C)C)c(Cl)cc1Nc1nccc(-c2cn(C)c3ccccc23)n1`
+
+**Synthetic Routes:**
+1. **Reaction**: `CN(C)C(=O)Cl + COc1cc(N)c(Cl)cc1Nc1nccc(-c2cn(C)c3ccccc23)n1 >> COc1cc(NC(=O)N(C)C)c(Cl)cc1Nc1nccc(-c2cn(C)c3ccccc23)n1`
+2. **Reaction**: `COc1cc(N)c(Cl)cc1N + Cn1cc(-c2ccnc(Cl)n2)c2ccccc21 >> COc1cc(N)c(Cl)cc1Nc1nccc(-c2cn(C)c3ccccc23)n1`
+3. **Reaction**: `COc1cc([N+](=O)[O-])c(Cl)cc1N >> COc1cc(N)c(Cl)cc1N`
+
+**Stock Reactants:**
+- `CN(C)C(=O)Cl`
+- `Cn1cc(-c2ccnc(Cl)n2)c2ccccc21`
+- `COc1cc([N+](=O)[O-])c(Cl)cc1N`
+
+---
+
+### 2. Molecule SMILES: `CCCCn1cc(-c2ccnc(Nc3cc(NC(C)=O)c(N(C)C)cc3OC)n2)c2ccccc21`
+
+**Synthetic Routes:**
+1. **Reaction**: `CC(=O)OC(C)=O + CCCCn1cc(-c2ccnc(Nc3cc([N+](=O)[O-])c(N(C)C)cc3OC)n2)c2ccccc21 >> CCCCn1cc(-c2ccnc(Nc3cc(NC(C)=O)c(N(C)C)cc3OC)n2)c2ccccc21`
+2. **Reaction**: `CNC + CCCCn1cc(-c2ccnc(Nc3cc([N+](=O)[O-])c(F)cc3OC)n2)c2ccccc21 >> CCCCn1cc(-c2ccnc(Nc3cc([N+](=O)[O-])c(N(C)C)cc3OC)n2)c2ccccc21`
+
+**Stock Reactants:**
+- `CC(=O)OC(C)=O`
+- `CNC`
+- `Clc1ccnc(Cl)n1`
+
+---
+
+### 3. Molecule SMILES: `COc1cc(N(C)CCN(C)C)c(OC)cc1Nc1nccc(-c2c[nH]c3ccccc23)n1`
+
+**Synthetic Routes:**
+1. **Reaction**: `Nc1nccc(-c2c[nH]c3ccccc23)n1 + COc1cc(N(C)CCN(C)C)c(OC)cc1Br >> COc1cc(N(C)CCN(C)C)c(OC)cc1Nc1nccc(-c2c[nH]c3ccccc23)n1`
+2. **Reaction**: `COc1ccc(OC)c(N(C)CCN(C)C)c1 + BrC(O)=O >> COc1ccc(OC)c(N(C)CCN(C)C)c1Br`
+
+**Stock Reactants:**
+- `Nc1nccc(-c2c[nH]c3ccccc23)n1`
+- `COc1ccc(OC)c(N(C)CCN(C)C)c1Br`
+
+---
+
+### 4. Molecule SMILES: `CCC(=O)Nc1cc(Nc2nccc(-c3cn(C)c4cc(Cl)ccc34)n2)c(OC)cc1N(C)C`
+
+**Synthetic Routes:**
+1. **Reaction**: `Cn1ccc2ccc(Cl)cc21 + CCC(=O)Cl >> CCC(=O)Nc1cc(Nc2nccc(-c3cn(C)c4cc(Cl)ccc34)n2)c(OC)cc1N(C)C`
+2. **Reaction**: `COc1cc(N(C)C)c(Cl)cc1Nc2nccnc2 + CCC(=O)Cl >> CCC(=O)Nc1cc(Nc2nccc(-c3cn(C)c4cc(Cl)ccc34)n2)c(OC)cc1N(C)C`
+
+**Stock Reactants:**
+- `Cn1ccc2ccc(Cl)cc21`
+- `CCC(=O)Cl`
+
+---
+
+### 5. Molecule SMILES: `CN(C)CCN(C)c1cccc(Nc2nccc(-c3cn(C)c4ccccc34)n2)c1`
+
+**Synthetic Routes:**
+1. **Reaction**: `CN(C)CCCl + CNc1cccc(Nc2nccc(-c3cn(C)c4ccccc34)n2)c1 >> CN(C)CCN(C)c1cccc(Nc2nccc(-c3cn(C)c4ccccc34)n2)c1`
+2. **Reaction**: `CNc1cccc(N)c1 + Cn1cc(-c2ccnc(Cl)n2)c2ccccc21 >> CNc1cccc(Nc2nccc(-c3cn(C)c4ccccc34)n2)c1`
+
+**Stock Reactants:**
+- `CN(C)CCCl`
+- `CNc1cccc(N)c1`
+- `Cn1cc(-c2ccnc(Cl)n2)c2ccccc21`
+
+---
+
+If you need further assistance in synthesizing any of these molecules, feel free to ask!",Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated SMILES including their similarity to the input compound. Output also need to include reactions SMARTS describing how to synthesize the top 5 similar compounds.,"['synonyms2smiles', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder']","[['synonyms2smiles', 'molformer', 'Analyzer', 'aizynthfinder']]","[['synonyms2smiles', 'molformer', 'aizynthfinder']]",,,,,,,,Workflow,DesignSynthesis,test-questions-260429_trial_1,019dd995-cf2f-7c52-a988-90db7360b158,86.0,,1.0,0.0,1.0,-1.0,0.0,0.5,middle,0.25
+18,Could you please generate a set of close structural analogues for Gleevec that satisfy the following property constraints: higher molecular weight?,"Analyzer:
+A total of 9 molecules meet the criteria of having a molecular weight greater than 493.615 Da. Below are the details of the top 5 molecules:
+
+| SMILES                                                      | Molecular weight (raw) |
+|-------------------------------------------------------------|-------------------------|
+| Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)c(F)c2)cc1Nc1nc(-c2cccnc2)c[nH]1 | 499.594                 |
+| Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)c(F)c2)cc1Nc1ncc(-c2cccnc2)s1    | 516.646                 |
+| Cc1ccc(NC(=O)Nc2cccc(CN3CCN(C)CC3)c2)cc1Nc1nccc(-c2cccnc2)n1     | 508.630                 |
+| Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)c(F)c2)cc1Nc1nccc(-c2cccnc2)n1    | 511.605                 |
+| Cc1ccc(NC(=O)Nc2cccc(CN3CCN(C)CC3)c2)cc1Nc1nc(-c2cccnc2)c[nH]1    | 496.619                 |
+
+All relevant SMILES: 
+1. Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)c(F)c2)cc1Nc1nc(-c2cccnc2)c[nH]1
+2. Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)c(F)c2)cc1Nc1ncc(-c2cccnc2)s1
+3. Cc1ccc(NC(=O)Nc2cccc(CN3CCN(C)CC3)c2)cc1Nc1nccc(-c2cccnc2)n1
+4. Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)c(F)c2)cc1Nc1nccc(-c2cccnc2)n1
+5. Cc1ccc(NC(=O)Nc2cccc(CN3CCN(C)CC3)c2)cc1Nc1nc(-c2cccnc2)c[nH]1
+6. Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)c(F)c2)cc1Nc1ncc(-c2cccnc2)cn1
+7. Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)c(C(F)(F)F)c2)cc1Nc1nccc(-c2cccnc2)n1
+8. Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)c(Cl)c2)cc1Nc1ncc(-c2cccnc2)s1
+9. Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1
+
+The processed dataframe has been saved to `/tmp/tmpyl8astma/filtered_output.csv`.",Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated compounds and the values of the properties requested in the input and a similarity to the input compound.,"['synonyms2smiles', 'reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer']","[['synonyms2smiles', 'molformer', 'reinvent_scoring', 'Analyzer'], ['synonyms2smiles', 'reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer']]","[['synonyms2smiles', 'molformer', 'reinvent_scoring'], ['synonyms2smiles', 'reinvent_scoring', 'molformer', 'reinvent_scoring']]",,,,,,,,Workflow,DesignProperty,test-questions-260429_trial_1,019dd985-e47e-7183-9317-326c2dcc73c5,,,1.0,0.5,1.0,-1.0,0.5,0.75,middle,0.0625
+19,"I need you to suggest some molecules similar to Gleevec, ensuring they meet higher HBD. For the most similar one, please outline its synthesis route and provide examples of related reactions.","Synthesis:
+### Summary of Results for Gleevec
+
+#### Gleevec SMILES:
+`Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1`
+
+---
+
+#### Predicted Synthesis Route:
+1. **Reaction 1**:
+   - **Reactants**: 
+     `Clc1nccc(-c2cccnc2)n1` and `Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1N`
+   - **Product**: 
+     `Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1` (Gleevec)
+
+2. **Reaction 2**:
+   - **Reactants**: 
+     `Cc1ccc(N)cc1N` and `COC(=O)c1ccc(CN2CCN(C)CC2)cc1`
+   - **Product**: 
+     `Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1N`
+
+---
+
+#### Available Stock:
+- `Clc1nccc(-c2cccnc2)n1`
+- `COC(=O)c1ccc(CN2CCN(C)CC2)cc1`
+- `Cc1ccc(N)cc1N`
+
+These molecules are listed as input components that might be readily available for synthesis.
+
+---
+
+#### Similar Reactions to a Key Step in Gleevec's Synthesis:
+Focusing on the first reaction step:  
+`Clc1nccc(-c2cccnc2)n1.Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1N>>Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1`
+
+The similar reactions are noted below:
+
+---
+
+1. **Reaction 1**:
+   - SMILES: `Cl[C:2]1[N:7]=[C:6]([C:8]2[CH:9]=[N:10][N:11]([CH2:13][C:14]([CH3:17])([OH:16])[CH3:15])[CH:12]=2)[CH:5]=[CH:4][N:3]=1...`
+   - Similarity Score: **0.6163**
+
+2. **Reaction 2**:
+   - SMILES: `[NH2:1][C:2]1[CH:3]=[C:4]([NH:9][C:10](=[O:22])[C:11]2[CH:16]=[CH:15][CH:14]=[C:13]([C:17]([C:20]#[N:21])...`
+   - Similarity Score: **0.6147**
+
+3. **Reaction 3**:
+   - SMILES: `Cl[C:2]1[N:7]=[C:6]([C:8]2[N:12]3[CH:13]=[CH:14][CH:15]=[CH:16][C:11]3=[N:10][C:9]=2[C:17]2[CH:18]=[C:19].
+   - Similarity Score: **0.6117**
+
+4. **Reaction 4**:
+   - SMILES: `Cl[C:2]1[N:7]=[C:6]([C:8]2[N:12]3[CH:13]=[CH:14][CH:15]=[C:16]([F:17])[C:11]3=[N:10][C:9]=2[C:18]2[CH:19]...
+   - Similarity Score: **0.6080**
+
+5. **Reaction 5**:
+   - SMILES: `Cl[C:2]1[N:7]=[C:6]([C:8]2[N:12]3[CH:13]=[CH:14][CH:15]=[CH:16][C:11]3=[N:10][C:9]=2[C:17]2[CH:18]=[CH:19].
+   - Similarity Score: **0.6049`
+
+---
+
+#### Conclusion:
+The synthesis of Gleevec can proceed via readily-available compounds. If required, I can assist further in designing a detailed protocol using literature-relevant examples or calculating molecular property comparisons for iteration.",Question is within the scope of the agentic system. Output should include a path to a CSV file and ideally a table with the generated SMILES including their values for the constrained properties mentioned in the input. Output should also include reactions SMARTS describing how to synthesize the compounds and reactions SMARTS showing similar reactions.,"['synonyms2smiles', 'molformer', 'reinvent_scoring', 'molformer', 'reinvent_scoring', 'aizynthfinder', 'precedent_finder']","[['synonyms2smiles', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder', 'precedent_finder'], ['synonyms2smiles', 'reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder', 'precedent_finder']]","[['synonyms2smiles', 'molformer', 'reinvent_scoring', 'aizynthfinder', 'precedent_finder'], ['synonyms2smiles', 'reinvent_scoring', 'molformer', 'reinvent_scoring', 'aizynthfinder', 'precedent_finder']]",,,,,,,,Workflow,DesignPropertySynthesis,test-questions-260429_trial_1,019dd9ad-95eb-7572-88bd-a3c506d3c6f0,67.0,,0.5,0.0,1.0,-1.0,0.0,0.375,middle,0.171875
+20,Could you please provide a detailed synthetic pathway for the preparation of Gleevec?,"Synthesis:
+To synthesize the molecule Gleevec (SMILES: `Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1`), the following synthetic pathways can be considered:
+
+### Synthetic Pathways
+
+#### Pathway 1
+1. React **Clc1nccc(-c2cccnc2)n1** (2-chloropyrimidine derivative) with **Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1N** (an amine-substituted aniline derivative).
+2. This reaction forms the target molecule Gleevec.
+
+#### Pathway 2
+1. Combine **Cc1ccc(N)cc1N** (a diamine-substituted aniline) with **COC(=O)c1ccc(CN2CCN(C)CC2)cc1** (a methoxycarbonyl-protected benzylpiperazine derivative).
+2. This reaction directly yields Gleevec by coupling the amine with the carbonyl group.
+
+### Starting Materials in Stock
+The following reactants are available in the starting stock:
+- **Clc1nccc(-c2cccnc2)n1**
+- **COC(=O)c1ccc(CN2CCN(C)CC2)cc1**
+- **Cc1ccc(N)cc1N**
+
+These materials can be readily used in the outlined pathways for the synthesis of Gleevec.",Question is within the scope of the agentic system. Output should contain a SMILES for the input compound and chemical reaction SMARTS describing how to synthesize the molecule.,"['synonyms2smiles', 'aizynthfinder']","[['synonyms2smiles', 'aizynthfinder']]",[],,,,,,,,Workflow,SynthesisOnly,test-questions-260429_trial_1,019dd9d4-b02e-7302-a458-da7489b26e12,,,1.0,0.5,1.0,-1.0,0.5,0.75,middle,0.0625
+21,quick one - mw and rot bonds for CNCCC(C1=CC=CC=C1)OC2=CC=C(C=C2)C(F)(F)F?,"Design:
+The given molecule **CNCCC(C1=CC=CC=C1)OC2=CC=C(C=C2)C(F)(F)F** has the following properties:
+
+- Molecular Weight: 309.331
+- Number of Rotatable Bonds: 6.0
+
+An output CSV file of the results is generated and can be downloaded below:
+
+/tmp/tmpr8xkrnes/reinvent_scoring_output.csv",Question is within the scope of the agentic system. Output should contain a molecular weight and a count for the number of rotatable bonds for the input SMILES.,['reinvent_scoring'],[['reinvent_scoring']],[],,,,,,,,Tool,Scoring,test-questions-260429_trial_1,019dd9f3-0bc4-7eb0-af5a-5af2d37a8aae,,,1.0,1.0,1.0,-1.0,0.5,0.875,high,0.046875
+22,Can you generate similar molecules to CC1=C(C=C(C=C1)NC(=O)C2=CC=C(C=C2)CN3CCN(CC3)C)NC4=NC=CC(=N4)C5=CN=CC=C5?,"Analyzer:
+The dataset contains 50 molecules and the available columns are ['SMILES', 'SMILES_state', 'Input_SMILES', 'Tanimoto', 'NLL']. The required scoring property columns are not present in the dataset. Please generate and provide these columns for further analysis.",Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated SMILES.,"['molformer', 'Analyzer']","[['molformer'], ['molformer', 'Analyzer']]",[],,,,,,,,Tool,Molformer,test-questions-260429_trial_1,019dd9d6-de6a-7d03-a7cb-700b11a428bc,,,0.5,0.0,1.0,-1.0,0.5,0.5,middle,0.125
+23,"Hey, I'm looking for some analogs of CC1=C(C(=CC=C1)C)N(CC(=O)NC2=CC=C(C=C2)C3=NOC=N3)C(=O)C4CCS(=O)(=O)CC4. Can you pull up a few and then show me how to make the top 5?","Analyzer:
+The provided dataset is empty and does not contain any suitable rows or necessary scoring properties for analysis. No further processing or filtering was performed.",Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated SMILES including their similarity to the input compound. Output also need to include reactions SMARTS describing how to synthesize the top 5 similar compounds.,"['molformer', 'Analyzer', 'reinvent_scoring', 'Analyzer']","[['molformer', 'Analyzer', 'aizynthfinder']]","[['molformer', 'aizynthfinder']]",,,,,,,,Workflow,DesignSynthesis,test-questions-260429_trial_1,019dd99f-71bb-7390-a9c7-03dc65a7d471,,,0.0,0.0,0.5,-1.0,0.0,0.125,low,0.046875
+24,"Hey, can you pull up some analogues of Ciprofloxacin? Make sure they fit higher molecular weight. For the closest match, I'll need the synth route and some similar rxns.","Synthesis:
+### Synthesis Route and Similar Reactions for Ciprofloxacin's Closest Analogue (by Molecular Weight):
+The closest analogue chosen is:
+- **SMILES**: `O=C(O)c1cn(C2CC2)c2cc(N3CCN(Cc4ccc5c(c4)OCO5)CC3)c(F)cc2c1=O`
+- **Molecular Weight**: 465.481
+
+#### Predicted Synthesis Route:
+The predicted complete synthesis chain involves:
+1. **First Step**:  
+   - **Reaction**: `CCOC(=O)c1cn(C2CC2)c2cc(N3CCN(Cc4ccc5c(c4)OCO5)CC3)c(F)cc2c1=O >> O=C(O)c1cn(C2CC2)c2cc(N3CCN(Cc4ccc5c(c4)OCO5)CC3)c(F)cc2c1=O`  
+
+2. **Substep 1 Reactants**:  
+   - `CCOC(=O)c1cn(C2CC2)c2cc(F)c(F)cc2c1=O`  
+   - `c1cc2c(cc1CN1CCNCC1)OCO2`  
+
+3. **Stock Materials Available**:
+   - [Raw Materials]:  
+     - `c1cc2c(cc1CN1CCNCC1)OCO2`
+     - `NC1CC1`
+     - `CCOC(=O)C=CN(C)C`
+    
+... and finally ***EDA (St) names.-END RouteQUERY READY.identify***",Question is within the scope of the agentic system. Output should include a path to a CSV file and ideally a table with the generated SMILES including their values for the constrained properties mentioned in the input. Output should also include reactions SMARTS describing how to synthesize the compounds and reactions SMARTS showing similar reactions.,"['synonyms2smiles', 'reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder', 'precedent_finder']","[['synonyms2smiles', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder', 'precedent_finder'], ['synonyms2smiles', 'reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder', 'precedent_finder']]","[['synonyms2smiles', 'molformer', 'reinvent_scoring', 'aizynthfinder', 'precedent_finder'], ['synonyms2smiles', 'reinvent_scoring', 'molformer', 'reinvent_scoring', 'aizynthfinder', 'precedent_finder']]",,,,,,,,Workflow,DesignPropertySynthesis,test-questions-260429_trial_1,019dd9af-1554-7e83-baac-14136c2f182d,66.0,,1.0,0.0,0.5,-1.0,0.5,0.5,middle,0.125
+25,"Could you please generate a set of analogues for Tagrisso that exhibit lower HBA? For the top 5 most similar structures, please provide their corresponding synthesis routes.","Synthesis:
+Here are the synthetic routes for the top 5 analogues of Tagrisso with reduced hydrogen-bond acceptors:
+
+---
+
+### **1. SMILES**: `COc1cc(NC(=O)N(C)C)c(Cl)cc1Nc1nccc(-c2cn(C)c3ccccc23)n1`
+- **Synthetic Steps**:
+  1. `CN(C)C(=O)Cl + COc1cc(N)c(Cl)cc1Nc1nccc(-c2cn(C)c3ccccc23)n1 → COc1cc(NC(=O)N(C)C)c(Cl)cc1Nc1nccc(-c2cn(C)c3ccccc23)n1`
+  2. `COc1cc(N)c(Cl)cc1N + Cn1cc(-c2ccnc(Cl)n2)c2ccccc21 → COc1cc(N)c(Cl)cc1Nc1nccc(-c2cn(C)c3ccccc23)n1`
+  3. `COc1cc([N+](=O)[O-])c(Cl)cc1N → COc1cc(N)c(Cl)cc1N`
+- **Stock Chemicals**:
+  - `CN(C)C(=O)Cl`
+  - `Cn1cc(-c2ccnc(Cl)n2)c2ccccc21`
+  - `COc1cc([N+](=O)[O-])c(Cl)cc1N`
+
+---
+
+### **2. SMILES**: `CCCCn1cc(-c2ccnc(Nc3cc(NC(C)=O)c(N(C)C)cc3OC)n2)c2ccccc21`
+- **Synthetic Steps**:
+  1. `CC(=O)OC(C)=O + CCCCn1cc(-c2ccnc(Nc3cc([N+](=O)[O-])c(N(C)C)cc3OC)n2)c2ccccc21 → CCCCn1cc(-c2ccnc(Nc3cc(NC(C)=O)c(N(C)C)cc3OC)n2)c2ccccc21`
+  2. `CNC + CCCCn1cc(-c2ccnc(Nc3cc([N+](=O)[O-])c(F)cc3OC)n2)c2ccccc21 → CCCCn1cc(-c2ccnc(Nc3cc([N+](=O)[O-])c(N(C)C)cc3OC)n2)c2ccccc21`
+  3. `CNC=O → CNC`
+- **Stock Chemicals**:
+  - `CC(=O)OC(C)=O`
+  - `COc1cc(F)c([N+](=O)[O-])cc1N`
+  - `CCCCn1ccc2ccccc21`
+  - `Clc1ccnc(Cl)n1`
+  - `CNC=O`
+
+---
+
+### **3. SMILES**: `COc1cc(N(C)CCN(C)C)c(OC)cc1Nc1nccc(-c2c[nH]c3ccccc23)n1`
+- **Synthetic Steps**:
+  1. `Nc1nccc(-c2c[nH]c3ccccc23)n1 + COc1cc(N(C)CCN(C)C)c(OC)cc1Br → COc1cc(N(C)CCN(C)C)c(OC)cc1Nc1nccc(-c2c[nH]c3ccccc23)n1`
+  2. `O=C1CCC(=O)N1Br + COc1ccc(OC)c(N(C)CCN(C)C)c1 → COc1cc(N(C)CCN(C)C)c(OC)cc1Br`
+  3. `COc1ccc(OC)c(N(C)CC(=O)N(C)C)c1 → COc1ccc(OC)c(N(C)CCN(C)C)c1`
+- **Stock Chemicals**:
+  - `Nc1nccc(-c2c[nH]c3ccccc23)n1`
+  - `O=C1CCC(=O)N1Br`
+  - `COc1ccc(OC)c(N(C)CC(=O)O)c1`
+  - `CNC=O`
+
+---
+
+### **4. SMILES**: `CCC(=O)Nc1cc(Nc2nccc(-c3cn(C)c4cc(Cl)ccc34)n2)c(OC)cc1N(C)C`
+- **Synthetic Steps**:
+  1. `Cn1ccc2ccc(Cl)cc21 + CCC(=O)Nc1cc(Nc2nccc(Cl)n2)c(OC)cc1N(C)C → CCC(=O)Nc1cc(Nc2nccc(-c3cn(C)c4cc(Cl)ccc34)n2)c(OC)cc1N(C)C`
+  2. `CCC(=O)Cl + COc1cc(N(C)C)c(N)cc1Nc1nccc(Cl)n1 → CCC(=O)Nc1cc(Nc2nccc(Cl)n2)c(OC)cc1N(C)C`
+- **Stock Chemicals**:
+  - `Cn1ccc2ccc(Cl)cc21`
+  - `CCC(=O)Cl`
+  - `COc1cc(F)c([N+](=O)[O-])cc1N`
+  - `Clc1ccnc(Cl)n1`
+  - `CNC=O`
+
+---
+
+### **5. SMILES**: `CN(C)CCN(C)c1cccc(Nc2nccc(-c3cn(C)c4ccccc34)n2)c1`
+- **Synthetic Steps**:
+  1. `CN(C)CCCl + CNc1cccc(Nc2nccc(-c3cn(C)c4ccccc34)n2)c1 → CN(C)CCN(C)c1cccc(Nc2nccc(-c3cn(C)c4ccccc34)n2)c1`
+  2. `CNc1cccc(N)c1 + Cn1cc(-c2ccnc(Cl)n2)c2ccccc21 → CNc1cccc(Nc2nccc(-c3cn(C)c4ccccc34)n2)c1`
+- **Stock Chemicals**:
+  - `CN(C)CCCl`
+  - `CNc1cccc(N)c1`
+  - `Cn1cc(-c2ccnc(Cl)n2)c2ccccc21`
+
+---
+
+These routes offer practical insights into synthesizing the analogs of Tagrisso with reduced hydrogen bond acceptors. Let me know if you'd like to explore more details or require additional assistance!",Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated SMILES including their values for the constrained properties mentioned in the input AND reactions SMARTS describing how to synthesize the top 5 similar compounds.,"['synonyms2smiles', 'reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder']","[['synonyms2smiles', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder'], ['synonyms2smiles', 'reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder']]","[['synonyms2smiles', 'molformer', 'reinvent_scoring', 'aizynthfinder'], ['synonyms2smiles', 'reinvent_scoring', 'molformer', 'reinvent_scoring', 'aizynthfinder']]",,,,,,,,Workflow,DesignPropertySynthesis,test-questions-260429_trial_1,019dd9a3-6420-7791-a1d3-07bf7d3e143c,77.0,,1.0,0.5,1.0,-1.0,0.5,0.75,middle,0.0625
+26,"Hey, can you look for some molecules similar to C1CC1N2C=C(C(=O)C3=CC(=C(C=C32)N4CCNCC4)F)C(=O)O that have more aromatic rings? And for the most similar one, can you map out its synthesis and list a few related reactions?","Synthesis:
+Here’s the detailed breakdown of the work:
+
+---
+
+### 1. Most Similar Molecule Analysis
+The reference molecule, ""C1CC1N2C=C(C(=O)C3=CC(=C(C=C32)N4CCNCC4)F)"" with 2 aromatic rings, was analyzed. Among the chosen molecules, synthesis and related reactions were explored for the most relevant candidate. 
+
+---
+
+### 2. Synthesis Routes Found
+
+#### Route 1:
+- **Reaction**: `C1CNCCN1.O=c1ccn(C2CC2)c2cc(F)c(F)cc12>>O=c1ccn(C2CC2)c2cc(N3CCNCC3)c(F)cc12`
+- **Reactants**:
+  1. `C1CNCCN1`: Represents a piperazine structure.
+  2. `O=c1ccn(C2CC2)c2cc(F)c(F)cc12`: A fluoroaryl intermediate.
+- **Product**: A fluoro-substituted cyclic amide.
+
+#### Route 2:
+- **Reaction**: `OB(O)C1CC1.O=c1cc[nH]c2cc(F)c(F)cc12>>O=c1ccn(C2CC2)c2cc(F)c(F)cc12`
+- **Reactants**:
+  1. `OB(O)C1CC1`: A boronic acid cyclopropane derivative.
+  2. `O=c1cc[nH]c2cc(F)c(F)cc12`: Fluoroaryl heterocycle.
+- **Product**: The same fluoroaryl amide.
+
+**Stock Reactants**:
+Both routes indicate reactants like `C1CNCCN1`, `OB(O)C1CC1`, and `O=c1cc[nH]c2cc(F)c(F)cc12` are commonly available.
+
+---
+
+### 3. Similar Reactions to Main Pathways
+
+#### For Reaction 1:
+`C1CNCCN1.O=c1ccn(C2CC2)c2cc(F)c(F)cc12>>O=c1ccn(C2CC2)c2cc(N3CCNCC3)c(F)cc12` yielded:
+1. **Top Reaction**:
+   - **Reaction**: `[CH1]1(...)+...>[CH2](...)1`. This involves formation of amides via intermediates with piperazine.
+   - **Goodness**: 0.6848 (best score).
+2. Remaining cases hover at 0.6-0.58 range.
+
+#### Related Listable:
+Ensure checkpoint the generated paperwork map aspects preferred synthesis too Explore additional",Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated SMILES including the value for the property mentioned in the input. Output should also include reactions SMARTS describing how to synthesize the compounds and reactions SMARTS showing similar reactions.,"['reinvent_scoring', 'molformer', 'reinvent_scoring', 'aizynthfinder', 'precedent_finder']","[['molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder', 'precedent_finder'], ['reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder', 'precedent_finder']]","[['molformer', 'reinvent_scoring', 'aizynthfinder', 'precedent_finder'], ['reinvent_scoring', 'molformer', 'reinvent_scoring', 'aizynthfinder', 'precedent_finder']]",,,,,,,,Workflow,DesignPropertySynthesis,test-questions-260429_trial_1,019dd9c4-f0b7-70c3-8daf-51cc7a0a4bb3,,,0.5,0.0,0.5,-1.0,0.0,0.25,low,0.0625
+27,"Could you please generate a set of molecules analogous to CC(=O)OC1=CC=CC=C1C(=O)O that adhere to the following: fewer rotatable bonds? For the top candidate in terms of similarity, I would also require its synthesis pathway and a list of comparable chemical reactions.","Synthesis:
+### Top Candidate: **O=C(O)c1ccccc1O**
+
+#### 1. Synthesis Pathway
+The compound **""O=C(O)c1ccccc1O""** can be synthesized from **""COc1ccccc1C(=O)O""** using the following reaction:
+- Reaction: **COc1ccccc1C(=O)O >> O=C(O)c1ccccc1O**
+- Required Starting Material: **COc1ccccc1C(=O)O** (available in stock).
+
+#### 2. Similar Reactions
+Here are the five most similar reactions to the synthesis reaction provided:
+
+1. **Reaction SMILES:**
+   ```plaintext
+   COC1C=CC2C(=CC=CC=2)C=1.[OH-]C([C]1[CH]=[CH][CH]=[CH][C]=1[O]C)=[O]
+   >>
+   [OH][C]1[CH]=[CH][CH]=[CH][C]=1[C]([OH])=[O]
+   ```
+   **Goodness Score:** 0.9351
+
+2. **Reaction SMILES:**
+   ```plaintext
+   C([O][C](=[O])[C]1[C]([CH3])=[CH]=[CH]=[CH][C]=1[O]C)C.[OH-].[Na+].COC1C=CC=C(C)C=1C(O)=O.B(Br)(Br)Br
+   >>
+   [OH][C]1[CH]=[CH][CH]=[C]([CH3])[C]=1[C]([OH])=[O]
+   ```
+   **Goodness Score:** 0.7179
+
+3. **Reaction SMILES:**
+   ```plaintext
+   C[O][C]1[CH]=[CH]=[CH]=[C]([CH3])[C]=1[C]([OH])=[O].B(Br)(Br)Br
+   >>
+   [OH][C]1[CH]=[CH][CH]=[C]([CH3])[C]=1[C]([OH])=[O]
+   ```
+   **Goodness Score:** 0.7179
+
+4. **Reaction SMILES:**
+   ```plaintext
+   [CH]([C]1[CH]=[CH][C]([C]([O][CH3])=[O])=[C]([O]C)[CH]=1)=[O].[Al+3].[Cl-].[Cl-].[Cl-].O
+   >>
+   [CH]([C]1[CH]=[CH][C]([C]([O][CH3])=[O])=[C]([OH])[CH]=1)=[O]
+   ```
+   **Goodness Score:** 0.7012
+
+5. **Reaction SMILES:**
+   ```plaintext
+   C(C1C=CC(C(OC)=O)=C(O)C=1)=O.[F][C]1[CH]=[C]([CH]=[O])[CH]=[C]([O]C)[C]=1[C]([O][CH3])=[O].[Al+3].[Cl-].[Cl-].[Cl-]
+   >>
+   [F][C]1[CH]=[C]([CH]=[O])[CH]=[C]([OH])[C]=1[C]([O][CH3])=[O]
+   ```
+   **Goodness Score:** 0.6083
+
+---
+
+If you need more details or specific steps for exploration, let me know!",Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated SMILES including the value for the property mentioned in the input. Output should also include reactions SMARTS describing how to synthesize the compounds and reactions SMARTS showing similar reactions.,"['reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder', 'precedent_finder']","[['molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder', 'precedent_finder'], ['reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder', 'precedent_finder']]","[['molformer', 'reinvent_scoring', 'aizynthfinder', 'precedent_finder'], ['reinvent_scoring', 'molformer', 'reinvent_scoring', 'aizynthfinder', 'precedent_finder']]",,,,,,,,Workflow,DesignPropertySynthesis,test-questions-260429_trial_1,019dd9c1-3395-78c3-806d-d057e7cb2574,58.0,,1.0,0.0,1.0,-1.0,0.0,0.5,middle,0.25
+28,"Hey, can you work up some close analogues to CNCCC(C1=CC=CC=C1)OC2=CC=C(C=C2)C(F)(F)F? The main thing is that they must have higher HBA.","Analyzer:
+The molecules were successfully filtered to retain only those with a Hydrogen Bond Acceptors (HBA) count greater than 2.0. A total of 15 molecules were found. The filtered dataframe has been saved to `/tmp/tmpericoevp/filtered_output.csv`. Below are the top 5 examples with their SMILES:
+
+|   | SMILES                                       | Number of HB acceptors (<10) (raw) |
+|---|----------------------------------------------|------------------------------------|
+| 3 | CNCC[C@H](Oc1cccc2ccccc12)c1cccs1            | 3.0                                |
+| 10| CNCCC(Oc1cccc2ccccc12)c1cccc(OC)c1           | 3.0                                |
+| 11| CNCCC(Oc1cccc2ccccc12)c1cccs1                | 3.0                                |
+| 17| CNCC[C@@H](Oc1ccc2ccsc2c1)c1ccccc1           | 3.0                                |
+| 18| CNCC[C@@H](Oc1cccc2ccccc12)c1cccs1           | 3.0                                |
+
+Other SMILES include: CNCCC(Oc1cccc2ccccc12)c1ccsc1, CNCC[C@@H](Oc1ccc(Cl)c2sccc12)c1ccccc1, CNCC[C@H](Oc1ccc2ccsc2c1)c1ccccc1, and more. You can find the complete list in the saved CSV or in the full output shown above.",Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated compounds and the values of the properties requested in the input and a similarity to the input compound.,"['reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer']","[['molformer', 'reinvent_scoring', 'Analyzer'], ['reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer']]","[['molformer', 'reinvent_scoring'], ['reinvent_scoring', 'molformer', 'reinvent_scoring']]",,,,,,,,Workflow,DesignProperty,test-questions-260429_trial_1,019dd98c-0c60-74c2-bd4c-1a5b28a2c800,,,1.0,0.5,1.0,-1.0,0.5,0.75,middle,0.0625
+29,"I need you to suggest some molecules similar to Gleevec, ensuring they meet higher HBD. For the most similar one, please outline its synthesis route and provide examples of related reactions.","Synthesis:
+### Summary of Results for Gleevec
+
+#### Gleevec SMILES:
+`Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1`
+
+---
+
+#### Predicted Synthesis Route:
+1. **Reaction 1**:
+   - **Reactants**: 
+     `Clc1nccc(-c2cccnc2)n1` and `Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1N`
+   - **Product**: 
+     `Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1` (Gleevec)
+
+2. **Reaction 2**:
+   - **Reactants**: 
+     `Cc1ccc(N)cc1N` and `COC(=O)c1ccc(CN2CCN(C)CC2)cc1`
+   - **Product**: 
+     `Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1N`
+
+---
+
+#### Available Stock:
+- `Clc1nccc(-c2cccnc2)n1`
+- `COC(=O)c1ccc(CN2CCN(C)CC2)cc1`
+- `Cc1ccc(N)cc1N`
+
+These molecules are listed as input components that might be readily available for synthesis.
+
+---
+
+#### Similar Reactions to a Key Step in Gleevec's Synthesis:
+Focusing on the first reaction step:  
+`Clc1nccc(-c2cccnc2)n1.Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1N>>Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1`
+
+The similar reactions are noted below:
+
+---
+
+1. **Reaction 1**:
+   - SMILES: `Cl[C:2]1[N:7]=[C:6]([C:8]2[CH:9]=[N:10][N:11]([CH2:13][C:14]([CH3:17])([OH:16])[CH3:15])[CH:12]=2)[CH:5]=[CH:4][N:3]=1...`
+   - Similarity Score: **0.6163**
+
+2. **Reaction 2**:
+   - SMILES: `[NH2:1][C:2]1[CH:3]=[C:4]([NH:9][C:10](=[O:22])[C:11]2[CH:16]=[CH:15][CH:14]=[C:13]([C:17]([C:20]#[N:21])...`
+   - Similarity Score: **0.6147**
+
+3. **Reaction 3**:
+   - SMILES: `Cl[C:2]1[N:7]=[C:6]([C:8]2[N:12]3[CH:13]=[CH:14][CH:15]=[CH:16][C:11]3=[N:10][C:9]=2[C:17]2[CH:18]=[C:19].
+   - Similarity Score: **0.6117**
+
+4. **Reaction 4**:
+   - SMILES: `Cl[C:2]1[N:7]=[C:6]([C:8]2[N:12]3[CH:13]=[CH:14][CH:15]=[C:16]([F:17])[C:11]3=[N:10][C:9]=2[C:18]2[CH:19]...
+   - Similarity Score: **0.6080**
+
+5. **Reaction 5**:
+   - SMILES: `Cl[C:2]1[N:7]=[C:6]([C:8]2[N:12]3[CH:13]=[CH:14][CH:15]=[CH:16][C:11]3=[N:10][C:9]=2[C:17]2[CH:18]=[CH:19].
+   - Similarity Score: **0.6049`
+
+---
+
+#### Conclusion:
+The synthesis of Gleevec can proceed via readily-available compounds. If required, I can assist further in designing a detailed protocol using literature-relevant examples or calculating molecular property comparisons for iteration.",Question is within the scope of the agentic system. Output should include a path to a CSV file and ideally a table with the generated SMILES including their values for the constrained properties mentioned in the input. Output should also include reactions SMARTS describing how to synthesize the compounds and reactions SMARTS showing similar reactions.,"['synonyms2smiles', 'molformer', 'reinvent_scoring', 'molformer', 'reinvent_scoring', 'aizynthfinder', 'precedent_finder']","[['synonyms2smiles', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder', 'precedent_finder'], ['synonyms2smiles', 'reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder', 'precedent_finder']]","[['synonyms2smiles', 'molformer', 'reinvent_scoring', 'aizynthfinder', 'precedent_finder'], ['synonyms2smiles', 'reinvent_scoring', 'molformer', 'reinvent_scoring', 'aizynthfinder', 'precedent_finder']]",,,,,,,,Workflow,DesignPropertySynthesis,test-questions-260429_trial_1,019dd9ad-95eb-7572-88bd-a3c506d3c6f0,,,0.5,0.0,1.0,-1.0,0.0,0.375,middle,0.171875
+30,Could you please provide the molecular weight and the count of rotatable bonds for the chemical structure represented by the following SMILES string: CNCCC(C1=CC=CC=C1)OC2=CC=C(C=C2)C(F)(F)F?,"Design:
+The molecule represented by the SMILES string `CNCCC(C1=CC=CC=C1)OC2=CC=C(C=C2)C(F)(F)F` has the following properties:
+
+- **Molecular Weight**: 309.331
+- **Number of Rotatable Bonds**: 6
+
+An output CSV file containing these results has been generated and can be downloaded from the following path: /tmp/tmp113qn78w/reinvent_scoring_output.csv.",Question is within the scope of the agentic system. Output should contain a molecular weight and a count for the number of rotatable bonds for the input SMILES.,['reinvent_scoring'],[['reinvent_scoring']],[],,,,,,,,Tool,Scoring,test-questions-260429_trial_1,019dd9f2-7731-7b50-9734-2a099a543b61,,,0.5,1.0,1.0,-1.0,1.0,0.875,high,0.046875
+31,"hey can u get me some moleculs like Fluoxetine w/ lower molecular weight? for the best match, show me the sythesis and some other similer reactions.","Synthesis:
+Here is the synthesis information and similar reactions for five molecules structurally similar to Fluoxetine and with lower molecular weight, based on your input.
+
+---
+
+### Molecule 1: CNCC[C@@H](Oc1cccc2ccccc12)c1ccccc1
+- **Synthesis**:  
+  `Fc1cccc2ccccc12.CNCC[C@@H](O)c1ccccc1 >> CNCC[C@@H](Oc1cccc2ccccc12)c1ccccc1`  
+  - **Stock Reactants**:  
+    - `CNCC[C@@H](O)c1ccccc1`  
+    - `Fc1cccc2ccccc12`
+
+- **Similar Reactions**: 
+  1. Example similar reaction with a goodness score of 0.601:
+     `[CH3][N]([CH3])[CH2][CH2][CH]([C]1[CH]=[CH][CH]=[CH][CH]=1)[OH].F[C]1[CH]=[CH][C](=O[N+]=[O])[CH]=[CH]=1 >> [CH3][N]([CH3])[CH2][CH2][CH]([O][C]1[CH]=[CH][C](=O[N+]=[O])[CH]=[CH]=1)[C]1[CH]=[CH][CH]=[CH][CH]=1`
+  [Other similar reactions omitted for brevity.]
+
+---
+
+### Molecule 2: CNCCC(Oc1cccc2ccccc12)c1ccccc1
+- **Synthesis**:  
+  1. `Fc1cccc2ccccc12.CNCCC(O)c1ccccc1 >> CNCCC(Oc1cccc2ccccc12)c1ccccc1`
+  2. `CNCCC(=O)c1ccccc1 >> CNCCC(O)c1ccccc1`
+  - **Stock Reactants**:  
+    - `Fc1cccc2ccccc12`  
+    - `CNCCC(=O)c1ccccc1`
+
+- **Similar Reactions**:  
+   Similar to Molecule 1, with a similar goodness score range.
+
+---
+
+### Molecule 3: CNCC[C@H](Oc1cccc2ccccc12)c1cccs1
+- **Synthesis**:  
+  `c1ccc2ccccc2c1.CNCC[C@H](O)c1cccs1 >> CNCC[C@H](Oc1cccc2ccccc12)c1cccs1`  
+  - **Stock Reactants**:  
+    - `CNCC[C@H](O)c1cccs1`  
+    - `c1ccc2ccccc2c1`
+
+- **Similar Reactions**:  
+   Example similar reaction has a goodness score of 0.412.
+
+---
+
+### Molecule 4: CNCCC(Oc1ccccc1Cl)c1ccccc1
+- **Synthesis**:  
+  1. `Fc1ccccc1Cl.CNCCC(O)c1ccccc1 >> CNCCC(Oc1ccccc1Cl)c1ccccc1`
+  2. `CNCCC(=O)c1ccccc1 >> CNCCC(O)c1ccccc1`
+  - **Stock Reactants**:  
+    - `Fc1ccccc1Cl`  
+    - `CNCCC(=O)c1ccccc1`
+
+- **Similar Reactions**:  
+   Closely matching reactions identified with good scores of 0.548–0.590.
+
+---
+
+### Molecule 5: CNCCC(Oc1cccc2ccccc12)c1cccc(C)c1
+- **Synthesis**:  
+  - `Cc1cccc(C(CCN(C)C(=O)OC(C)(C)C)Oc2cccc3ccccc23)c1 >> CNCCC(Oc1cccc2ccccc12)c1cccc(C)c1`  
+  - **Stock Reactants**:  
+    - `Fc1cccc2ccccc12`  
+    - `CON(C)C(=O)CCN(C)C(=O)OC(C)(C)C`  
+    - `Cc1cccc(C(=O))Br`  
+
+- **Similar Reactions**:  
+   An excellent match found, with a highest goodness score of 0.856.
+
+---
+
+Let me know if you need additional details on specific reactions, or download files with all information for reference!",Question is within the scope of the agentic system. Output should include a path to a CSV file and ideally a table with the generated SMILES including their values for the constrained properties mentioned in the input. Output should also include reactions SMARTS describing how to synthesize the compounds and reactions SMARTS showing similar reactions.,"['synonyms2smiles', 'reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder', 'precedent_finder']","[['synonyms2smiles', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder', 'precedent_finder'], ['synonyms2smiles', 'reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder', 'precedent_finder']]","[['synonyms2smiles', 'molformer', 'reinvent_scoring', 'aizynthfinder', 'precedent_finder'], ['synonyms2smiles', 'reinvent_scoring', 'molformer', 'reinvent_scoring', 'aizynthfinder', 'precedent_finder']]",,,,,,,,Workflow,DesignPropertySynthesis,test-questions-260429_trial_1,019dd9b2-8d5d-7450-a8fe-cbc31e8c7139,,,1.0,0.5,1.0,-1.0,0.5,0.75,middle,0.0625
+32,"Can you generate some molecules similar to CN1C=C(C2=CC=CC=C21)C3=NC(=NC=C3)NC4=C(C=C(C(=C4)NC(=O)C=C)N(C)CCN(C)C)OC? I need you to list the MW and the number of rotatable bonds for each, and then sort them from most to least similar.","Analyzer:
+The filtered dataset contains 50 molecules sorted by their Tanimoto similarity scores in descending order. Below are the top 5 molecules based on their similarity scores, alongside their molecular weights and number of rotatable bonds:
+
+| SMILES                                                        | Tanimoto | Molecular weight (raw) | Number of rotatable bonds (<10) (raw) |
+|---------------------------------------------------------------|----------|-------------------------|---------------------------------------|
+| COc1cc(NC(=O)N(C)C)c(Cl)cc1Nc1nccc(-c2cn(C)c3ccccc23)n1       | 0.672414 | 450.930                 | 5.0                                   |
+| CCCCn1cc(-c2ccnc(Nc3cc(NC(C)=O)c(N(C)C)cc3OC)n2)c2ccccc21     | 0.650407 | 472.593                 | 9.0                                   |
+| COc1cc(N(C)CCN(C)C)c(OC)cc1Nc1nccc(-c2c[nH]c3ccccc23)n1       | 0.622951 | 446.555                 | 9.0                                   |
+| CCC(=O)Nc1cc(Nc2nccc(-c3cn(C)c4cc(Cl)ccc34)n2)c(OC)cc1N(C)C   | 0.617886 | 478.984                 | 7.0                                   |
+| CN(C)CCN(C)c1cccc(Nc2nccc(-c3cn(C)c4ccccc34)n2)c1             | 0.596639 | 400.530                 | 7.0                                   |
+
+The processed DataFrame has been saved to `/tmp/tmp5h_ljarw/filtered_output.csv`.",Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated compounds sorted according to the similarity including values for some chemical properties requested in the input.,"['molformer', 'reinvent_scoring', 'Analyzer']","[['molformer', 'reinvent_scoring', 'Analyzer'], ['reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer']]","[['molformer', 'reinvent_scoring'], ['reinvent_scoring', 'molformer', 'reinvent_scoring']]",,,,,,,,Workflow,DesignProperty,test-questions-260429_trial_1,019dd983-ae42-7600-8537-7408c426d90e,,,1.0,1.0,1.0,-1.0,0.5,0.875,high,0.046875
+33,"Hey, find me some molecules that are like Tagrisso and show me how to make the top 5 most similar ones.","Synthesis:
+Here are the synthetic routes for the top 5 molecules similar to Tagrisso, along with explanations of the routes and the required reactants (""stock"") for each molecule:
+
+---
+
+### 1. Molecule SMILES: `COc1cc(NC(=O)N(C)C)c(Cl)cc1Nc1nccc(-c2cn(C)c3ccccc23)n1`
+
+**Synthetic Routes:**
+1. **Reaction**: `CN(C)C(=O)Cl + COc1cc(N)c(Cl)cc1Nc1nccc(-c2cn(C)c3ccccc23)n1 >> COc1cc(NC(=O)N(C)C)c(Cl)cc1Nc1nccc(-c2cn(C)c3ccccc23)n1`
+2. **Reaction**: `COc1cc(N)c(Cl)cc1N + Cn1cc(-c2ccnc(Cl)n2)c2ccccc21 >> COc1cc(N)c(Cl)cc1Nc1nccc(-c2cn(C)c3ccccc23)n1`
+3. **Reaction**: `COc1cc([N+](=O)[O-])c(Cl)cc1N >> COc1cc(N)c(Cl)cc1N`
+
+**Stock Reactants:**
+- `CN(C)C(=O)Cl`
+- `Cn1cc(-c2ccnc(Cl)n2)c2ccccc21`
+- `COc1cc([N+](=O)[O-])c(Cl)cc1N`
+
+---
+
+### 2. Molecule SMILES: `CCCCn1cc(-c2ccnc(Nc3cc(NC(C)=O)c(N(C)C)cc3OC)n2)c2ccccc21`
+
+**Synthetic Routes:**
+1. **Reaction**: `CC(=O)OC(C)=O + CCCCn1cc(-c2ccnc(Nc3cc([N+](=O)[O-])c(N(C)C)cc3OC)n2)c2ccccc21 >> CCCCn1cc(-c2ccnc(Nc3cc(NC(C)=O)c(N(C)C)cc3OC)n2)c2ccccc21`
+2. **Reaction**: `CNC + CCCCn1cc(-c2ccnc(Nc3cc([N+](=O)[O-])c(F)cc3OC)n2)c2ccccc21 >> CCCCn1cc(-c2ccnc(Nc3cc([N+](=O)[O-])c(N(C)C)cc3OC)n2)c2ccccc21`
+
+**Stock Reactants:**
+- `CC(=O)OC(C)=O`
+- `CNC`
+- `Clc1ccnc(Cl)n1`
+
+---
+
+### 3. Molecule SMILES: `COc1cc(N(C)CCN(C)C)c(OC)cc1Nc1nccc(-c2c[nH]c3ccccc23)n1`
+
+**Synthetic Routes:**
+1. **Reaction**: `Nc1nccc(-c2c[nH]c3ccccc23)n1 + COc1cc(N(C)CCN(C)C)c(OC)cc1Br >> COc1cc(N(C)CCN(C)C)c(OC)cc1Nc1nccc(-c2c[nH]c3ccccc23)n1`
+2. **Reaction**: `COc1ccc(OC)c(N(C)CCN(C)C)c1 + BrC(O)=O >> COc1ccc(OC)c(N(C)CCN(C)C)c1Br`
+
+**Stock Reactants:**
+- `Nc1nccc(-c2c[nH]c3ccccc23)n1`
+- `COc1ccc(OC)c(N(C)CCN(C)C)c1Br`
+
+---
+
+### 4. Molecule SMILES: `CCC(=O)Nc1cc(Nc2nccc(-c3cn(C)c4cc(Cl)ccc34)n2)c(OC)cc1N(C)C`
+
+**Synthetic Routes:**
+1. **Reaction**: `Cn1ccc2ccc(Cl)cc21 + CCC(=O)Cl >> CCC(=O)Nc1cc(Nc2nccc(-c3cn(C)c4cc(Cl)ccc34)n2)c(OC)cc1N(C)C`
+2. **Reaction**: `COc1cc(N(C)C)c(Cl)cc1Nc2nccnc2 + CCC(=O)Cl >> CCC(=O)Nc1cc(Nc2nccc(-c3cn(C)c4cc(Cl)ccc34)n2)c(OC)cc1N(C)C`
+
+**Stock Reactants:**
+- `Cn1ccc2ccc(Cl)cc21`
+- `CCC(=O)Cl`
+
+---
+
+### 5. Molecule SMILES: `CN(C)CCN(C)c1cccc(Nc2nccc(-c3cn(C)c4ccccc34)n2)c1`
+
+**Synthetic Routes:**
+1. **Reaction**: `CN(C)CCCl + CNc1cccc(Nc2nccc(-c3cn(C)c4ccccc34)n2)c1 >> CN(C)CCN(C)c1cccc(Nc2nccc(-c3cn(C)c4ccccc34)n2)c1`
+2. **Reaction**: `CNc1cccc(N)c1 + Cn1cc(-c2ccnc(Cl)n2)c2ccccc21 >> CNc1cccc(Nc2nccc(-c3cn(C)c4ccccc34)n2)c1`
+
+**Stock Reactants:**
+- `CN(C)CCCl`
+- `CNc1cccc(N)c1`
+- `Cn1cc(-c2ccnc(Cl)n2)c2ccccc21`
+
+---
+
+If you need further assistance in synthesizing any of these molecules, feel free to ask!",Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated SMILES including their similarity to the input compound. Output also need to include reactions SMARTS describing how to synthesize the top 5 similar compounds.,"['synonyms2smiles', 'molformer', 'reinvent_scoring', 'Analyzer', 'aizynthfinder']","[['synonyms2smiles', 'molformer', 'Analyzer', 'aizynthfinder']]","[['synonyms2smiles', 'molformer', 'aizynthfinder']]",,,,,,,,Workflow,DesignSynthesis,test-questions-260429_trial_1,019dd995-cf2f-7c52-a988-90db7360b158,,,1.0,0.0,1.0,-1.0,0.0,0.5,middle,0.25
+34,can u gen some close analogs of CC(C)CC1=CC=C(C=C1)C(C)C(=O)O for me? need them to have higher HBD thx,"Analyzer:
+The filtering process retained 4 molecules with HBondDonors (HBD) values greater than 1. The filtered data has been saved to `/tmp/tmpm854t4mp/filtered_output.csv`. Below is a table of the top 4 molecules with their respective SMILES and the HBD values:
+
+| SMILES                              | Number of HB donors (<5) (raw) |
+|-------------------------------------|--------------------------------|
+| CC(C(=O)O)c1ccc(CCCC(=O)O)cc1      | 2.0                            |
+| CC(C(=O)O)c1ccc(N)cc1              | 2.0                            |
+| CC(C(=O)O)c1ccc(CCC(=O)O)cc1       | 2.0                            |
+| CC(C(=O)O)c1ccc(O)cc1              | 2.0                            |
+
+SMILES of the retained molecules: `CC(C(=O)O)c1ccc(CCCC(=O)O)cc1`, `CC(C(=O)O)c1ccc(N)cc1`, `CC(C(=O)O)c1ccc(CCC(=O)O)cc1`, `CC(C(=O)O)c1ccc(O)cc1`.",Question is within the scope of the agentic system. Output should contain a path to a CSV file and ideally a table with the generated compounds and the values of the properties requested in the input and a similarity to the input compound.,"['reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer']","[['molformer', 'reinvent_scoring', 'Analyzer'], ['reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer']]","[['molformer', 'reinvent_scoring'], ['reinvent_scoring', 'molformer', 'reinvent_scoring']]",,,,,,,,Workflow,DesignProperty,test-questions-260429_trial_1,019dd98c-f205-7691-a3cb-92f885460692,,,1.0,0.5,1.0,-1.0,0.5,0.75,middle,0.0625
+35,"Hey, can you pull the SMARTS pattern for Gleevec for me?","Utility:
+The SMARTS representation of the molecule 'Gleevec' is:
+
+Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1",Question is within the scope of the agentic system. Output should contain a SMARTS string for the given molecule.,['synonyms2smiles'],[['synonyms2smiles']],[],,,,,,,,Tool,Synonym2SMILES,test-questions-260429_trial_1,019dd9f6-dd15-7ce1-beeb-e2fb5a5bff2a,,,1.0,1.0,1.0,-1.0,0.5,0.875,high,0.046875

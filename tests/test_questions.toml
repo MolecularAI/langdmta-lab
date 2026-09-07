@@ -20,6 +20,27 @@ answer = ""
 sequences.complete = [['synonyms2smiles']]
 sequences.accepted = []
 
+[[Tool.SLN2SMILES]]
+# mock available
+question = "What is the SMILES of the SLN N[1]CH=CHCH2CH=@1?"
+answer = ""
+sequences.complete = [['slns2smiles']]
+sequences.accepted = []
+
+[[Tool.SMILES2SELFIES]]
+# mock available
+question = "What is the SELFIES of C1COCCN1 and Cc1cccc(C)c1N(CC(=O)Nc1ccc(-c2ncon2)cc1)C(=O)C1CCS(=O)(=O)CC1?"
+answer = ""
+sequences.complete = [['smiles2selfies']]
+sequences.accepted = []
+
+[[Tool.SELFIES2SMILES]]
+# mock available
+question = "Convert the SELFIES [C][C][O][C][C][N][Ring1][=Branch1] to SMILES"
+answer = ""
+sequences.complete = [['selfies2smiles']]
+sequences.accepted = []
+
 [[Tool.Molformer]]
 # mock available
 question = "Can you generate similar molecules to Cc1ccc(cc1Nc2nccc(n2)c3cccnc3)NC(=O)c4ccc(cc4)CN5CCN(CC5)C?"
@@ -38,7 +59,7 @@ sequences.accepted = []
 # mock available
 question = "How many hydrogen bond donors and acceptors does Cc1ccc(cc1Nc2nccc(n2)c3cccnc3)NC(=O)c4ccc(cc4)CN5CCN(CC5)C have?"
 answer = ""
-sequences.complete = [['reinvent_scoring']]
+sequences.complete = [['reinvent_scoring'], ['calculate_NumHBD', 'calculate_NumHBA']]
 sequences.accepted = []
 
 [[Tool.Scoring]]
@@ -46,6 +67,41 @@ sequences.accepted = []
 question = "I would like to know the MW and number of rotatable bond of molecules: CC(C)Cc1ccc(C(C)C(=O)O)cc1 and Cc1ccc(cc1Nc2nccc(n2)c3cccnc3)NC(=O)c4ccc(cc4)CN5CCN(CC5)C"
 answer = ""
 sequences.complete = [['reinvent_scoring'], ['reinvent_scoring', 'Analyzer']]
+sequences.accepted = []
+
+[[Tool.AiZynthFinder]]
+# mock available
+question = "How can I make each of these molecules: CC(=O)N(C)c1ccc(-c2cn3cc(Br)ccc3n2)cc1C, O=C(O)c1cccc(-n2ccnn2)c1?"
+answer = ""
+sequences.complete = [['aizynthfinder']]
+sequences.accepted = []
+
+[[Tool.PrecedentFinder]]
+# mock available
+question = "What are similar reactions to Cl.c1ccccc1>>Clc1ccccc1?"
+answer = ""
+sequences.complete = [['precedent_finder']]
+sequences.accepted = []
+
+[[Tool.RdkitProperty]]
+# mock available
+question = "Determine the Kappa1 value for FC(Cl)Br"
+answer = ""
+sequences.complete = [['calculate_Kappa']]
+sequences.accepted = []
+
+[[Tool.RdkitProperty]]
+# mock available
+question = "What is the Chi^1v valence molecular graph index of Cc1cccc(C)c1N(CC(=O)Nc1ccc(-c2ncon2)cc1)C(=O)C1CCS(=O)(=O)CC1?"
+answer = ""
+sequences.complete = [['calculate_chi']]
+sequences.accepted = []
+
+[[Tool.RdkitProperty]]
+# mock available
+question = "How many aromatic carbocycles are present in C1C=CC=CC=1?"
+answer = ""
+sequences.complete = [['calculate_NumAromaticCarbocycles']]
 sequences.accepted = []
 
 
@@ -85,18 +141,6 @@ answer = ""
 sequences.complete = [['synonyms2smiles', 'molformer', 'reinvent_scoring', 'Analyzer'], ['synonyms2smiles', 'reinvent_scoring', 'molformer', 'reinvent_scoring', 'Analyzer']]
 sequences.accepted = [['synonyms2smiles', 'molformer', 'reinvent_scoring']]
 
-[[Tool.AiZynthFinder]]
-question = "How can I make each of these molecules: CC(=O)N(C)c1ccc(-c2cn3cc(Br)ccc3n2)cc1C, O=C(O)c1cccc(-n2ccnn2)c1?"
-answer = ""
-sequences.complete = [['aizynthfinder']]
-sequences.accepted = []
-
-[[Tool.PrecedentFinder]]
-question = "What are similar reactions to Cl.c1ccccc1>>Clc1ccccc1?"
-answer = ""
-sequences.complete = [['precedent_finder']]
-sequences.accepted = []
-
 [[Tool.SynthesisOnly]]
 # Mix of SMILES and chemical name; mock available
 question = "What is the synthesis of Amenamevir and Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(-c2cccnc2)n1?"
@@ -122,26 +166,68 @@ sequences.accepted = []
 # mock available
 question = "Can you generate molecules that are similar to Cc1ccc(cc1Nc2nccc(n2)c3cccnc3)NC(=O)c4ccc(cc4)CN5CCN(CC5)C with higher MW using reinforcement learning?"
 answer = ""
-sequences.complete = [['reinvent_scoring', 'reinforcement_learning', 'Analyzer']]
+sequences.complete = [['reinvent_scoring', 'reinforcement_learning', 'Analyzer'], ['reinvent_scoring', 'reinforcement_learning']]
 sequences.accepted = []
 
 [[Workflow.Scoring_Reinforcement_Learning]]
 # mock available
 question = "Can you generate molecules that are similar to Amenamevir with lower MW using reinforcement learning for 20 epochs?"
 answer = ""
-sequences.complete = [['synonyms2smiles', 'reinvent_scoring', 'reinforcement_learning', 'Analyzer']]
+sequences.complete = [['synonyms2smiles', 'reinvent_scoring', 'reinforcement_learning', 'Analyzer'], ['synonyms2smiles', 'reinvent_scoring', 'reinforcement_learning']]
 sequences.accepted = []
 
 [[Workflow.Scoring_Reinforcement_Learning]]
 # mock available
-question = "Can you generate molecules that are similar to CNCCC(C1=CC=CC=C1)OC2=CC=C(C=C2)C(F)(F)F and Gleevec with MW between 300 and 400 using reinforcement learning for 10 epochs?"
+question = "Can you generate molecules that are similar to Gleevec and CNCCC(C1=CC=CC=C1)OC2=CC=C(C=C2)C(F)(F)F with MW between 300 and 400 using reinforcement learning for 10 epochs?"
 answer = ""
-sequences.complete = [['synonyms2smiles', 'reinforcement_learning', 'Analyzer']]
+sequences.complete = [['synonyms2smiles', 'reinforcement_learning', 'Analyzer'], ['synonyms2smiles', 'reinforcement_learning']]
 sequences.accepted = []
 
 [[Workflow.Scoring_Reinforcement_Learning]]
 # mock available
 question = "Can you generate molecules that are similar to Gleevec with lower HBA, higher MW, and number of rotatable bond between 5 and 7 using reinvent reinforcement learning?"
 answer = ""
-sequences.complete = [['synonyms2smiles', 'reinvent_scoring', 'reinforcement_learning', 'Analyzer']]
+sequences.complete = [['synonyms2smiles', 'reinvent_scoring', 'reinforcement_learning', 'Analyzer'], ['synonyms2smiles', 'reinvent_scoring', 'reinforcement_learning']]
+sequences.accepted = []
+
+[[Workflow.Conversion]]
+# mock available
+question = "What is the inchi key of amenamevir?"
+answer = ""
+sequences.complete = [['synonyms2smiles', 'smiles2inchi', 'inchi2inchikey']]
+sequences.accepted = []
+
+[[Workflow.Conversion]]
+# mock available
+question = "Convert the SLN string N[1]CH=CHCH2CH=@1 to its corresponding InChI"
+answer = ""
+sequences.complete = [['slns2smiles', 'smiles2inchi']]
+sequences.accepted = []
+
+[[Workflow.Conversion]]
+# mock available
+question = "What is the SMILES of the inchikey UHOVQNZJYSORNB-UHFFFAOYSA-N, morpholine and the SLN N[1]CH=CHCH2CH=@1?"
+answer = ""
+sequences.complete = [['inchikey2inchi', 'inchi2smiles', 'synonyms2smiles', 'slns2smiles']]
+sequences.accepted = []
+
+[[Workflow.Rdkit]]
+# mock available
+question = "Please identify the EState types of each atom in the molecule that is represented by the SLN string C-C(=O)-O."
+answer = ""
+sequences.complete = [['slns2smiles', 'type_atoms_in_molecule']]
+sequences.accepted = []
+
+[[Workflow.Rdkit]]
+# mock available
+question = "Compute the RDKit fingerprint for the molecule identified by the InChIKey UHOVQNZJYSORNB-UHFFFAOYSA-N"
+answer = ""
+sequences.complete = [['inchikey2inchi', 'inchi2smiles', 'get_rdk_fingerprint_from_smiles']]
+sequences.accepted = []
+
+[[Workflow.Rdkit]]
+# mock available
+question = "What is the Chi^1v and the topological polar surface area for biotin?"
+answer = ""
+sequences.complete = [['synonyms2smiles', 'calculate_chi', 'calculate_TPSA'], ['synonyms2smiles', 'calculate_TPSA', 'calculate_chi']]
 sequences.accepted = []
