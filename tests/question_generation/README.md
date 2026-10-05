@@ -61,6 +61,5 @@ Output is a TOML file organized by `task_type` and `task_label`, where each entr
 | `test_questions_generated_260429.toml` | The full set of test questions  |
 | `test_questions_generated_260429_filtered.toml` | The 70 test questions  not annotated by humans |
 | `test_questions_generated_260429_annotated.toml` | The 30 test questions annotated by humans |
-| `test_questions_generated_260429_annotated.toml` | The 30 test questions annotated by humans |
 | `test_questions_generated_260429_signature_opt_train.toml` | The training set of the test questions used to train the LLM-as-a-judge |
 | `test_questions_generated_260429_signature_opt_val.toml` | The validation set of test questions used to train the LLM-as-a-judge |
