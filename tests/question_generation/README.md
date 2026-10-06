@@ -58,3 +58,8 @@ Output is a TOML file organized by `task_type` and `task_label`, where each entr
 | `smiles.csv` | SMILES strings for pharmaceutically relevant compounds used to fill `{{smiles}}` placeholders. |
 | `reactions.csv` | Reaction SMILES entries (reactant>>product) covering common synthetic transformations used to fill `{{reaction}}` placeholders. |
 | `property_constraints.csv` | Molecular property constraint phrases (e.g., "higher molecular weight", "lower HBD") used to fill `{{property_constraint}}` placeholders in drug design questions. |
+| `test_questions_generated_260429.toml` | The full set of test questions  |
+| `test_questions_generated_260429_filtered.toml` | The 70 test questions  not annotated by humans |
+| `test_questions_generated_260429_annotated.toml` | The 30 test questions annotated by humans |
+| `test_questions_generated_260429_signature_opt_train.toml` | The training set of the test questions used to train the LLM-as-a-judge |
+| `test_questions_generated_260429_signature_opt_val.toml` | The validation set of test questions used to train the LLM-as-a-judge |
